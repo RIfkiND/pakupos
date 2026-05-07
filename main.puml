@@ -2,16 +2,65 @@
 
 skinparam classAttributeIconSize 0
 
-class Transaction {
-    -id: String
-    -products: ProductTransaction[]
-    -productCount: int
-    << create >> +Transaction()
-    +addProduct(product: Product): void
-    +addProduct(product: Product, quantity: int): void
-    +removeProduct(index: int): void
-    +calculateTotal(): int
+package transaction {
+    class Transaction {
+        -id: String
+        -products: ProductTransaction[]
+        -productCount: int
+        << create >> +Transaction()
+        +addProduct(product: Product): void
+        +addProduct(product: Product, quantity: int): void
+        +removeProduct(index: int): void
+        +getProducts(): ProductTransaction[]
+        +calculateTotal(): int
+        +createPayment(type: String): Payment
+    }
+
+    class ProductTransaction {
+        -product: Product
+        -quantity: int
+        -discount: int
+        << create >> +ProductTransaction(product: Product)
+        << create >> +ProductTransaction(product: Product, quantity: int)
+        +getProductName(): String
+        +getProductPrice(): int
+        +getQuantity(): int
+        ~setQuantity(): void
+        +getDiscount(): int
+        ~setDiscount(): void
+        +getTotalPrice(): int
+    }
+    Transaction *-- ProductTransaction
+
+    abstract class Payment {
+        -transaction: Transaction
+        -amount: int
+        << create >> ~Payment(transaction: Transaction, amount: int)
+        +getAmount(): int
+        +processPayment(): boolean
+    }
+    Transaction -- Payment
+
+    class Cash {
+        +calculateChange(cash: int): int
+    }
+    Payment <|-- Cash
+
+    class Qris {
+        +generateQr(): String
+        +processPayment(): boolean
+    }
+    Payment <|-- Qris
+
+    class BankTransfer {
+        -bank: String
+        << create >> ~BankTransfer()
+        +generateVirtualAccount(): String
+        +processPayment(): boolean
+    }
+    Payment <|-- BankTransfer
 }
+Product <-- ProductTransaction
 
 class Product {
     -id: String
@@ -23,23 +72,6 @@ class Product {
     +getPrice(): int
     +setPrice(): void
 }
-
-class ProductTransaction {
-    -product: Product
-    -quantity: int
-    -discount: int
-    << create >> +ProductTransaction(product: Product)
-    << create >> +ProductTransaction(product: Product, quantity: int)
-    +getProductName(): String
-    +getProductPrice(): int
-    +getQuantity(): int
-    +setQuantity(): void
-    +getDiscount(): int
-    +setDiscount(): void
-    +getTotalPrice(): int
-}
-Product <-- ProductTransaction
-Transaction *-- ProductTransaction
 
 class Business {
     -id: String
