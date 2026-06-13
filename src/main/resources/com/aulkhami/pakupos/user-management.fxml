@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="0.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.aulkhami.pakupos.controllers.UserManagementController"
+      styleClass="mobile-root" stylesheets="@css/main.css">
+
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="mobile-header">
+        <padding>
+            <Insets top="15" right="20" bottom="15" left="20"/>
+        </padding>
+        <Button text="←" onAction="#handleBack" styleClass="mobile-button-header" style="-fx-font-size: 18px;"/>
+        <Label text="User Management" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="20.0"/>
+            </font>
+        </Label>
+    </HBox>
+
+    <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" VBox.vgrow="ALWAYS">
+        <VBox spacing="20.0">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Label text="Add New Karyawan" styleClass="mobile-subtitle" />
+
+            <VBox spacing="12.0" styleClass="mobile-recent-list" style="-fx-padding: 20;">
+                <VBox spacing="5.0">
+                    <Label text="Full Name *" style="-fx-font-size: 11px; -fx-text-fill: gray;"/>
+                    <TextField fx:id="nameField" promptText="Enter Name" styleClass="mobile-input" style="-fx-pref-height: 45px;"/>
+                </VBox>
+                <VBox spacing="5.0">
+                    <Label text="Email (Login) *" style="-fx-font-size: 11px; -fx-text-fill: gray;"/>
+                    <TextField fx:id="emailField" promptText="Enter Email" styleClass="mobile-input" style="-fx-pref-height: 45px;"/>
+                </VBox>
+                <VBox spacing="5.0">
+                    <Label text="Password *" style="-fx-font-size: 11px; -fx-text-fill: gray;"/>
+                    <PasswordField fx:id="passwordField" promptText="Enter Password" styleClass="mobile-input" style="-fx-pref-height: 45px;"/>
+                </VBox>
+                <VBox spacing="5.0">
+                    <Label text="Phone Number" style="-fx-font-size: 11px; -fx-text-fill: gray;"/>
+                    <TextField fx:id="phoneField" promptText="e.g. 08123456789" styleClass="mobile-input" style="-fx-pref-height: 45px;"/>
+                </VBox>
+
+                <Button text="ADD KARYAWAN" onAction="#handleAddKaryawan" maxWidth="Infinity" styleClass="mobile-button-primary">
+                    <VBox.margin><Insets top="10"/></VBox.margin>
+                </Button>
+            </VBox>
+
+            <Label text="Manage Users" styleClass="mobile-subtitle" />
+            <VBox fx:id="userListVBox" spacing="0.0" styleClass="mobile-recent-list">
+                <!-- User items loaded here -->
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS" />
+        </VBox>
+    </ScrollPane>
+</VBox>

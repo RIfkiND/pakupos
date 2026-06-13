@@ -1,9 +1,8 @@
 package com.aulkhami.pakupos.dao.interfaces;
 
+import com.aulkhami.pakupos.models.entities.User;
 import java.util.Optional;
 
-import com.aulkhami.pakupos.models.entities.User;
-
-public interface IUserDAO extends IDAO<User, Integer> {
-    Optional<User> findByUsername(String username);
+public interface IUserDAO extends IDAO<User, Long> {
+    Optional<User> findByEmail(String email);
 }

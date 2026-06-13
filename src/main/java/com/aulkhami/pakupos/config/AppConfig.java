@@ -1,31 +1,13 @@
 package com.aulkhami.pakupos.config;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
+import com.aulkhami.pakupos.utils.ConfigLoader;
 
 public class AppConfig {
 
-    private static final Properties APP_PROPERTIES = new Properties();
-
-    static {
-        loadProperties();
-    }
-
-    private AppConfig() {
-    }
-
-    private static void loadProperties() {
-        try (InputStream inputStream = AppConfig.class.getResourceAsStream(Constants.APP_PROPERTIES_PATH)) {
-            if (inputStream != null) {
-                APP_PROPERTIES.load(inputStream);
-            }
-        } catch (IOException ignored) {
-        }
-    }
+    private AppConfig() {}
 
     public static String get(String key, String defaultValue) {
-        return APP_PROPERTIES.getProperty(key, defaultValue);
+        return ConfigLoader.getProperty(key, defaultValue);
     }
 
     public static String getAppName() {
@@ -37,7 +19,7 @@ public class AppConfig {
     }
 
     public static int getInt(String key, int defaultValue) {
-        String value = APP_PROPERTIES.getProperty(key);
+        String value = get(key, null);
         if (value == null || value.isBlank()) {
             return defaultValue;
         }
@@ -49,7 +31,7 @@ public class AppConfig {
     }
 
     public static boolean getBoolean(String key, boolean defaultValue) {
-        String value = APP_PROPERTIES.getProperty(key);
+        String value = get(key, null);
         if (value == null || value.isBlank()) {
             return defaultValue;
         }

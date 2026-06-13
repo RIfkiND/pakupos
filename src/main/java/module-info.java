@@ -2,6 +2,7 @@ module com.aulkhami.pakupos {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires io.github.cdimascio.dotenv.java;
 
     opens com.aulkhami.pakupos to javafx.fxml;
     opens com.aulkhami.pakupos.controllers to javafx.fxml;

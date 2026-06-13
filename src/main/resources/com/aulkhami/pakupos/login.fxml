@@ -1,17 +1,56 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<VBox alignment="CENTER" spacing="12.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.aulkhami.pakupos.PrimaryController" styleClass="root">
+<?import javafx.scene.text.Font?>
+<VBox
+    alignment="CENTER"
+    spacing="20.0"
+    xmlns="http://javafx.com/javafx/17"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.aulkhami.pakupos.controllers.LoginController"
+    styleClass="mobile-root"
+    stylesheets="@css/main.css"
+>
+
     <padding>
-        <Insets top="40" right="40" bottom="40" left="40"/>
+        <Insets top="40" right="30" bottom="40" left="30" />
     </padding>
-    <Label text="Login" styleClass="title"/>
-    <TextField fx:id="usernameField" promptText="Username" styleClass="text-field"/>
-    <PasswordField fx:id="passwordField" promptText="Password" styleClass="text-field"/>
-    <HBox spacing="10.0" alignment="CENTER">
-        <Button text="Login" onAction="#handleLogin" styleClass="primary-button"/>
-        <Button text="Register" onAction="#handleRegister" styleClass="secondary-button"/>
-    </HBox>
+
+    <Label text="PAKUPOS" styleClass="mobile-title">
+        <font>
+            <Font name="System Bold" size="32.0" />
+        </font>
+    </Label>
+
+    <Label text="Mobile Point of Sale" styleClass="mobile-subtitle" />
+
+    <VBox spacing="10.0" fillWidth="true">
+        <TextField
+            fx:id="usernameField"
+            promptText="Email"
+            styleClass="mobile-input"
+        />
+        <PasswordField
+            fx:id="passwordField"
+            promptText="Password"
+            styleClass="mobile-input"
+        />
+    </VBox>
+
+    <VBox spacing="12.0" fillWidth="true">
+        <Button
+            text="LOGIN"
+            onAction="#handleLogin"
+            maxWidth="Infinity"
+            styleClass="mobile-button-primary"
+        />
+        <Button
+            text="REGISTER"
+            onAction="#handleRegister"
+            maxWidth="Infinity"
+            styleClass="mobile-button-secondary"
+        />
+    </VBox>
+
 </VBox>

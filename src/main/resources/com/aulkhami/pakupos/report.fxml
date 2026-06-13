@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="0.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.aulkhami.pakupos.controllers.ReportController"
+      styleClass="mobile-root" stylesheets="@css/main.css">
+
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="mobile-header">
+        <padding>
+            <Insets top="15" right="20" bottom="15" left="20"/>
+        </padding>
+        <Button text="←" onAction="#handleBack" styleClass="mobile-button-header" style="-fx-font-size: 18px;"/>
+        <Label text="Business Reports" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="20.0"/>
+            </font>
+        </Label>
+    </HBox>
+
+    <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" VBox.vgrow="ALWAYS">
+        <VBox spacing="20.0">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Label text="Summary Today" styleClass="mobile-subtitle" />
+
+            <!-- Stats Row -->
+            <HBox spacing="10.0" fillHeight="true">
+                <VBox spacing="5.0" styleClass="mobile-stats-card" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets top="15" right="15" bottom="15" left="15" />
+                    </padding>
+                    <Label text="Total Sales" style="-fx-text-fill: white; -fx-font-size: 12px;" />
+                    <Label fx:id="totalSalesLabel" text="Rp 0" style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" />
+                </VBox>
+                <VBox spacing="5.0" styleClass="mobile-stats-card-alt" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets top="15" right="15" bottom="15" left="15" />
+                    </padding>
+                    <Label text="Orders" style="-fx-text-fill: white; -fx-font-size: 12px;" />
+                    <Label fx:id="totalOrdersLabel" text="0" style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" />
+                </VBox>
+            </HBox>
+
+            <Label text="All Transactions" styleClass="mobile-subtitle" />
+            <VBox fx:id="transactionListVBox" spacing="0.0" styleClass="mobile-recent-list">
+                <!-- Transactions loaded here -->
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS" />
+        </VBox>
+    </ScrollPane>
+
+    <!-- Bottom Nav -->
+    <HBox alignment="CENTER" spacing="0.0" styleClass="mobile-bottom-nav">
+        <Button text="Home" onAction="#handleBack" styleClass="mobile-nav-item" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+            <graphic>
+                <Label text="🏠" styleClass="mobile-nav-icon"/>
+            </graphic>
+        </Button>
+        <Button text="Sales" onAction="#handleNewSale" styleClass="mobile-nav-item" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+            <graphic>
+                <Label text="🛍️" styleClass="mobile-nav-icon"/>
+            </graphic>
+        </Button>
+        <Button text="Inventory" onAction="#handleInventory" styleClass="mobile-nav-item" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+            <graphic>
+                <Label text="📦" styleClass="mobile-nav-icon"/>
+            </graphic>
+        </Button>
+        <Button text="More" onAction="#handleSettings" styleClass="mobile-nav-item" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+            <graphic>
+                <Label text="☰" styleClass="mobile-nav-icon"/>
+            </graphic>
+        </Button>
+    </HBox>
+</VBox>

@@ -1,39 +1,55 @@
 package com.aulkhami.pakupos.models.entities;
 
+import com.aulkhami.pakupos.enums.UserRole;
 import java.sql.Timestamp;
 
 public class User {
-    private Integer id;
-    private String username;
+
+    private Long id;
+    private String name;
     private String email;
     private String password;
-    private String salt;
+    private String phone;
+    private UserRole role;
+    private Boolean isActive;
+    private Timestamp lastLoginAt;
     private Timestamp createdAt;
+    private Timestamp updatedAt;
 
     public User() {
+        this.isActive = true;
+        this.role = UserRole.KARYAWAN;
     }
 
-    public User(String username, String email, String password, String salt) {
-        this.username = username;
+    public User(
+        String name,
+        String email,
+        String password,
+        String phone,
+        UserRole role
+    ) {
+        this.name = name;
         this.email = email;
         this.password = password;
-        this.salt = salt;
+        this.phone = phone;
+        this.role = role;
+        this.isActive = true;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -52,12 +68,36 @@ public class User {
         this.password = password;
     }
 
-    public String getSalt() {
-        return salt;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setSalt(String salt) {
-        this.salt = salt;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
+
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean active) {
+        isActive = active;
+    }
+
+    public Timestamp getLastLoginAt() {
+        return lastLoginAt;
+    }
+
+    public void setLastLoginAt(Timestamp lastLoginAt) {
+        this.lastLoginAt = lastLoginAt;
     }
 
     public Timestamp getCreatedAt() {
@@ -68,8 +108,29 @@ public class User {
         this.createdAt = createdAt;
     }
 
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", username='" + username + '\'' + ", email='" + email + '\'' + '}';
+        return (
+            "User{" +
+            "id=" +
+            id +
+            ", name='" +
+            name +
+            '\'' +
+            ", email='" +
+            email +
+            '\'' +
+            ", role=" +
+            role +
+            '}'
+        );
     }
 }

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<VBox
+    spacing="0.0"
+    xmlns="http://javafx.com/javafx/17"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.aulkhami.pakupos.controllers.DashboardController"
+    styleClass="mobile-root"
+    stylesheets="@css/main.css"
+>
+
+    <!-- Top Header -->
+    <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="mobile-header">
+        <padding>
+            <Insets top="15" right="20" bottom="15" left="20" />
+        </padding>
+        <Label text="Dashboard" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <Region HBox.hgrow="ALWAYS" />
+        <Button onAction="#handleLogout" styleClass="mobile-button-header">
+            <graphic>
+                <Label
+                    text="Logout 🚪"
+                    style="-fx-text-fill: white; -fx-font-size: 12px;"
+                />
+            </graphic>
+        </Button>
+    </HBox>
+
+    <ScrollPane
+        fitToWidth="true"
+        style="-fx-background-color: transparent; -fx-background: transparent;"
+        VBox.vgrow="ALWAYS"
+    >
+        <VBox spacing="20.0">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20" />
+            </padding>
+
+            <Label text="Welcome back!" styleClass="mobile-subtitle" />
+
+            <!-- Stats Row -->
+            <HBox spacing="10.0" fillHeight="true">
+                <VBox
+                    spacing="5.0"
+                    styleClass="mobile-stats-card"
+                    HBox.hgrow="ALWAYS"
+                    maxWidth="Infinity"
+                >
+                    <padding>
+                        <Insets top="15" right="15" bottom="15" left="15" />
+                    </padding>
+                    <Label
+                        text="Total Sales"
+                        style="-fx-text-fill: white; -fx-font-size: 12px;"
+                    />
+                    <Label
+                        text="Rp 2.4M"
+                        style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;"
+                    />
+                </VBox>
+                <VBox
+                    spacing="5.0"
+                    styleClass="mobile-stats-card-alt"
+                    HBox.hgrow="ALWAYS"
+                    maxWidth="Infinity"
+                >
+                    <padding>
+                        <Insets top="15" right="15" bottom="15" left="15" />
+                    </padding>
+                    <Label
+                        text="Orders"
+                        style="-fx-text-fill: white; -fx-font-size: 12px;"
+                    />
+                    <Label
+                        text="42"
+                        style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;"
+                    />
+                </VBox>
+            </HBox>
+
+            <Label text="Quick Actions" styleClass="mobile-subtitle" />
+
+            <!-- POS Actions Grid -->
+            <GridPane hgap="15.0" vgap="15.0">
+                <columnConstraints>
+                    <ColumnConstraints
+                        hgrow="ALWAYS"
+                        minWidth="10.0"
+                        percentWidth="50.0"
+                    />
+                    <ColumnConstraints
+                        hgrow="ALWAYS"
+                        minWidth="10.0"
+                        percentWidth="50.0"
+                    />
+                </columnConstraints>
+
+                <Button
+                    text="New Sale"
+                    onAction="#handleNewSale"
+                    GridPane.columnIndex="0"
+                    GridPane.rowIndex="0"
+                    maxWidth="Infinity"
+                    minHeight="100"
+                    styleClass="mobile-card-button"
+                />
+
+                <Button
+                    text="Inventory"
+                    onAction="#handleInventory"
+                    GridPane.columnIndex="1"
+                    GridPane.rowIndex="0"
+                    maxWidth="Infinity"
+                    minHeight="100"
+                    styleClass="mobile-card-button"
+                />
+
+                <Button
+                    text="Reports"
+                    onAction="#handleReports"
+                    GridPane.columnIndex="0"
+                    GridPane.rowIndex="1"
+                    maxWidth="Infinity"
+                    minHeight="100"
+                    styleClass="mobile-card-button"
+                />
+
+                <Button
+                    text="Settings"
+                    onAction="#handleSettings"
+                    GridPane.columnIndex="1"
+                    GridPane.rowIndex="1"
+                    maxWidth="Infinity"
+                    minHeight="100"
+                    styleClass="mobile-card-button"
+                />
+            </GridPane>
+
+            <Label text="Recent Transactions" styleClass="mobile-subtitle" />
+
+            <VBox spacing="10.0" styleClass="mobile-recent-list">
+                <HBox
+                    alignment="CENTER_LEFT"
+                    spacing="10.0"
+                    styleClass="mobile-recent-item"
+                >
+                    <padding><Insets
+                            top="10"
+                            right="15"
+                            bottom="10"
+                            left="15"
+                        /></padding>
+                    <VBox HBox.hgrow="ALWAYS">
+                        <Label
+                            text="Order #ORD-2026-001"
+                            style="-fx-font-weight: bold;"
+                        />
+                        <Label
+                            text="Customer: John Doe"
+                            style="-fx-font-size: 12px; -fx-text-fill: gray;"
+                        />
+                    </VBox>
+                    <Label
+                        text="Rp 45.000"
+                        style="-fx-text-fill: #198754; -fx-font-weight: bold;"
+                    />
+                </HBox>
+                <HBox
+                    alignment="CENTER_LEFT"
+                    spacing="10.0"
+                    styleClass="mobile-recent-item"
+                >
+                    <padding><Insets
+                            top="10"
+                            right="15"
+                            bottom="10"
+                            left="15"
+                        /></padding>
+                    <VBox HBox.hgrow="ALWAYS">
+                        <Label
+                            text="Order #ORD-2026-002"
+                            style="-fx-font-weight: bold;"
+                        />
+                        <Label
+                            text="Customer: Jane Smith"
+                            style="-fx-font-size: 12px; -fx-text-fill: gray;"
+                        />
+                    </VBox>
+                    <Label
+                        text="Rp 120.000"
+                        style="-fx-text-fill: #198754; -fx-font-weight: bold;"
+                    />
+                </HBox>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+
+    <!-- Bottom Nav -->
+    <HBox alignment="CENTER" spacing="0.0" styleClass="mobile-bottom-nav">
+        <Button
+            text="Home"
+            styleClass="mobile-nav-item, active"
+            HBox.hgrow="ALWAYS"
+            maxWidth="Infinity"
+        >
+            <graphic>
+                <Label text="🏠" styleClass="mobile-nav-icon" />
+            </graphic>
+        </Button>
+        <Button
+            text="Sales"
+            onAction="#handleNewSale"
+            styleClass="mobile-nav-item"
+            HBox.hgrow="ALWAYS"
+            maxWidth="Infinity"
+        >
+            <graphic>
+                <Label text="🛍️" styleClass="mobile-nav-icon" />
+            </graphic>
+        </Button>
+        <Button
+            text="Inventory"
+            onAction="#handleInventory"
+            styleClass="mobile-nav-item"
+            HBox.hgrow="ALWAYS"
+            maxWidth="Infinity"
+        >
+            <graphic>
+                <Label text="📦" styleClass="mobile-nav-icon" />
+            </graphic>
+        </Button>
+        <Button
+            text="More"
+            onAction="#handleSettings"
+            styleClass="mobile-nav-item"
+            HBox.hgrow="ALWAYS"
+            maxWidth="Infinity"
+        >
+            <graphic>
+                <Label text="☰" styleClass="mobile-nav-icon" />
+            </graphic>
+        </Button>
+    </HBox>
+</VBox>

@@ -1,23 +1,26 @@
 package com.aulkhami.pakupos.database;
 
 import com.aulkhami.pakupos.config.DatabaseConfig;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class MySQLConnection {
+public class DatabaseConnection {
 
     private static Connection connection = null;
 
     public static Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
-            String url = DatabaseConfig.getMySqlUrl();
-            String user = DatabaseConfig.getMySqlUsername();
-            String pass = DatabaseConfig.getMySqlPassword();
+            String url = DatabaseConfig.getActiveUrl();
+            String user = DatabaseConfig.getActiveUsername();
+            String pass = DatabaseConfig.getActivePassword();
+            String driver = DatabaseConfig.getActiveDriver();
+
             try {
-                Class.forName(DatabaseConfig.getMySqlDriver());
-            } catch (ClassNotFoundException ignored) {
+                Class.forName(driver);
+            } catch (ClassNotFoundException e) {
+                System.err.println("Database driver not found: " + driver);
+                e.printStackTrace();
             }
             connection = DriverManager.getConnection(url, user, pass);
         }

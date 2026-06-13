@@ -4,21 +4,22 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Product {
-    private Integer id;
+
+    private Long id;
     private String name;
-    private String description;
+    private String category;
     private BigDecimal price;
     private Integer stock;
     private Timestamp createdAt;
+    private Timestamp updatedAt;
 
-    public Product() {
-    }
+    public Product() {}
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -30,12 +31,12 @@ public class Product {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCategory() {
+        return category;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public BigDecimal getPrice() {
@@ -60,5 +61,13 @@ public class Product {
 
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
