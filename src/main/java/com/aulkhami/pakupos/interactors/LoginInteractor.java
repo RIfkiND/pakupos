@@ -4,8 +4,14 @@
  */
 package com.aulkhami.pakupos.interactors;
 
+import com.aulkhami.pakupos.App;
 import com.aulkhami.pakupos.models.LoginModel;
+import com.aulkhami.pakupos.models.entities.User;
 import com.aulkhami.pakupos.services.UserService;
+import com.aulkhami.pakupos.utils.AlertHelper;
+import com.aulkhami.pakupos.utils.SessionManager;
+import java.io.IOException;
+import java.util.Optional;
 
 /**
  *
@@ -22,7 +28,36 @@ public class LoginInteractor extends FormInteractor {
     @Override
     public void submitForm() {
         LoginModel model = (LoginModel) getModel();
-        service.loginUser(model.getEmail(), model.getPassword());
-        model.successProperty().set(true);
+        String email = model.getEmail();
+        String password = model.getPassword();
+
+        if (email.isEmpty() || password.isEmpty()) {
+            AlertHelper.showError(
+                "Login Failed",
+                "Please enter both email and password."
+            );
+            return;
+        }
+
+        Optional<User> userOpt = service.loginUser(email, password);
+
+        if (userOpt.isPresent()) {
+            SessionManager.setCurrentUser(userOpt.get());
+            model.successProperty().set(true);
+            try {
+                App.setRoot("dashboard");
+            } catch (IOException e) {
+                AlertHelper.showError(
+                    "System Error",
+                    "Could not load dashboard."
+                );
+                e.printStackTrace();
+            }
+        } else {
+            AlertHelper.showError(
+                "Login Failed",
+                "Invalid username or password."
+            );
+        }
     }
 }

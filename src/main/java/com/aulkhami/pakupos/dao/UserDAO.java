@@ -1,9 +1,9 @@
 package com.aulkhami.pakupos.dao;
 
 import com.aulkhami.pakupos.dao.interfaces.IUserDAO;
-import com.aulkhami.pakupos.database.MySQLConnection;
+import com.aulkhami.pakupos.database.DatabaseConnection;
+import com.aulkhami.pakupos.enums.UserRole;
 import com.aulkhami.pakupos.models.entities.User;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +12,13 @@ import java.util.Optional;
 public class UserDAO implements IUserDAO {
 
     @Override
-    public Optional<User> findById(Integer id) {
+    public Optional<User> findById(Long id) {
         String sql = "SELECT * FROM users WHERE id = ?";
-        try (Connection conn = MySQLConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, id);
+        try (
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql)
+        ) {
+            ps.setLong(1, id);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     return Optional.of(mapResultSetToUser(rs));
@@ -32,9 +34,11 @@ public class UserDAO implements IUserDAO {
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
         String sql = "SELECT * FROM users";
-        try (Connection conn = MySQLConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement(sql);
-                ResultSet rs = ps.executeQuery()) {
+        try (
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery()
+        ) {
             while (rs.next()) {
                 users.add(mapResultSetToUser(rs));
             }
@@ -46,17 +50,25 @@ public class UserDAO implements IUserDAO {
 
     @Override
     public User save(User user) {
-        String sql = "INSERT INTO users (username, email, password, salt) VALUES (?, ?, ?, ?)";
-        try (Connection conn = MySQLConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            ps.setString(1, user.getUsername());
+        String sql =
+            "INSERT INTO users (name, email, password, phone, role, is_active) VALUES (?, ?, ?, ?, ?, ?)";
+        try (
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement(
+                sql,
+                Statement.RETURN_GENERATED_KEYS
+            )
+        ) {
+            ps.setString(1, user.getName());
             ps.setString(2, user.getEmail());
             ps.setString(3, user.getPassword());
-            ps.setString(4, user.getSalt());
+            ps.setString(4, user.getPhone());
+            ps.setString(5, user.getRole().name());
+            ps.setBoolean(6, user.getIsActive());
             ps.executeUpdate();
             try (ResultSet keys = ps.getGeneratedKeys()) {
                 if (keys.next()) {
-                    user.setId(keys.getInt(1));
+                    user.setId(keys.getLong(1));
                 }
             }
         } catch (SQLException e) {
@@ -67,14 +79,19 @@ public class UserDAO implements IUserDAO {
 
     @Override
     public void update(User user) {
-        String sql = "UPDATE users SET username = ?, email = ?, password = ?, salt = ? WHERE id = ?";
-        try (Connection conn = MySQLConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, user.getUsername());
+        String sql =
+            "UPDATE users SET name = ?, email = ?, password = ?, phone = ?, role = ?, is_active = ? WHERE id = ?";
+        try (
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql)
+        ) {
+            ps.setString(1, user.getName());
             ps.setString(2, user.getEmail());
             ps.setString(3, user.getPassword());
-            ps.setString(4, user.getSalt());
-            ps.setInt(5, user.getId());
+            ps.setString(4, user.getPhone());
+            ps.setString(5, user.getRole().name());
+            ps.setBoolean(6, user.getIsActive());
+            ps.setLong(7, user.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -82,11 +99,13 @@ public class UserDAO implements IUserDAO {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         String sql = "DELETE FROM users WHERE id = ?";
-        try (Connection conn = MySQLConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, id);
+        try (
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql)
+        ) {
+            ps.setLong(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -94,11 +113,13 @@ public class UserDAO implements IUserDAO {
     }
 
     @Override
-    public Optional<User> findByUsername(String username) {
-        String sql = "SELECT * FROM users WHERE username = ?";
-        try (Connection conn = MySQLConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, username);
+    public Optional<User> findByEmail(String email) {
+        String sql = "SELECT * FROM users WHERE email = ?";
+        try (
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql)
+        ) {
+            ps.setString(1, email);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     return Optional.of(mapResultSetToUser(rs));
@@ -112,12 +133,16 @@ public class UserDAO implements IUserDAO {
 
     private User mapResultSetToUser(ResultSet rs) throws SQLException {
         User user = new User();
-        user.setId(rs.getInt("id"));
-        user.setUsername(rs.getString("username"));
+        user.setId(rs.getLong("id"));
+        user.setName(rs.getString("name"));
         user.setEmail(rs.getString("email"));
         user.setPassword(rs.getString("password"));
-        user.setSalt(rs.getString("salt"));
+        user.setPhone(rs.getString("phone"));
+        user.setRole(UserRole.fromCode(rs.getString("role")));
+        user.setIsActive(rs.getBoolean("is_active"));
+        user.setLastLoginAt(rs.getTimestamp("last_login_at"));
         user.setCreatedAt(rs.getTimestamp("created_at"));
+        user.setUpdatedAt(rs.getTimestamp("updated_at"));
         return user;
     }
 }

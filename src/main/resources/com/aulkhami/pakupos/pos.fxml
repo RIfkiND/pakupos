@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<StackPane
+    xmlns="http://javafx.com/javafx/17"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.aulkhami.pakupos.controllers.POSController"
+    styleClass="mobile-root"
+    stylesheets="@css/main.css"
+>
+
+    <VBox spacing="0.0">
+        <!-- Header -->
+        <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="mobile-header">
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20" />
+            </padding>
+            <Button
+                text="←"
+                onAction="#handleBack"
+                styleClass="mobile-button-header"
+                style="-fx-font-size: 18px;"
+            />
+            <Label text="Point of Sale" textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="20.0" />
+                </font>
+            </Label>
+        </HBox>
+
+        <!-- Customer Input Area -->
+        <VBox spacing="10.0" style="-fx-background-color: white;">
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20" />
+            </padding>
+            <Label
+                text="CUSTOMER DETAILS"
+                style="-fx-font-size: 10px; -fx-text-fill: gray; -fx-font-weight: bold;"
+            />
+            <TextField
+                fx:id="customerNameField"
+                promptText="Enter Customer Name"
+                styleClass="mobile-input"
+                style="-fx-pref-height: 40px;"
+                maxWidth="Infinity"
+            />
+        </VBox>
+
+        <Separator />
+
+        <!-- Product Selection -->
+        <ScrollPane
+            fitToWidth="true"
+            style="-fx-background-color: transparent; -fx-background: transparent;"
+            VBox.vgrow="ALWAYS"
+        >
+            <VBox spacing="15.0">
+                <padding>
+                    <Insets top="15" right="15" bottom="100" left="15" />
+                </padding>
+                <Label
+                    text="SELECT PRODUCTS"
+                    style="-fx-font-size: 10px; -fx-text-fill: gray; -fx-font-weight: bold;"
+                />
+                <FlowPane
+                    fx:id="productFlowPane"
+                    hgap="10.0"
+                    vgap="10.0"
+                    alignment="TOP_LEFT"
+                    maxWidth="Infinity"
+                />
+            </VBox>
+        </ScrollPane>
+    </VBox>
+
+    <!-- Floating Cart Menu (Sticky at bottom) -->
+    <VBox
+        alignment="BOTTOM_CENTER"
+        mouseTransparent="false"
+        pickOnBounds="false"
+        maxWidth="Infinity"
+    >
+        <HBox
+            alignment="CENTER_LEFT"
+            spacing="15.0"
+            styleClass="mobile-floating-cart"
+            maxWidth="800"
+        >
+            <StackPane.margin>
+                <Insets bottom="25" left="20" right="20" />
+            </StackPane.margin>
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20" />
+            </padding>
+
+            <Label
+                text="🛒"
+                styleClass="mobile-nav-icon"
+                style="-fx-text-fill: white;"
+            />
+
+            <VBox HBox.hgrow="ALWAYS">
+                <Label
+                    fx:id="itemCountLabel"
+                    text="0 Items"
+                    style="-fx-text-fill: #adb5bd; -fx-font-size: 12px;"
+                />
+                <Label
+                    fx:id="totalPriceLabel"
+                    text="Rp 0"
+                    style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"
+                />
+            </VBox>
+
+            <Button
+                text="CHECKOUT"
+                onAction="#handleCheckout"
+                styleClass="mobile-button-checkout"
+            />
+        </HBox>
+    </VBox>
+
+</StackPane>
