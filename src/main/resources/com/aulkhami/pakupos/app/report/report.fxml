@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 
 <VBox spacing="0.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.aulkhami.pakupos.app.report.ReportView"
+      fx:controller="com.aulkhami.pakupos.modules.report.ReportView"
       styleClass="mobile-root" stylesheets="@../../css/main.css">
 
     <!-- Header -->
@@ -81,3 +81,4 @@
         </Button>
     </HBox>
 </VBox>
+

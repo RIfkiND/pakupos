@@ -1,6 +1,6 @@
 package com.aulkhami.pakupos.views;
 
-import com.aulkhami.pakupos.App;
+import com.aulkhami.pakupos.app.App;
 import com.aulkhami.pakupos.views.components.SimpleCardController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

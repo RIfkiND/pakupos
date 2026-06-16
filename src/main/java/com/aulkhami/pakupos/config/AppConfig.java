@@ -1,6 +1,6 @@
 package com.aulkhami.pakupos.config;
 
-import com.aulkhami.pakupos.utils.ConfigLoader;
+import com.aulkhami.pakupos.app.utils.ConfigLoader;
 
 public class AppConfig {
 

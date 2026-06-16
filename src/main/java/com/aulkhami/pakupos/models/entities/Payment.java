@@ -1,9 +1,10 @@
 package com.aulkhami.pakupos.models.entities;
 
-import com.aulkhami.pakupos.enums.PaymentMethod;
-import com.aulkhami.pakupos.enums.PaymentStatus;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+
+import com.aulkhami.pakupos.app.enums.PaymentMethod;
+import com.aulkhami.pakupos.app.enums.PaymentStatus;
 
 public class Payment {
     private Long id;

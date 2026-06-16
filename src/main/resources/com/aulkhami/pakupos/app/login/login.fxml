@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" styleClass="mobile-root" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aulkhami.pakupos.app.login.LoginView">
+<VBox alignment="CENTER" spacing="20.0" styleClass="mobile-root" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aulkhami.pakupos.modules.auth.view.LoginView">
 
     <padding>
         <Insets bottom="40" left="30" right="30" top="40" />
@@ -33,3 +33,4 @@
     </VBox>
 
 </VBox>
+

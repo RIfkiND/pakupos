@@ -4,8 +4,8 @@
  */
 package com.aulkhami.pakupos.views;
 
+import com.aulkhami.pakupos.app.interactors.Interactor;
 import com.aulkhami.pakupos.models.Model;
-import com.aulkhami.pakupos.interactors.Interactor;
 
 /**
  *

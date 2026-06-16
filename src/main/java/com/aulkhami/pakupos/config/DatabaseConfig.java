@@ -1,7 +1,8 @@
 package com.aulkhami.pakupos.config;
 
-import com.aulkhami.pakupos.utils.ConfigLoader;
 import java.util.Locale;
+
+import com.aulkhami.pakupos.app.utils.ConfigLoader;
 
 public class DatabaseConfig {
 

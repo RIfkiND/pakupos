@@ -17,11 +17,11 @@ public abstract class BaseController {
     }
 
     protected void showError(String title, String message) {
-        com.aulkhami.pakupos.utils.AlertHelper.showError(title, message);
+        com.aulkhami.pakupos.app.utils.AlertHelper.showError(title, message);
     }
 
     protected void showInfo(String title, String message) {
-        com.aulkhami.pakupos.utils.AlertHelper.showSuccess(title, message);
+        com.aulkhami.pakupos.app.utils.AlertHelper.showSuccess(title, message);
     }
 
     public abstract void initialize();

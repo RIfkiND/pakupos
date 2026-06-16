@@ -6,5 +6,6 @@ open module com.aulkhami.pakupos {
     requires io.github.cdimascio.dotenv.java;
 
     exports com.aulkhami.pakupos;
+    exports com.aulkhami.pakupos.app;
     exports com.aulkhami.pakupos.models.entities;
 }
