@@ -31,7 +31,8 @@ public class LoginView implements View {
         this.interactor = (LoginInteractor) interactor;
     }
 
-    public void handleLogin() {
+    @FXML
+    private void handleLogin() {
         interactor.submitForm();
     }
 
