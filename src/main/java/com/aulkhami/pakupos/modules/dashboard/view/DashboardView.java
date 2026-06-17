@@ -6,10 +6,14 @@ import com.aulkhami.pakupos.app.utils.AlertHelper;
 import com.aulkhami.pakupos.models.Model;
 import com.aulkhami.pakupos.modules.dashboard.models.DashboardModel;
 import com.aulkhami.pakupos.modules.dashboard.interactors.DashboardInteractor;
+import com.aulkhami.pakupos.modules.dashboard.controllers.TransactionItemController;
+import com.aulkhami.pakupos.modules.pos.entities.Order;
 import com.aulkhami.pakupos.views.View;
 import java.io.IOException;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 public class DashboardView implements View {
 
@@ -20,6 +24,8 @@ public class DashboardView implements View {
     private Label salesAmount;
     @FXML
     private Label salesCount;
+    @FXML
+    private VBox recentTransactionsVBox;
 
     @Override
     public void setModel(Model model) {
@@ -27,11 +33,18 @@ public class DashboardView implements View {
 
         salesAmount.textProperty().bind(this.model.salesAmountProperty());
         salesCount.textProperty().bind(this.model.salesCountProperty().asString());
+
+        this.model.getRecentTransactions().addListener((ListChangeListener<Order>) change -> {
+            renderRecentTransactions();
+        });
+
+        renderRecentTransactions();
     }
 
     @Override
     public void setInteractor(Interactor interactor) {
         this.interactor = (DashboardInteractor) interactor;
+        this.interactor.loadDashboardData();
     }
 
     @FXML
@@ -66,6 +79,19 @@ public class DashboardView implements View {
             App.navigate("login");
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void renderRecentTransactions() {
+        if (recentTransactionsVBox == null) return;
+        recentTransactionsVBox.getChildren().clear();
+        for (Order order : model.getRecentTransactions()) {
+            try {
+                TransactionItemController itemController = new TransactionItemController(order);
+                recentTransactionsVBox.getChildren().add(itemController.getView());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

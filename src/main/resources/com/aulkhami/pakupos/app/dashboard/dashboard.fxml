@@ -136,54 +136,7 @@
             <!-- Recent Transactions styled identical to Reports list -->
             <Label styleClass="mobile-subtitle" text="Transaksi Terakhir" />
 
-            <VBox spacing="10.0">
-                <!-- Transaction Item 1 -->
-                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="transaction-row-card">
-                    <padding>
-                        <Insets bottom="14" left="18" right="18" top="14" />
-                    </padding>
-                    <children>
-                        <VBox spacing="4" HBox.hgrow="ALWAYS">
-                            <children>
-                                <Label styleClass="transaction-customer-title" text="Andi - Martabak Manis" />
-                                <Label styleClass="transaction-details" text="Kuantitas: 2 pcs • Tunai" />
-                            </children>
-                        </VBox>
-                        <Label styleClass="transaction-amount" text="Rp 50.000" />
-                    </children>
-                </HBox>
-
-                <!-- Transaction Item 2 -->
-                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="transaction-row-card">
-                    <padding>
-                        <Insets bottom="14" left="18" right="18" top="14" />
-                    </padding>
-                    <children>
-                        <VBox spacing="4" HBox.hgrow="ALWAYS">
-                            <children>
-                                <Label styleClass="transaction-customer-title" text="Budi - Martabak Asin" />
-                                <Label styleClass="transaction-details" text="Kuantitas: 1 pcs • QRIS" />
-                            </children>
-                        </VBox>
-                        <Label styleClass="transaction-amount" text="Rp 22.000" />
-                    </children>
-                </HBox>
-                
-                <!-- Transaction Item 3 -->
-                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="transaction-row-card">
-                    <padding>
-                        <Insets bottom="14" left="18" right="18" top="14" />
-                    </padding>
-                    <children>
-                        <VBox spacing="4" HBox.hgrow="ALWAYS">
-                            <children>
-                                <Label styleClass="transaction-customer-title" text="Citra - Martabak Manis Spesial" />
-                                <Label styleClass="transaction-details" text="Kuantitas: 1 pcs • QRIS" />
-                            </children>
-                        </VBox>
-                        <Label styleClass="transaction-amount" text="Rp 35.000" />
-                    </children>
-                </HBox>
+            <VBox fx:id="recentTransactionsVBox" spacing="10.0">
             </VBox>
         </VBox>
     </ScrollPane>
