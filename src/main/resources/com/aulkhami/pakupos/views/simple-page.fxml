@@ -17,8 +17,8 @@
                 <Insets top="16" right="20" bottom="12" left="20"/>
             </padding>
             <children>
-                <Label text="Simple Page" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
-                <Label text="One page plus one reusable component in views folder."/>
+                <Label text="Halaman Sederhana" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+                <Label text="Satu halaman ditambah satu komponen yang dapat digunakan kembali di folder views."/>
             </children>
         </VBox>
     </top>
@@ -28,7 +28,7 @@
                 <Insets top="12" right="20" bottom="12" left="20"/>
             </padding>
             <children>
-                <Label text="Product List Card Demo:" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #495057;"/>
+                <Label text="Demo Kartu Daftar Produk:" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #495057;"/>
                 <VBox spacing="10" maxWidth="380" alignment="CENTER">
                     <!-- Product Card 1: Martabak Manis -->
                     <HBox alignment="CENTER_LEFT" spacing="12" styleClass="product-list-card, card-sweet">
@@ -42,7 +42,7 @@
                                     <HBox spacing="8" alignment="CENTER_LEFT">
                                         <children>
                                             <Label text="Rp 25.000" styleClass="product-price"/>
-                                            <Label text="Sweet" styleClass="badge, badge-sweet"/>
+                                            <Label text="Manis" styleClass="badge, badge-sweet"/>
                                         </children>
                                     </HBox>
                                 </children>
@@ -70,7 +70,7 @@
                                     <HBox spacing="8" alignment="CENTER_LEFT">
                                         <children>
                                             <Label text="Rp 22.000" styleClass="product-price"/>
-                                            <Label text="Savory" styleClass="badge, badge-savory"/>
+                                            <Label text="Asin" styleClass="badge, badge-savory"/>
                                         </children>
                                     </HBox>
                                 </children>
@@ -98,7 +98,7 @@
                                     <HBox spacing="8" alignment="CENTER_LEFT">
                                         <children>
                                             <Label text="Rp 35.000" styleClass="product-price"/>
-                                            <Label text="Premium" styleClass="badge, badge-special"/>
+                                            <Label text="Spesial" styleClass="badge, badge-special"/>
                                         </children>
                                     </HBox>
                                 </children>
@@ -115,7 +115,7 @@
                     </HBox>
                 </VBox>
                 <fx:include source="components/simple-card.fxml" fx:id="simpleCard"/>
-                <Button text="Back to Primary" onAction="#backToPrimary" style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 16;"/>
+                <Button text="Kembali ke Utama" onAction="#backToPrimary" style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 16;"/>
             </children>
         </VBox>
     </center>

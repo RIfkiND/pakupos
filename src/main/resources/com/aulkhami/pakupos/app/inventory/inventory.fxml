@@ -18,7 +18,7 @@
             style="-fx-font-size: 18px;"
             focusTraversable="false"
         />
-        <Label text="Inventory Management" textFill="WHITE">
+        <Label text="Manajemen Inventaris" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="20.0" />
             </font>
@@ -35,18 +35,18 @@
                 <Insets top="20" right="20" bottom="20" left="20" />
             </padding>
 
-            <Label text="Add New Product" styleClass="mobile-subtitle" />
+            <Label text="Tambah Produk Baru" styleClass="mobile-subtitle" />
 
             <VBox spacing="15.0">
                 <!-- Product Name -->
                 <VBox spacing="5.0">
                     <Label
-                        text="Product Name *"
+                        text="Nama Produk *"
                         style="-fx-font-size: 12px; -fx-text-fill: #6c757d;"
                     />
                     <TextField
                         fx:id="nameField"
-                        promptText="e.g. Martabak Manis Cokelat"
+                        promptText="contoh: Martabak Manis Cokelat"
                         styleClass="mobile-input"
                         maxWidth="Infinity"
                     />
@@ -55,12 +55,12 @@
                 <!-- Category -->
                 <VBox spacing="5.0">
                     <Label
-                        text="Category"
+                        text="Kategori"
                         style="-fx-font-size: 12px; -fx-text-fill: #6c757d;"
                     />
                     <TextField
                         fx:id="categoryField"
-                        promptText="e.g. Sweet / Savory"
+                        promptText="contoh: Manis / Asin"
                         styleClass="mobile-input"
                         maxWidth="Infinity"
                     />
@@ -69,12 +69,12 @@
                 <!-- Price & Hidden Stock Field -->
                 <VBox spacing="5.0">
                     <Label
-                        text="Price (Rp) *"
+                        text="Harga (Rp) *"
                         style="-fx-font-size: 12px; -fx-text-fill: #6c757d;"
                     />
                     <TextField
                         fx:id="priceField"
-                        promptText="e.g. 25000"
+                        promptText="contoh: 25000"
                         styleClass="mobile-input"
                         maxWidth="Infinity"
                     />
@@ -89,7 +89,7 @@
                 />
 
                 <Button
-                    text="SAVE PRODUCT"
+                    text="SIMPAN PRODUK"
                     onAction="#handleSaveProduct"
                     maxWidth="Infinity"
                     styleClass="mobile-button-primary"
@@ -103,7 +103,7 @@
 
             <Separator />
 
-            <Label text="Current Inventory" styleClass="mobile-subtitle" />
+            <Label text="Inventaris Saat Ini" styleClass="mobile-subtitle" />
             
             <!-- Dynamic and Static Custom Cards List -->
             <VBox spacing="12.0">
@@ -121,13 +121,13 @@
                                 <Label text="Martabak Manis" styleClass="inventory-product-name"/>
                                 <HBox spacing="8" alignment="CENTER_LEFT">
                                     <children>
-                                        <Label text="Sweet" styleClass="badge, badge-sweet"/>
+                                        <Label text="Manis" styleClass="badge, badge-sweet"/>
                                         <Label text="Rp 25.000" styleClass="inventory-product-price"/>
                                     </children>
                                 </HBox>
                             </children>
                         </VBox>
-                        <Button text="🗑️ Delete" styleClass="inventory-delete-btn" focusTraversable="false"/>
+                        <Button text="🗑️ Hapus" styleClass="inventory-delete-btn" focusTraversable="false"/>
                     </children>
                 </HBox>
 
@@ -142,13 +142,13 @@
                                 <Label text="Martabak Asin" styleClass="inventory-product-name"/>
                                 <HBox spacing="8" alignment="CENTER_LEFT">
                                     <children>
-                                        <Label text="Savory" styleClass="badge, badge-savory"/>
+                                        <Label text="Asin" styleClass="badge, badge-savory"/>
                                         <Label text="Rp 22.000" styleClass="inventory-product-price"/>
                                     </children>
                                 </HBox>
                             </children>
                         </VBox>
-                        <Button text="🗑️ Delete" styleClass="inventory-delete-btn" focusTraversable="false"/>
+                        <Button text="🗑️ Hapus" styleClass="inventory-delete-btn" focusTraversable="false"/>
                     </children>
                 </HBox>
 
@@ -163,23 +163,23 @@
                                 <Label text="Martabak Manis Spesial" styleClass="inventory-product-name"/>
                                 <HBox spacing="8" alignment="CENTER_LEFT">
                                     <children>
-                                        <Label text="Premium" styleClass="badge, badge-premium"/>
+                                        <Label text="Spesial" styleClass="badge, badge-premium"/>
                                         <Label text="Rp 35.000" styleClass="inventory-product-price"/>
                                     </children>
                                 </HBox>
                             </children>
                         </VBox>
-                        <Button text="🗑️ Delete" styleClass="inventory-delete-btn" focusTraversable="false"/>
+                        <Button text="🗑️ Hapus" styleClass="inventory-delete-btn" focusTraversable="false"/>
                     </children>
                 </HBox>
             </VBox>
 
             <Separator />
 
-            <Label text="Quick Help" styleClass="mobile-subtitle" />
+            <Label text="Bantuan Cepat" styleClass="mobile-subtitle" />
 
             <Label
-                text="Fields marked with * are required. Make sure price is a numeric value."
+                text="Kolom yang ditandai dengan * wajib diisi. Pastikan harga berupa angka."
                 wrapText="true"
                 style="-fx-text-fill: #6c757d; -fx-font-size: 13px;"
             />
@@ -189,7 +189,7 @@
     <!-- Bottom Nav Placeholder (Keeping consistency) -->
     <HBox alignment="CENTER" spacing="0.0" styleClass="mobile-bottom-nav">
         <Button
-            text="Home"
+            text="Beranda"
             onAction="#handleBack"
             styleClass="mobile-nav-item"
             HBox.hgrow="ALWAYS"
@@ -201,7 +201,7 @@
             </graphic>
         </Button>
         <Button
-            text="Sales"
+            text="Penjualan"
             onAction="#handleNewSale"
             styleClass="mobile-nav-item"
             HBox.hgrow="ALWAYS"
@@ -213,7 +213,7 @@
             </graphic>
         </Button>
         <Button
-            text="Inventory"
+            text="Inventaris"
             styleClass="mobile-nav-item, active"
             HBox.hgrow="ALWAYS"
             maxWidth="Infinity"
@@ -224,7 +224,7 @@
             </graphic>
         </Button>
         <Button
-            text="More"
+            text="Lainnya"
             onAction="#handleSettings"
             styleClass="mobile-nav-item"
             HBox.hgrow="ALWAYS"

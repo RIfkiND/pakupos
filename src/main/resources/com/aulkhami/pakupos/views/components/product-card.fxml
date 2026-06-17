@@ -25,7 +25,7 @@
                 <HBox spacing="8" alignment="CENTER_LEFT">
                     <children>
                         <Label fx:id="productPriceLabel" text="Rp 0" styleClass="product-price"/>
-                        <Label fx:id="productBadgeLabel" text="Category" styleClass="badge, badge-sweet"/>
+                        <Label fx:id="productBadgeLabel" text="Kategori" styleClass="badge, badge-sweet"/>
                     </children>
                 </HBox>
             </children>

@@ -17,13 +17,13 @@
         <padding>
             <Insets top="15" right="20" bottom="15" left="20" />
         </padding>
-        <Label text="Dashboard" textFill="WHITE">
+        <Label text="Dasbor" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="20.0" />
             </font>
         </Label>
         <Region HBox.hgrow="ALWAYS" />
-        <Button onAction="#handleLogout" styleClass="mobile-logout-btn" text="Logout 🚪" focusTraversable="false" />
+        <Button onAction="#handleLogout" styleClass="mobile-logout-btn" text="Keluar 🚪" focusTraversable="false" />
     </HBox>
 
     <ScrollPane
@@ -36,7 +36,7 @@
                 <Insets top="20" right="20" bottom="20" left="20" />
             </padding>
 
-            <Label text="Welcome back!" styleClass="mobile-subtitle" />
+            <Label text="Selamat datang kembali!" styleClass="mobile-subtitle" />
 
             <!-- Stats Row -->
             <HBox spacing="10.0" fillHeight="true">
@@ -50,7 +50,7 @@
                         <Insets top="15" right="15" bottom="15" left="15" />
                     </padding>
                     <Label
-                        text="Total Sales"
+                        text="Total Penjualan"
                         style="-fx-text-fill: white; -fx-font-size: 12px;"
                     />
                     <Label
@@ -68,7 +68,7 @@
                         <Insets top="15" right="15" bottom="15" left="15" />
                     </padding>
                     <Label
-                        text="Orders"
+                        text="Pesanan"
                         style="-fx-text-fill: white; -fx-font-size: 12px;"
                     />
                     <Label
@@ -78,7 +78,7 @@
                 </VBox>
             </HBox>
 
-            <Label text="Quick Actions" styleClass="mobile-subtitle" />
+            <Label text="Tindakan Cepat" styleClass="mobile-subtitle" />
 
             <!-- POS Actions Grid with Premium Colored Icons -->
             <GridPane hgap="15.0" vgap="15.0">
@@ -113,7 +113,7 @@
                                         <Label text="🛒" style="-fx-font-size: 22px; -fx-text-fill: white;" />
                                     </children>
                                 </StackPane>
-                                <Label text="New Sale" styleClass="menu-btn-label" />
+                                <Label text="Penjualan Baru" styleClass="menu-btn-label" />
                             </children>
                         </VBox>
                     </graphic>
@@ -137,7 +137,7 @@
                                         <Label text="📦" style="-fx-font-size: 22px; -fx-text-fill: white;" />
                                     </children>
                                 </StackPane>
-                                <Label text="Inventory" styleClass="menu-btn-label" />
+                                <Label text="Inventaris" styleClass="menu-btn-label" />
                             </children>
                         </VBox>
                     </graphic>
@@ -161,7 +161,7 @@
                                         <Label text="📊" style="-fx-font-size: 22px; -fx-text-fill: white;" />
                                     </children>
                                 </StackPane>
-                                <Label text="Reports" styleClass="menu-btn-label" />
+                                <Label text="Laporan" styleClass="menu-btn-label" />
                             </children>
                         </VBox>
                     </graphic>
@@ -185,7 +185,7 @@
                                         <Label text="⚙️" style="-fx-font-size: 22px; -fx-text-fill: white;" />
                                     </children>
                                 </StackPane>
-                                <Label text="Settings" styleClass="menu-btn-label" />
+                                <Label text="Pengaturan" styleClass="menu-btn-label" />
                             </children>
                         </VBox>
                     </graphic>
@@ -193,7 +193,7 @@
             </GridPane>
 
             <!-- Recent Transactions styled identical to Reports list -->
-            <Label text="Recent Transactions" styleClass="mobile-subtitle" />
+            <Label text="Transaksi Terakhir" styleClass="mobile-subtitle" />
 
             <VBox spacing="10.0">
                 <!-- Transaction Item 1 -->
@@ -250,7 +250,7 @@
     <!-- Bottom Nav -->
     <HBox alignment="CENTER" spacing="0.0" styleClass="mobile-bottom-nav">
         <Button
-            text="Home"
+            text="Beranda"
             styleClass="mobile-nav-item, active"
             HBox.hgrow="ALWAYS"
             maxWidth="Infinity"
@@ -261,7 +261,7 @@
             </graphic>
         </Button>
         <Button
-            text="Sales"
+            text="Penjualan"
             onAction="#handleNewSale"
             styleClass="mobile-nav-item"
             HBox.hgrow="ALWAYS"
@@ -273,7 +273,7 @@
             </graphic>
         </Button>
         <Button
-            text="Inventory"
+            text="Inventaris"
             onAction="#handleInventory"
             styleClass="mobile-nav-item"
             HBox.hgrow="ALWAYS"
@@ -285,7 +285,7 @@
             </graphic>
         </Button>
         <Button
-            text="More"
+            text="Lainnya"
             onAction="#handleSettings"
             styleClass="mobile-nav-item"
             HBox.hgrow="ALWAYS"

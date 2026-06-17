@@ -25,7 +25,7 @@
                 styleClass="mobile-button-header"
                 focusTraversable="false"
             />
-            <Label text="Point of Sale" textFill="WHITE">
+            <Label text="Kasir (POS)" textFill="WHITE">
                 <font>
                     <Font name="System Bold" size="20.0" />
                 </font>
@@ -36,7 +36,7 @@
         <TabPane fx:id="posTabPane" side="TOP" tabClosingPolicy="UNAVAILABLE" styleClass="pos-stepper-tabpane" VBox.vgrow="ALWAYS">
             <tabs>
                 <!-- STEP 1: CHOOSE PRODUCTS -->
-                <Tab text="1. Shop">
+                <Tab text="1. Belanja">
                     <content>
                         <StackPane>
                             <VBox spacing="0.0">
@@ -48,12 +48,12 @@
                                     <VBox spacing="10.0" styleClass="customer-card-container">
                                         <children>
                                             <Label
-                                                text="CUSTOMER DETAILS"
+                                                text="DETAIL PELANGGAN"
                                                 styleClass="section-title"
                                             />
                                             <TextField
                                                 fx:id="customerNameField"
-                                                promptText="Enter Customer Name"
+                                                promptText="Masukkan Nama Pelanggan"
                                                 styleClass="mobile-input"
                                                 maxWidth="Infinity"
                                             />
@@ -69,19 +69,19 @@
                                     <VBox spacing="10.0" styleClass="customer-card-container">
                                         <children>
                                             <Label
-                                                text="SEARCH PRODUCTS"
+                                                text="CARI PRODUK"
                                                 styleClass="section-title"
                                             />
                                             <HBox spacing="10.0" alignment="CENTER_LEFT">
                                                 <children>
                                                     <TextField
                                                         fx:id="searchField"
-                                                        promptText="Search products by name..."
+                                                        promptText="Cari produk berdasarkan nama..."
                                                         styleClass="mobile-input"
                                                         HBox.hgrow="ALWAYS"
                                                     />
                                                     <Button
-                                                        text="Search"
+                                                        text="Cari"
                                                         styleClass="mobile-button-search"
                                                         focusTraversable="false"
                                                     />
@@ -102,7 +102,7 @@
                                             <Insets top="12" right="16" bottom="100" left="16" />
                                         </padding>
                                         <Label
-                                            text="SELECT PRODUCTS"
+                                            text="PILIH PRODUK"
                                             styleClass="section-title"
                                         />
                                         <FlowPane
@@ -127,7 +127,7 @@
                                                             <HBox spacing="8" alignment="CENTER_LEFT">
                                                                 <children>
                                                                     <Label text="Rp 25.000" styleClass="product-price"/>
-                                                                    <Label text="Sweet" styleClass="badge, badge-sweet"/>
+                                                                    <Label text="Manis" styleClass="badge, badge-sweet"/>
                                                                 </children>
                                                             </HBox>
                                                         </children>
@@ -155,7 +155,7 @@
                                                             <HBox spacing="8" alignment="CENTER_LEFT">
                                                                 <children>
                                                                     <Label text="Rp 22.000" styleClass="product-price"/>
-                                                                    <Label text="Savory" styleClass="badge, badge-savory"/>
+                                                                    <Label text="Asin" styleClass="badge, badge-savory"/>
                                                                 </children>
                                                             </HBox>
                                                         </children>
@@ -183,7 +183,7 @@
                                                             <HBox spacing="8" alignment="CENTER_LEFT">
                                                                 <children>
                                                                     <Label text="Rp 35.000" styleClass="product-price"/>
-                                                                    <Label text="Premium" styleClass="badge, badge-special"/>
+                                                                    <Label text="Spesial" styleClass="badge, badge-special"/>
                                                                 </children>
                                                             </HBox>
                                                         </children>
@@ -246,7 +246,7 @@
                                     </VBox>
 
                                     <Button
-                                        text="CHECKOUT"
+                                        text="BAYAR"
                                         styleClass="mobile-button-checkout"
                                         focusTraversable="false"
                                     />
@@ -257,7 +257,7 @@
                 </Tab>
 
                 <!-- STEP 2: CHECKOUT DETAILS -->
-                <Tab text="2. Details">
+                <Tab text="2. Detail">
                     <content>
                         <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
                             <VBox spacing="20.0">
@@ -265,12 +265,12 @@
                                     <Insets top="20" right="16" bottom="40" left="16" />
                                 </padding>
                                 
-                                <Label text="ORDER REVIEW" styleClass="section-title" />
+                                <Label text="TINJAU PESANAN" styleClass="section-title" />
                                 
                                 <!-- Detailed Receipt Invoice Card -->
                                 <VBox spacing="14.0" styleClass="receipt-card">
                                     <children>
-                                        <Label text="INVOICE SUMMARY" styleClass="receipt-title" maxWidth="Infinity" alignment="CENTER" />
+                                        <Label text="RINGKASAN TAGIHAN" styleClass="receipt-title" maxWidth="Infinity" alignment="CENTER" />
                                         <Separator style="-fx-background-color: #dee2e6;" />
                                         
                                         <VBox spacing="12.0">
@@ -311,7 +311,7 @@
                                         
                                         <!-- Grand Total -->
                                         <HBox alignment="CENTER_LEFT">
-                                            <Label text="Grand Total" styleClass="receipt-total-label" HBox.hgrow="ALWAYS" maxWidth="Infinity" />
+                                            <Label text="Total Keseluruhan" styleClass="receipt-total-label" HBox.hgrow="ALWAYS" maxWidth="Infinity" />
                                             <Label text="Rp 66.600" styleClass="receipt-total-value" />
                                         </HBox>
                                     </children>
@@ -319,8 +319,8 @@
                                 
                                 <!-- Go to Payment Button and helper text -->
                                 <VBox alignment="CENTER" spacing="10.0">
-                                    <Button text="NEXT: PAYMENT METHOD" styleClass="mobile-button-checkout" style="-fx-pref-width: 320;" />
-                                    <Label text="Silakan klik tab &quot;3. Payment&quot; di atas untuk lanjut" style="-fx-text-fill: #718096; -fx-font-size: 12px; -fx-font-weight: bold;" />
+                                    <Button text="SELANJUTNYA: METODE PEMBAYARAN" styleClass="mobile-button-checkout" style="-fx-pref-width: 320;" />
+                                    <Label text="Silakan klik tab &quot;3. Pembayaran&quot; di atas untuk lanjut" style="-fx-text-fill: #718096; -fx-font-size: 12px; -fx-font-weight: bold;" />
                                 </VBox>
                             </VBox>
                         </ScrollPane>
@@ -328,7 +328,7 @@
                 </Tab>
 
                 <!-- STEP 3: PAYMENT OPTIONS -->
-                <Tab text="3. Payment">
+                <Tab text="3. Pembayaran">
                     <content>
                         <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
                             <VBox spacing="20.0">
@@ -336,7 +336,7 @@
                                     <Insets top="20" right="16" bottom="40" left="16" />
                                 </padding>
                                 
-                                <Label text="CHOOSE PAYMENT OPTION" styleClass="section-title" />
+                                <Label text="PILIH METODE PEMBAYARAN" styleClass="section-title" />
                                 
                                 <!-- Payment Method Cards -->
                                 <VBox spacing="14.0">
@@ -345,7 +345,7 @@
                                         <children>
                                             <Label text="💵" styleClass="payment-method-icon" />
                                             <VBox HBox.hgrow="ALWAYS">
-                                                <Label text="Tunai / Cash" styleClass="payment-method-title" />
+                                                <Label text="Tunai (Cash)" styleClass="payment-method-title" />
                                                 <Label text="Bayar tunai secara langsung di kasir" styleClass="payment-method-desc" />
                                             </VBox>
                                         </children>
@@ -356,7 +356,7 @@
                                         <children>
                                             <Label text="📱" styleClass="payment-method-icon" />
                                             <VBox HBox.hgrow="ALWAYS">
-                                                <Label text="QRIS / E-Wallet (Recommended)" styleClass="payment-method-title" style="-fx-text-fill: #0052d4;" />
+                                                <Label text="QRIS / Dompet Digital (Direkomendasikan)" styleClass="payment-method-title" style="-fx-text-fill: #0052d4;" />
                                                 <Label text="Scan instant dengan GoPay, OVO, Dana, ShopeePay" styleClass="payment-method-desc" />
                                             </VBox>
                                         </children>
@@ -365,7 +365,7 @@
                                 
                                 <!-- Submit order button (Cash only) and help text -->
                                 <VBox alignment="CENTER" spacing="12.0">
-                                    <Button text="COMPLETE CASH TRANSACTION" onAction="#handleCheckout" styleClass="mobile-button-checkout" style="-fx-background-color: linear-gradient(to bottom, #1f9d55, #157347); -fx-pref-width: 320; -fx-effect: dropshadow(three-pass-box, rgba(25, 135, 84, 0.4), 10, 0, 0, 3);" />
+                                    <Button text="SELESAIKAN TRANSAKSI TUNAI" onAction="#handleCheckout" styleClass="mobile-button-checkout" style="-fx-background-color: linear-gradient(to bottom, #1f9d55, #157347); -fx-pref-width: 320; -fx-effect: dropshadow(three-pass-box, rgba(25, 135, 84, 0.4), 10, 0, 0, 3);" />
                                     <Label text="Atau silakan klik tab &quot;4. QRIS&quot; di atas untuk membayar dengan QRIS" style="-fx-text-fill: #0052d4; -fx-font-size: 11px; -fx-font-weight: bold; -fx-text-alignment: center;" />
                                 </VBox>
                             </VBox>
@@ -382,7 +382,7 @@
                                     <Insets top="20" right="16" bottom="40" left="16" />
                                 </padding>
                                 
-                                <Label text="SCAN QRIS CODE TO PAY" styleClass="section-title" />
+                                <Label text="PINDAI KODE QRIS UNTUK MEMBAYAR" styleClass="section-title" />
                                 
                                 <!-- QRIS Image Scanner Frame Card -->
                                 <VBox alignment="CENTER" spacing="15.0" maxWidth="340.0" style="-fx-background-color: white; -fx-background-radius: 24px; -fx-border-radius: 24px; -fx-border-color: #dee2e6; -fx-border-width: 1px; -fx-padding: 24px; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.06), 16, 0, 0, 6);">
@@ -404,7 +404,7 @@
                                 
                                 <!-- Next: Complete Checkout Button -->
                                 <VBox alignment="CENTER" spacing="10.0">
-                                    <Button text="COMPLETE TRANSACTION" onAction="#handleCheckout" styleClass="mobile-button-checkout" style="-fx-background-color: linear-gradient(to bottom, #1f9d55, #157347); -fx-pref-width: 320; -fx-effect: dropshadow(three-pass-box, rgba(25, 135, 84, 0.4), 10, 0, 0, 3);" />
+                                    <Button text="SELESAIKAN TRANSAKSI" onAction="#handleCheckout" styleClass="mobile-button-checkout" style="-fx-background-color: linear-gradient(to bottom, #1f9d55, #157347); -fx-pref-width: 320; -fx-effect: dropshadow(three-pass-box, rgba(25, 135, 84, 0.4), 10, 0, 0, 3);" />
                                     <Label text="Klik setelah memindai &amp; menyelesaikan pembayaran" style="-fx-text-fill: #718096; -fx-font-size: 11px; -fx-font-weight: bold;" />
                                 </VBox>
                             </VBox>

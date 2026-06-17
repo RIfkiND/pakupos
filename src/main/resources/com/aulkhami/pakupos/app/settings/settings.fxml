@@ -21,7 +21,7 @@
             style="-fx-font-size: 18px;"
             focusTraversable="false"
         />
-        <Label text="Settings" textFill="WHITE">
+        <Label text="Pengaturan" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="20.0"/>
             </font>
@@ -68,7 +68,7 @@
                             </StackPane>
                             <VBox HBox.hgrow="ALWAYS" spacing="2">
                                 <children>
-                                    <Label text="Email Address" styleClass="settings-label-title"/>
+                                    <Label text="Alamat Email" styleClass="settings-label-title"/>
                                     <Label fx:id="emailLabel" text="owner@pakupos.com" styleClass="settings-label-value"/>
                                 </children>
                             </VBox>
@@ -88,12 +88,12 @@
                                     </StackPane>
                                     <VBox HBox.hgrow="ALWAYS" spacing="2" alignment="CENTER_LEFT">
                                         <children>
-                                            <Label text="Password" styleClass="settings-label-title"/>
+                                            <Label text="Kata Sandi" styleClass="settings-label-title"/>
                                             <Label text="••••••••" styleClass="settings-label-value"/>
                                         </children>
                                     </VBox>
                                     <Region HBox.hgrow="ALWAYS"/>
-                                    <Label text="Change ›" styleClass="settings-change-link"/>
+                                    <Label text="Ubah ›" styleClass="settings-change-link"/>
                                 </children>
                             </HBox>
                         </graphic>
@@ -107,7 +107,7 @@
 
             <!-- Logout -->
             <Button
-                text="LOGOUT 🚪"
+                text="KELUAR 🚪"
                 onAction="#handleLogout"
                 maxWidth="Infinity"
                 styleClass="mobile-button-secondary"
@@ -119,14 +119,14 @@
                 </VBox.margin>
             </Button>
 
-            <Label text="App Version 1.0.0" alignment="CENTER" maxWidth="Infinity" style="-fx-text-fill: #adb5bd; -fx-font-size: 11px;"/>
+            <Label text="Versi Aplikasi 1.0.0" alignment="CENTER" maxWidth="Infinity" style="-fx-text-fill: #adb5bd; -fx-font-size: 11px;"/>
         </VBox>
     </ScrollPane>
 
     <!-- Bottom Nav -->
     <HBox alignment="CENTER" spacing="0.0" styleClass="mobile-bottom-nav">
         <Button
-            text="Home"
+            text="Beranda"
             onAction="#handleBack"
             styleClass="mobile-nav-item"
             HBox.hgrow="ALWAYS"
@@ -138,7 +138,7 @@
             </graphic>
         </Button>
         <Button
-            text="Sales"
+            text="Penjualan"
             onAction="#handleNewSale"
             styleClass="mobile-nav-item"
             HBox.hgrow="ALWAYS"
@@ -150,7 +150,7 @@
             </graphic>
         </Button>
         <Button
-            text="Inventory"
+            text="Inventaris"
             onAction="#handleInventory"
             styleClass="mobile-nav-item"
             HBox.hgrow="ALWAYS"
@@ -162,7 +162,7 @@
             </graphic>
         </Button>
         <Button
-            text="More"
+            text="Lainnya"
             styleClass="mobile-nav-item, active"
             HBox.hgrow="ALWAYS"
             maxWidth="Infinity"

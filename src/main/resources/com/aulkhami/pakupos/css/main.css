@@ -940,7 +940,36 @@
     -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.15), 10, 0, 0, 4);
 }
 
+/* Filter Menu Button Styling */
+.filter-menu-button {
+    -fx-background-color: #f1f3f5;
+    -fx-text-fill: #495057;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #dee2e6;
+    -fx-border-width: 1px;
+    -fx-padding: 6px 14px;
+    -fx-cursor: hand;
+    -fx-alignment: center;
+}
 
+.filter-menu-button:hover {
+    -fx-background-color: #e9ecef;
+    -fx-border-color: #ced4da;
+}
 
+.filter-menu-button:showing {
+    -fx-background-color: linear-gradient(to right, #4364f7, #0052d4);
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+}
 
+.filter-menu-button:showing .arrow {
+    -fx-background-color: white;
+}
 
+.filter-menu-button .arrow {
+    -fx-background-color: #495057;
+}
