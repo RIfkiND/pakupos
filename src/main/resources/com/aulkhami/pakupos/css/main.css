@@ -973,3 +973,30 @@
 .filter-menu-button .arrow {
     -fx-background-color: #495057;
 }
+
+/* Payment Method Toggle Card for Stepper */
+.payment-method-toggle-card {
+    -fx-background-color: white;
+    -fx-background-radius: 16px;
+    -fx-border-radius: 16px;
+    -fx-border-color: #e9ecef;
+    -fx-border-width: 1px;
+    -fx-padding: 16px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.04), 12, 0, 0, 4);
+    -fx-alignment: center-left;
+}
+
+.payment-method-toggle-card:hover {
+    -fx-border-color: #4364f7;
+    -fx-translate-y: -3px;
+    -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.15), 18, 0, 0, 8);
+}
+
+.payment-method-toggle-card:selected {
+    -fx-background-color: #f0f4ff;
+    -fx-border-color: #4364f7;
+    -fx-border-width: 1.5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.1), 12, 0, 0, 4);
+}
+

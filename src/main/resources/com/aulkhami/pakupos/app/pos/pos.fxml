@@ -12,6 +12,10 @@
     styleClass="mobile-root"
     stylesheets="@../../css/main.css"
 >
+    <fx:define>
+        <ToggleGroup fx:id="paymentNavigationGroup" />
+        <ToggleGroup fx:id="quickCashGroup" />
+    </fx:define>
 
     <VBox spacing="0.0" style="-fx-background-color: #f8f9fa;">
         <!-- Header (Fixed Top) -->
@@ -331,44 +335,120 @@
                 <Tab text="3. Pembayaran">
                     <content>
                         <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
-                            <VBox spacing="20.0">
-                                <padding>
-                                    <Insets top="20" right="16" bottom="40" left="16" />
-                                </padding>
-                                
-                                <Label text="PILIH METODE PEMBAYARAN" styleClass="section-title" />
-                                
-                                <!-- Payment Method Cards -->
-                                <VBox spacing="14.0">
-                                    <!-- Option 1: Cash -->
-                                    <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="payment-method-card">
-                                        <children>
-                                            <Label text="💵" styleClass="payment-method-icon" />
-                                            <VBox HBox.hgrow="ALWAYS">
-                                                <Label text="Tunai (Cash)" styleClass="payment-method-title" />
-                                                <Label text="Bayar tunai secara langsung di kasir" styleClass="payment-method-desc" />
-                                            </VBox>
-                                        </children>
-                                    </HBox>
+                            <StackPane>
+                                <children>
+                                    <!-- View 1: Selection Screen -->
+                                    <VBox fx:id="paymentMethodSelection" spacing="20.0" visible="${backToSelectionBtn.selected}" managed="${backToSelectionBtn.selected}">
+                                        <padding>
+                                            <Insets top="20" right="16" bottom="40" left="16" />
+                                        </padding>
+                                        
+                                        <Label text="PILIH METODE PEMBAYARAN" styleClass="section-title" />
+                                        
+                                        <!-- Payment Method Cards -->
+                                        <VBox spacing="14.0">
+                                            <!-- Option 1: Cash (ToggleButton) -->
+                                            <ToggleButton fx:id="tunaiOptionBtn" toggleGroup="$paymentNavigationGroup" styleClass="payment-method-toggle-card" maxWidth="Infinity" focusTraversable="false">
+                                                <graphic>
+                                                    <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                                        <children>
+                                                            <Label text="💵" styleClass="payment-method-icon" />
+                                                            <VBox alignment="CENTER_LEFT" spacing="4.0">
+                                                                <Label text="Tunai (Cash)" styleClass="payment-method-title" />
+                                                                <Label text="Bayar tunai secara langsung di kasir" styleClass="payment-method-desc" />
+                                                            </VBox>
+                                                        </children>
+                                                    </HBox>
+                                                </graphic>
+                                            </ToggleButton>
+                                            
+                                            <!-- Option 2: QRIS (Static Info) -->
+                                            <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="payment-method-card" style="-fx-border-color: #e9ecef;">
+                                                <children>
+                                                    <Label text="📱" styleClass="payment-method-icon" />
+                                                    <VBox HBox.hgrow="ALWAYS" spacing="4.0">
+                                                        <Label text="QRIS / Dompet Digital (Direkomendasikan)" styleClass="payment-method-title" style="-fx-text-fill: #4364f7;" />
+                                                        <Label text="Pilih tab '4. QRIS' di atas untuk membayar" styleClass="payment-method-desc" />
+                                                    </VBox>
+                                                </children>
+                                            </HBox>
+                                        </VBox>
+                                        
+                                        <Label text="Silakan klik tab &quot;4. QRIS&quot; di atas untuk membayar dengan QRIS" style="-fx-text-fill: #718096; -fx-font-size: 11px; -fx-font-weight: bold; -fx-text-alignment: center;" alignment="CENTER" maxWidth="Infinity" />
+                                    </VBox>
                                     
-                                    <!-- Option 2: QRIS -->
-                                    <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="payment-method-card" style="-fx-border-color: #4364f7; -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.1), 12, 0, 0, 4);">
-                                        <children>
-                                            <Label text="📱" styleClass="payment-method-icon" />
-                                            <VBox HBox.hgrow="ALWAYS">
-                                                <Label text="QRIS / Dompet Digital (Direkomendasikan)" styleClass="payment-method-title" style="-fx-text-fill: #0052d4;" />
-                                                <Label text="Scan instant dengan GoPay, OVO, Dana, ShopeePay" styleClass="payment-method-desc" />
-                                            </VBox>
-                                        </children>
-                                    </HBox>
-                                </VBox>
-                                
-                                <!-- Submit order button (Cash only) and help text -->
-                                <VBox alignment="CENTER" spacing="12.0">
-                                    <Button text="SELESAIKAN TRANSAKSI TUNAI" onAction="#handleCheckout" styleClass="mobile-button-checkout" style="-fx-background-color: linear-gradient(to bottom, #1f9d55, #157347); -fx-pref-width: 320; -fx-effect: dropshadow(three-pass-box, rgba(25, 135, 84, 0.4), 10, 0, 0, 3);" />
-                                    <Label text="Atau silakan klik tab &quot;4. QRIS&quot; di atas untuk membayar dengan QRIS" style="-fx-text-fill: #0052d4; -fx-font-size: 11px; -fx-font-weight: bold; -fx-text-alignment: center;" />
-                                </VBox>
-                            </VBox>
+                                    <!-- View 2: Cash Payment Form Screen -->
+                                    <VBox fx:id="cashPaymentContainer" spacing="20.0" visible="${tunaiOptionBtn.selected}" managed="${tunaiOptionBtn.selected}">
+                                        <padding>
+                                            <Insets top="15" right="16" bottom="40" left="16" />
+                                        </padding>
+                                        
+                                        <!-- Back Navigation -->
+                                        <HBox alignment="CENTER_LEFT">
+                                            <ToggleButton text="← Metode Pembayaran" toggleGroup="$paymentNavigationGroup" fx:id="backToSelectionBtn" selected="true" style="-fx-background-color: transparent; -fx-text-fill: #4364f7; -fx-font-weight: bold; -fx-font-size: 13px; -fx-cursor: hand; -fx-padding: 0;" focusTraversable="false" />
+                                        </HBox>
+                                        
+                                        <!-- Total Bill Card (Premium Gradient) -->
+                                        <VBox spacing="6.0" style="-fx-background-color: linear-gradient(to right, #0052d4, #4364f7); -fx-background-radius: 16px; -fx-padding: 20px; -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.2), 12, 0, 0, 4);">
+                                            <children>
+                                                <Label text="TOTAL TAGIHAN" style="-fx-text-fill: rgba(255, 255, 255, 0.8); -fx-font-size: 11px; -fx-font-weight: bold; -fx-letter-spacing: 0.5px;" />
+                                                <!-- Binds dynamically to the totalPriceLabel's text -->
+                                                <Label text="${totalPriceLabel.text}" style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;" />
+                                            </children>
+                                        </VBox>
+                                        
+                                        <!-- Form Input Card -->
+                                        <VBox spacing="16.0" styleClass="customer-card-container">
+                                            <children>
+                                                <Label text="MASUKKAN NOMINAL UANG PELANGGAN" styleClass="section-title" />
+                                                
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: #f8f9fa; -fx-background-radius: 10px; -fx-border-color: #e0e0e0; -fx-border-radius: 10px; -fx-border-width: 1px; -fx-padding: 2px 14px;">
+                                                    <children>
+                                                        <Label text="Rp" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #4a5568;" />
+                                                        <TextField fx:id="cashReceivedField" promptText="0" style="-fx-background-color: transparent; -fx-pref-height: 44px; -fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2d3748; -fx-padding: 0;" HBox.hgrow="ALWAYS" />
+                                                    </children>
+                                                </HBox>
+                                                
+                                                <!-- Quick Cash Selector -->
+                                                <VBox spacing="8.0">
+                                                    <Label text="UANG CEPAT" style="-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #a0aec0;" />
+                                                    <HBox spacing="8.0" alignment="CENTER_LEFT">
+                                                        <children>
+                                                            <ToggleButton fx:id="pasBtn" toggleGroup="$quickCashGroup" text="Uang Pas" style="-fx-background-color: #edf2f7; -fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 12px; -fx-background-radius: 20px; -fx-padding: 6px 14px; -fx-cursor: hand;" />
+                                                            <ToggleButton fx:id="cash50kBtn" toggleGroup="$quickCashGroup" text="Rp 50.000" style="-fx-background-color: #edf2f7; -fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 12px; -fx-background-radius: 20px; -fx-padding: 6px 14px; -fx-cursor: hand;" />
+                                                            <ToggleButton fx:id="cash100kBtn" toggleGroup="$quickCashGroup" text="Rp 100.000" style="-fx-background-color: #edf2f7; -fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 12px; -fx-background-radius: 20px; -fx-padding: 6px 14px; -fx-cursor: hand;" />
+                                                        </children>
+                                                    </HBox>
+                                                </VBox>
+                                            </children>
+                                        </VBox>
+                                        
+                                        <!-- Change Calculation Display Card -->
+                                        <VBox spacing="10.0" style="-fx-background-color: #f0fff4; -fx-background-radius: 16px; -fx-border-color: #c6f6d5; -fx-border-width: 1px; -fx-padding: 16px;">
+                                            <children>
+                                                <HBox alignment="CENTER_LEFT" spacing="10">
+                                                    <children>
+                                                        <Label text="💰" style="-fx-font-size: 20px;" />
+                                                        <VBox spacing="2">
+                                                            <children>
+                                                                <Label text="KEMBALIAN YANG HARUS DIBERIKAN" style="-fx-text-fill: #2f855a; -fx-font-size: 10px; -fx-font-weight: bold; -fx-letter-spacing: 0.5px;" />
+                                                                <!-- We bind this to show Rp 0 when Uang Pas is clicked, otherwise show a dynamic prompt or placeholder -->
+                                                                <Label text="${pasBtn.selected ? 'Rp 0' : (cashReceivedField.text.isEmpty() ? 'Menunggu input...' : 'Dihitung otomatis')}" style="-fx-text-fill: #276749; -fx-font-size: 20px; -fx-font-weight: bold;" />
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                        
+                                        <!-- Complete Transaction Button -->
+                                        <VBox alignment="CENTER" spacing="10.0">
+                                            <Button text="SELESAIKAN TRANSAKSI TUNAI" onAction="#handleCheckout" styleClass="mobile-button-checkout" style="-fx-background-color: linear-gradient(to bottom, #1f9d55, #157347); -fx-pref-width: 320; -fx-effect: dropshadow(three-pass-box, rgba(25, 135, 84, 0.4), 10, 0, 0, 3);" />
+                                            <Label text="Tekan setelah menerima pembayaran dari pelanggan" style="-fx-text-fill: #718096; -fx-font-size: 11px; -fx-font-weight: bold;" />
+                                        </VBox>
+                                    </VBox>
+                                </children>
+                            </StackPane>
                         </ScrollPane>
                     </content>
                 </Tab>
