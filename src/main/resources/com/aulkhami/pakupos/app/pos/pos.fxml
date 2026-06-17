@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<?import com.aulkhami.pakupos.app.pos.Calculator?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
@@ -11,6 +12,7 @@
     fx:controller="com.aulkhami.pakupos.modules.pos.view.POSView"
     styleClass="mobile-root"
     stylesheets="@../../css/main.css"
+
 >
 
     <VBox spacing="0.0" style="-fx-background-color: #f8f9fa;">
@@ -252,7 +254,16 @@
                                     />
                                 </HBox>
                             </VBox>
-                        </StackPane>
+                            <fx:define>
+        <Calculator fx:id="calc"
+                    totalPriceLabel="${totalPriceLabel}"
+                    cashReceivedField="${cashReceivedField}"
+                    pasBtn="${pasBtn}"
+                    cash50kBtn="${cash50kBtn}"
+                    cash100kBtn="${cash100kBtn}"
+                    changeLabel="${changeLabel}" />
+    </fx:define>
+</StackPane>
                     </content>
                 </Tab>
 
@@ -394,7 +405,7 @@
                                         <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: #f8f9fa; -fx-background-radius: 10px; -fx-border-color: #e0e0e0; -fx-border-radius: 10px; -fx-border-width: 1px; -fx-padding: 2px 14px;">
                                             <children>
                                                 <Label text="Rp" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #4a5568;" />
-                                                <TextField promptText="0" style="-fx-background-color: transparent; -fx-pref-height: 44px; -fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2d3748; -fx-padding: 0;" HBox.hgrow="ALWAYS" />
+                                                <TextField fx:id="cashReceivedField" promptText="0" style="-fx-background-color: transparent; -fx-pref-height: 44px; -fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2d3748; -fx-padding: 0;" HBox.hgrow="ALWAYS" />
                                             </children>
                                         </HBox>
                                         
@@ -403,9 +414,9 @@
                                             <Label text="UANG CEPAT" style="-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #a0aec0;" />
                                             <HBox spacing="8.0" alignment="CENTER_LEFT">
                                                 <children>
-                                                    <Button text="Uang Pas" style="-fx-background-color: #edf2f7; -fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 12px; -fx-background-radius: 20px; -fx-padding: 6px 14px; -fx-cursor: hand;" />
-                                                    <Button text="Rp 50.000" style="-fx-background-color: #edf2f7; -fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 12px; -fx-background-radius: 20px; -fx-padding: 6px 14px; -fx-cursor: hand;" />
-                                                    <Button text="Rp 100.000" style="-fx-background-color: #edf2f7; -fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 12px; -fx-background-radius: 20px; -fx-padding: 6px 14px; -fx-cursor: hand;" />
+                                                    <Button fx:id="pasBtn" text="Uang Pas" style="-fx-background-color: #edf2f7; -fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 12px; -fx-background-radius: 20px; -fx-padding: 6px 14px; -fx-cursor: hand;" />
+                                                    <Button fx:id="cash50kBtn" text="Rp 50.000" style="-fx-background-color: #edf2f7; -fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 12px; -fx-background-radius: 20px; -fx-padding: 6px 14px; -fx-cursor: hand;" />
+                                                    <Button fx:id="cash100kBtn" text="Rp 100.000" style="-fx-background-color: #edf2f7; -fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 12px; -fx-background-radius: 20px; -fx-padding: 6px 14px; -fx-cursor: hand;" />
                                                 </children>
                                             </HBox>
                                         </VBox>
@@ -421,7 +432,7 @@
                                                 <VBox spacing="2">
                                                     <children>
                                                         <Label text="KEMBALIAN YANG HARUS DIBERIKAN" style="-fx-text-fill: #2f855a; -fx-font-size: 10px; -fx-font-weight: bold; -fx-letter-spacing: 0.5px;" />
-                                                        <Label text="Kembalian dihitung otomatis di struk" style="-fx-text-fill: #276749; -fx-font-size: 16px; -fx-font-weight: bold;" />
+                                                        <Label fx:id="changeLabel" text="Rp 0" style="-fx-text-fill: #276749; -fx-font-size: 20px; -fx-font-weight: bold;" />
                                                     </children>
                                                 </VBox>
                                             </children>
@@ -481,5 +492,14 @@
         </TabPane>
     </VBox>
 
+    <fx:define>
+        <Calculator fx:id="calc"
+                    totalPriceLabel="${totalPriceLabel}"
+                    cashReceivedField="${cashReceivedField}"
+                    pasBtn="${pasBtn}"
+                    cash50kBtn="${cash50kBtn}"
+                    cash100kBtn="${cash100kBtn}"
+                    changeLabel="${changeLabel}" />
+    </fx:define>
 </StackPane>
 
