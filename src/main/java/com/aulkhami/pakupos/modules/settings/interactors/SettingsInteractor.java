@@ -1,6 +1,6 @@
 package com.aulkhami.pakupos.modules.settings.interactors;
 
-import com.aulkhami.pakupos.app.interactors.Interactor;
+import com.aulkhami.pakupos.interactors.Interactor;
 import com.aulkhami.pakupos.app.utils.SessionManager;
 import com.aulkhami.pakupos.modules.auth.services.AuthService;
 import com.aulkhami.pakupos.modules.settings.models.SettingsModel;

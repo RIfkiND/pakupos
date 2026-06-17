@@ -1,6 +1,6 @@
 package com.aulkhami.pakupos.modules.inventory.interactors;
 
-import com.aulkhami.pakupos.app.interactors.Interactor;
+import com.aulkhami.pakupos.interactors.Interactor;
 import com.aulkhami.pakupos.app.utils.AlertHelper;
 import com.aulkhami.pakupos.modules.inventory.dtos.ProductRequestDTO;
 import com.aulkhami.pakupos.modules.inventory.dtos.ProductResponseDTO;

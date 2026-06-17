@@ -1,6 +1,6 @@
 package com.aulkhami.pakupos.modules.dashboard.interactors;
 
-import com.aulkhami.pakupos.app.interactors.Interactor;
+import com.aulkhami.pakupos.interactors.Interactor;
 import com.aulkhami.pakupos.modules.auth.services.AuthService;
 
 public class DashboardInteractor implements Interactor {

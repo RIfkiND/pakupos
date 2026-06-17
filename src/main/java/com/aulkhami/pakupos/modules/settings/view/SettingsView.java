@@ -2,7 +2,7 @@ package com.aulkhami.pakupos.modules.settings.view;
 
 import com.aulkhami.pakupos.app.App;
 import com.aulkhami.pakupos.app.enums.UserRole;
-import com.aulkhami.pakupos.app.interactors.Interactor;
+import com.aulkhami.pakupos.interactors.Interactor;
 import com.aulkhami.pakupos.app.utils.AlertHelper;
 import com.aulkhami.pakupos.models.Model;
 import com.aulkhami.pakupos.modules.settings.models.SettingsModel;

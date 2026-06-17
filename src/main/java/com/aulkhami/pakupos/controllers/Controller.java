@@ -1,6 +1,6 @@
 package com.aulkhami.pakupos.controllers;
 
-import com.aulkhami.pakupos.app.interactors.Interactor;
+import com.aulkhami.pakupos.interactors.Interactor;
 import com.aulkhami.pakupos.models.Model;
 import com.aulkhami.pakupos.views.View;
 import java.io.IOException;

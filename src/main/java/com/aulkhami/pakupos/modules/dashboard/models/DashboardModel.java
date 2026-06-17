@@ -13,4 +13,3 @@ import com.aulkhami.pakupos.models.Model;
 public class DashboardModel implements Model {
 
 }
-

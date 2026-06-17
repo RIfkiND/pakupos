@@ -1,7 +1,7 @@
 package com.aulkhami.pakupos.modules.user.interactors;
 
 import com.aulkhami.pakupos.app.enums.UserRole;
-import com.aulkhami.pakupos.app.interactors.Interactor;
+import com.aulkhami.pakupos.interactors.Interactor;
 import com.aulkhami.pakupos.app.utils.AlertHelper;
 import com.aulkhami.pakupos.modules.user.dtos.UserRequestDTO;
 import com.aulkhami.pakupos.modules.user.dtos.UserResponseDTO;

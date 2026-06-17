@@ -2,7 +2,7 @@ package com.aulkhami.pakupos.modules.auth.view;
 import com.aulkhami.pakupos.modules.auth.models.LoginModel;
 import com.aulkhami.pakupos.modules.auth.interactors.LoginInteractor;
 
-import com.aulkhami.pakupos.app.interactors.Interactor;
+import com.aulkhami.pakupos.interactors.Interactor;
 import com.aulkhami.pakupos.app.utils.AlertHelper;
 import com.aulkhami.pakupos.models.Model;
 import com.aulkhami.pakupos.views.View;

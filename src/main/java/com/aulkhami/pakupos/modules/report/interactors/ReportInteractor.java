@@ -1,7 +1,7 @@
 package com.aulkhami.pakupos.modules.report.interactors;
 
 import com.aulkhami.pakupos.modules.pos.repositories.OrderRepository;
-import com.aulkhami.pakupos.app.interactors.Interactor;
+import com.aulkhami.pakupos.interactors.Interactor;
 import com.aulkhami.pakupos.modules.pos.entities.Order;
 import com.aulkhami.pakupos.modules.report.models.ReportModel;
 import java.math.BigDecimal;
