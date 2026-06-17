@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <StackPane
@@ -8,12 +10,12 @@
     xmlns:fx="http://javafx.com/fxml/1"
     fx:controller="com.aulkhami.pakupos.modules.pos.POSView"
     styleClass="mobile-root"
-    stylesheets="@../../css/main.css"
+    stylesheets="@css/main.css"
 >
 
-    <VBox spacing="0.0">
-        <!-- Header -->
-        <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="mobile-header">
+    <VBox spacing="0.0" style="-fx-background-color: #f8f9fa;">
+        <!-- Header (Fixed Top) -->
+        <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="mobile-header">
             <padding>
                 <Insets top="15" right="20" bottom="15" left="20" />
             </padding>
@@ -21,7 +23,7 @@
                 text="←"
                 onAction="#handleBack"
                 styleClass="mobile-button-header"
-                style="-fx-font-size: 18px;"
+                focusTraversable="false"
             />
             <Label text="Point of Sale" textFill="WHITE">
                 <font>
@@ -30,96 +32,387 @@
             </Label>
         </HBox>
 
-        <!-- Customer Input Area -->
-        <VBox spacing="10.0" style="-fx-background-color: white;">
-            <padding>
-                <Insets top="15" right="20" bottom="15" left="20" />
-            </padding>
-            <Label
-                text="CUSTOMER DETAILS"
-                style="-fx-font-size: 10px; -fx-text-fill: gray; -fx-font-weight: bold;"
-            />
-            <TextField
-                fx:id="customerNameField"
-                promptText="Enter Customer Name"
-                styleClass="mobile-input"
-                style="-fx-pref-height: 40px;"
-                maxWidth="Infinity"
-            />
-        </VBox>
+        <!-- Stepper Navigation (TabPane) -->
+        <TabPane fx:id="posTabPane" side="TOP" tabClosingPolicy="UNAVAILABLE" styleClass="pos-stepper-tabpane" VBox.vgrow="ALWAYS">
+            <tabs>
+                <!-- STEP 1: CHOOSE PRODUCTS -->
+                <Tab text="1. Shop">
+                    <content>
+                        <StackPane>
+                            <VBox spacing="0.0">
+                                <!-- Customer Input Area -->
+                                <VBox spacing="10.0">
+                                    <padding>
+                                        <Insets top="16" right="16" bottom="4" left="16" />
+                                    </padding>
+                                    <VBox spacing="10.0" styleClass="customer-card-container">
+                                        <children>
+                                            <Label
+                                                text="CUSTOMER DETAILS"
+                                                styleClass="section-title"
+                                            />
+                                            <TextField
+                                                fx:id="customerNameField"
+                                                promptText="Enter Customer Name"
+                                                styleClass="mobile-input"
+                                                maxWidth="Infinity"
+                                            />
+                                        </children>
+                                    </VBox>
+                                </VBox>
 
-        <Separator />
+                                <!-- Search Products Area -->
+                                <VBox spacing="10.0">
+                                    <padding>
+                                        <Insets top="0" right="16" bottom="8" left="16" />
+                                    </padding>
+                                    <VBox spacing="10.0" styleClass="customer-card-container">
+                                        <children>
+                                            <Label
+                                                text="SEARCH PRODUCTS"
+                                                styleClass="section-title"
+                                            />
+                                            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                                <children>
+                                                    <TextField
+                                                        fx:id="searchField"
+                                                        promptText="Search products by name..."
+                                                        styleClass="mobile-input"
+                                                        HBox.hgrow="ALWAYS"
+                                                    />
+                                                    <Button
+                                                        text="Search"
+                                                        styleClass="mobile-button-search"
+                                                        focusTraversable="false"
+                                                    />
+                                                </children>
+                                            </HBox>
+                                        </children>
+                                    </VBox>
+                                </VBox>
 
-        <!-- Product Selection -->
-        <ScrollPane
-            fitToWidth="true"
-            style="-fx-background-color: transparent; -fx-background: transparent;"
-            VBox.vgrow="ALWAYS"
-        >
-            <VBox spacing="15.0">
-                <padding>
-                    <Insets top="15" right="15" bottom="100" left="15" />
-                </padding>
-                <Label
-                    text="SELECT PRODUCTS"
-                    style="-fx-font-size: 10px; -fx-text-fill: gray; -fx-font-weight: bold;"
-                />
-                <FlowPane
-                    fx:id="productFlowPane"
-                    hgap="10.0"
-                    vgap="10.0"
-                    alignment="TOP_LEFT"
-                    maxWidth="Infinity"
-                />
-            </VBox>
-        </ScrollPane>
-    </VBox>
+                                <!-- Product Selection List -->
+                                <ScrollPane
+                                    fitToWidth="true"
+                                    style="-fx-background-color: transparent; -fx-background: transparent;"
+                                    VBox.vgrow="ALWAYS"
+                                >
+                                    <VBox spacing="15.0">
+                                        <padding>
+                                            <Insets top="12" right="16" bottom="100" left="16" />
+                                        </padding>
+                                        <Label
+                                            text="SELECT PRODUCTS"
+                                            styleClass="section-title"
+                                        />
+                                        <FlowPane
+                                            fx:id="productFlowPane"
+                                            hgap="10.0"
+                                            vgap="10.0"
+                                            alignment="TOP_LEFT"
+                                            maxWidth="Infinity"
+                                        />
+                                        
+                                        <!-- Mock Product Cards -->
+                                        <VBox spacing="10.0">
+                                            <!-- Product Card 1: Martabak Manis -->
+                                            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="product-list-card, card-sweet">
+                                                <padding>
+                                                    <Insets top="14" right="16" bottom="14" left="16"/>
+                                                </padding>
+                                                <children>
+                                                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                                        <children>
+                                                            <Label text="Martabak Manis" styleClass="product-name"/>
+                                                            <HBox spacing="8" alignment="CENTER_LEFT">
+                                                                <children>
+                                                                    <Label text="Rp 25.000" styleClass="product-price"/>
+                                                                    <Label text="Sweet" styleClass="badge, badge-sweet"/>
+                                                                </children>
+                                                            </HBox>
+                                                        </children>
+                                                    </VBox>
+                                                    <Label text="—" styleClass="product-separator"/>
+                                                    <HBox alignment="CENTER" spacing="8" styleClass="quantity-control-container">
+                                                        <children>
+                                                            <Button text="+" styleClass="quantity-btn, btn-plus" focusTraversable="false"/>
+                                                            <Label text="0" styleClass="quantity-text"/>
+                                                            <Button text="-" styleClass="quantity-btn, btn-minus" focusTraversable="false"/>
+                                                        </children>
+                                                    </HBox>
+                                                </children>
+                                            </HBox>
 
-    <!-- Floating Cart Menu (Sticky at bottom) -->
-    <VBox
-        alignment="BOTTOM_CENTER"
-        mouseTransparent="false"
-        pickOnBounds="false"
-        maxWidth="Infinity"
-    >
-        <HBox
-            alignment="CENTER_LEFT"
-            spacing="15.0"
-            styleClass="mobile-floating-cart"
-            maxWidth="800"
-        >
-            <StackPane.margin>
-                <Insets bottom="25" left="20" right="20" />
-            </StackPane.margin>
-            <padding>
-                <Insets top="15" right="20" bottom="15" left="20" />
-            </padding>
+                                            <!-- Product Card 2: Martabak Asin -->
+                                            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="product-list-card, card-savory">
+                                                <padding>
+                                                    <Insets top="14" right="16" bottom="14" left="16"/>
+                                                </padding>
+                                                <children>
+                                                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                                        <children>
+                                                            <Label text="Martabak Asin" styleClass="product-name"/>
+                                                            <HBox spacing="8" alignment="CENTER_LEFT">
+                                                                <children>
+                                                                    <Label text="Rp 22.000" styleClass="product-price"/>
+                                                                    <Label text="Savory" styleClass="badge, badge-savory"/>
+                                                                </children>
+                                                            </HBox>
+                                                        </children>
+                                                    </VBox>
+                                                    <Label text="—" styleClass="product-separator"/>
+                                                    <HBox alignment="CENTER" spacing="8" styleClass="quantity-control-container">
+                                                        <children>
+                                                            <Button text="+" styleClass="quantity-btn, btn-plus" focusTraversable="false"/>
+                                                            <Label text="0" styleClass="quantity-text"/>
+                                                            <Button text="-" styleClass="quantity-btn, btn-minus" focusTraversable="false"/>
+                                                        </children>
+                                                    </HBox>
+                                                </children>
+                                            </HBox>
 
-            <Label
-                text="🛒"
-                styleClass="mobile-nav-icon"
-                style="-fx-text-fill: white;"
-            />
+                                            <!-- Product Card 3: Martabak Manis Spesial -->
+                                            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="product-list-card, card-special">
+                                                <padding>
+                                                    <Insets top="14" right="16" bottom="14" left="16"/>
+                                                </padding>
+                                                <children>
+                                                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                                        <children>
+                                                            <Label text="Martabak Manis Spesial" styleClass="product-name"/>
+                                                            <HBox spacing="8" alignment="CENTER_LEFT">
+                                                                <children>
+                                                                    <Label text="Rp 35.000" styleClass="product-price"/>
+                                                                    <Label text="Premium" styleClass="badge, badge-special"/>
+                                                                </children>
+                                                            </HBox>
+                                                        </children>
+                                                    </VBox>
+                                                    <Label text="—" styleClass="product-separator"/>
+                                                    <HBox alignment="CENTER" spacing="8" styleClass="quantity-control-container">
+                                                        <children>
+                                                            <Button text="+" styleClass="quantity-btn, btn-plus" focusTraversable="false"/>
+                                                            <Label text="0" styleClass="quantity-text"/>
+                                                            <Button text="-" styleClass="quantity-btn, btn-minus" focusTraversable="false"/>
+                                                        </children>
+                                                    </HBox>
+                                                </children>
+                                            </HBox>
+                                        </VBox>
+                                    </VBox>
+                                </ScrollPane>
+                            </VBox>
 
-            <VBox HBox.hgrow="ALWAYS">
-                <Label
-                    fx:id="itemCountLabel"
-                    text="0 Items"
-                    style="-fx-text-fill: #adb5bd; -fx-font-size: 12px;"
-                />
-                <Label
-                    fx:id="totalPriceLabel"
-                    text="Rp 0"
-                    style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"
-                />
-            </VBox>
+                            <!-- Floating Cart Menu (Sticky at bottom, only in Step 1) -->
+                            <VBox
+                                alignment="BOTTOM_CENTER"
+                                mouseTransparent="false"
+                                pickOnBounds="false"
+                                maxWidth="Infinity"
+                            >
+                                <HBox
+                                    alignment="CENTER_LEFT"
+                                    spacing="15.0"
+                                    styleClass="mobile-floating-cart"
+                                    maxWidth="800"
+                                >
+                                    <StackPane.margin>
+                                        <Insets bottom="25" left="20" right="20" />
+                                    </StackPane.margin>
+                                    <padding>
+                                        <Insets top="12" right="16" bottom="12" left="16" />
+                                    </padding>
 
-            <Button
-                text="CHECKOUT"
-                onAction="#handleCheckout"
-                styleClass="mobile-button-checkout"
-            />
-        </HBox>
+                                    <HBox styleClass="cart-badge-container">
+                                        <children>
+                                            <Label
+                                                text="🛒"
+                                                style="-fx-text-fill: white; -fx-font-size: 18px;"
+                                            />
+                                        </children>
+                                    </HBox>
+
+                                    <VBox HBox.hgrow="ALWAYS" alignment="CENTER_LEFT" spacing="2">
+                                        <Label
+                                            fx:id="itemCountLabel"
+                                            text="0 Items"
+                                            style="-fx-text-fill: #adb5bd; -fx-font-size: 12px; -fx-font-weight: bold;"
+                                        />
+                                        <Label
+                                            fx:id="totalPriceLabel"
+                                            text="Rp 0"
+                                            style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"
+                                        />
+                                    </VBox>
+
+                                    <Button
+                                        text="CHECKOUT"
+                                        styleClass="mobile-button-checkout"
+                                        focusTraversable="false"
+                                    />
+                                </HBox>
+                            </VBox>
+                        </StackPane>
+                    </content>
+                </Tab>
+
+                <!-- STEP 2: CHECKOUT DETAILS -->
+                <Tab text="2. Details">
+                    <content>
+                        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+                            <VBox spacing="20.0">
+                                <padding>
+                                    <Insets top="20" right="16" bottom="40" left="16" />
+                                </padding>
+                                
+                                <Label text="ORDER REVIEW" styleClass="section-title" />
+                                
+                                <!-- Detailed Receipt Invoice Card -->
+                                <VBox spacing="14.0" styleClass="receipt-card">
+                                    <children>
+                                        <Label text="INVOICE SUMMARY" styleClass="receipt-title" maxWidth="Infinity" alignment="CENTER" />
+                                        <Separator style="-fx-background-color: #dee2e6;" />
+                                        
+                                        <VBox spacing="12.0">
+                                            <!-- Row 1 -->
+                                            <HBox alignment="CENTER_LEFT" styleClass="receipt-item-row">
+                                                <Label text="Martabak Manis (Qty: 1)" styleClass="receipt-item-name" HBox.hgrow="ALWAYS" maxWidth="Infinity" />
+                                                <Label text="Rp 25.000" styleClass="receipt-item-price" />
+                                            </HBox>
+                                            
+                                            <!-- Row 2 -->
+                                            <HBox alignment="CENTER_LEFT" styleClass="receipt-item-row">
+                                                <Label text="Martabak Asin (Qty: 0)" styleClass="receipt-item-name" HBox.hgrow="ALWAYS" maxWidth="Infinity" style="-fx-text-fill: #a0aec0;" />
+                                                <Label text="Rp 0" styleClass="receipt-item-price" style="-fx-text-fill: #a0aec0;" />
+                                            </HBox>
+                                            
+                                            <!-- Row 3 -->
+                                            <HBox alignment="CENTER_LEFT" styleClass="receipt-item-row">
+                                                <Label text="Martabak Manis Spesial (Qty: 1)" styleClass="receipt-item-name" HBox.hgrow="ALWAYS" maxWidth="Infinity" />
+                                                <Label text="Rp 35.000" styleClass="receipt-item-price" />
+                                            </HBox>
+                                        </VBox>
+                                        
+                                        <Separator style="-fx-background-color: #dee2e6;" />
+                                        
+                                        <!-- Calculation breakdown -->
+                                        <VBox spacing="8.0">
+                                            <HBox alignment="CENTER_LEFT">
+                                                <Label text="Subtotal" style="-fx-text-fill: #718096; -fx-font-size: 13px;" HBox.hgrow="ALWAYS" maxWidth="Infinity" />
+                                                <Label text="Rp 60.000" style="-fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 13px;" />
+                                            </HBox>
+                                            <HBox alignment="CENTER_LEFT">
+                                                <Label text="PPN (11%)" style="-fx-text-fill: #718096; -fx-font-size: 13px;" HBox.hgrow="ALWAYS" maxWidth="Infinity" />
+                                                <Label text="Rp 6.600" style="-fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 13px;" />
+                                            </HBox>
+                                        </VBox>
+                                        
+                                        <Separator style="-fx-background-color: #dee2e6;" />
+                                        
+                                        <!-- Grand Total -->
+                                        <HBox alignment="CENTER_LEFT">
+                                            <Label text="Grand Total" styleClass="receipt-total-label" HBox.hgrow="ALWAYS" maxWidth="Infinity" />
+                                            <Label text="Rp 66.600" styleClass="receipt-total-value" />
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                                
+                                <!-- Go to Payment Button and helper text -->
+                                <VBox alignment="CENTER" spacing="10.0">
+                                    <Button text="NEXT: PAYMENT METHOD" styleClass="mobile-button-checkout" style="-fx-pref-width: 320;" />
+                                    <Label text="Silakan klik tab &quot;3. Payment&quot; di atas untuk lanjut" style="-fx-text-fill: #718096; -fx-font-size: 12px; -fx-font-weight: bold;" />
+                                </VBox>
+                            </VBox>
+                        </ScrollPane>
+                    </content>
+                </Tab>
+
+                <!-- STEP 3: PAYMENT OPTIONS -->
+                <Tab text="3. Payment">
+                    <content>
+                        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+                            <VBox spacing="20.0">
+                                <padding>
+                                    <Insets top="20" right="16" bottom="40" left="16" />
+                                </padding>
+                                
+                                <Label text="CHOOSE PAYMENT OPTION" styleClass="section-title" />
+                                
+                                <!-- Payment Method Cards -->
+                                <VBox spacing="14.0">
+                                    <!-- Option 1: Cash -->
+                                    <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="payment-method-card">
+                                        <children>
+                                            <Label text="💵" styleClass="payment-method-icon" />
+                                            <VBox HBox.hgrow="ALWAYS">
+                                                <Label text="Tunai / Cash" styleClass="payment-method-title" />
+                                                <Label text="Bayar tunai secara langsung di kasir" styleClass="payment-method-desc" />
+                                            </VBox>
+                                        </children>
+                                    </HBox>
+                                    
+                                    <!-- Option 2: QRIS -->
+                                    <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="payment-method-card" style="-fx-border-color: #4364f7; -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.1), 12, 0, 0, 4);">
+                                        <children>
+                                            <Label text="📱" styleClass="payment-method-icon" />
+                                            <VBox HBox.hgrow="ALWAYS">
+                                                <Label text="QRIS / E-Wallet (Recommended)" styleClass="payment-method-title" style="-fx-text-fill: #0052d4;" />
+                                                <Label text="Scan instant dengan GoPay, OVO, Dana, ShopeePay" styleClass="payment-method-desc" />
+                                            </VBox>
+                                        </children>
+                                    </HBox>
+                                </VBox>
+                                
+                                <!-- Submit order button (Cash only) and help text -->
+                                <VBox alignment="CENTER" spacing="12.0">
+                                    <Button text="COMPLETE CASH TRANSACTION" onAction="#handleCheckout" styleClass="mobile-button-checkout" style="-fx-background-color: linear-gradient(to bottom, #1f9d55, #157347); -fx-pref-width: 320; -fx-effect: dropshadow(three-pass-box, rgba(25, 135, 84, 0.4), 10, 0, 0, 3);" />
+                                    <Label text="Atau silakan klik tab &quot;4. QRIS&quot; di atas untuk membayar dengan QRIS" style="-fx-text-fill: #0052d4; -fx-font-size: 11px; -fx-font-weight: bold; -fx-text-alignment: center;" />
+                                </VBox>
+                            </VBox>
+                        </ScrollPane>
+                    </content>
+                </Tab>
+
+                <!-- STEP 4: QRIS SCAN -->
+                <Tab text="4. QRIS">
+                    <content>
+                        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+                            <VBox spacing="20.0" alignment="TOP_CENTER">
+                                <padding>
+                                    <Insets top="20" right="16" bottom="40" left="16" />
+                                </padding>
+                                
+                                <Label text="SCAN QRIS CODE TO PAY" styleClass="section-title" />
+                                
+                                <!-- QRIS Image Scanner Frame Card -->
+                                <VBox alignment="CENTER" spacing="15.0" maxWidth="340.0" style="-fx-background-color: white; -fx-background-radius: 24px; -fx-border-radius: 24px; -fx-border-color: #dee2e6; -fx-border-width: 1px; -fx-padding: 24px; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.06), 16, 0, 0, 6);">
+                                    <children>
+                                        <ImageView fitWidth="210" fitHeight="210" preserveRatio="true">
+                                            <image>
+                                                <Image url="@images/mock_qris_code.png" />
+                                            </image>
+                                        </ImageView>
+                                        
+                                        <VBox alignment="CENTER" spacing="4.0">
+                                            <children>
+                                                <Label text="Rp 66.600" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #0052d4;" />
+                                                <Label text="PAKU Martabak - POS Terminal" style="-fx-font-size: 12px; -fx-text-fill: #718096; -fx-font-weight: bold;" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </VBox>
+                                
+                                <!-- Next: Complete Checkout Button -->
+                                <VBox alignment="CENTER" spacing="10.0">
+                                    <Button text="COMPLETE TRANSACTION" onAction="#handleCheckout" styleClass="mobile-button-checkout" style="-fx-background-color: linear-gradient(to bottom, #1f9d55, #157347); -fx-pref-width: 320; -fx-effect: dropshadow(three-pass-box, rgba(25, 135, 84, 0.4), 10, 0, 0, 3);" />
+                                    <Label text="Klik setelah memindai &amp; menyelesaikan pembayaran" style="-fx-text-fill: #718096; -fx-font-size: 11px; -fx-font-weight: bold;" />
+                                </VBox>
+                            </VBox>
+                        </ScrollPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
     </VBox>
 
 </StackPane>

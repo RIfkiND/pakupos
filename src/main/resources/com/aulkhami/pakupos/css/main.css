@@ -24,7 +24,29 @@
 
 /* Header & Navigation */
 .mobile-header {
-    -fx-background-color: #212529;
+    -fx-background-color: linear-gradient(to right, #0052d4, #4364f7, #6fb1fc);
+    -fx-border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(13, 110, 253, 0.15), 10, 0, 0, 4);
+}
+
+.mobile-button-header {
+    -fx-background-color: rgba(255, 255, 255, 0.18);
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 50%;
+    -fx-min-width: 36px;
+    -fx-min-height: 36px;
+    -fx-max-width: 36px;
+    -fx-max-height: 36px;
+    -fx-cursor: hand;
+    -fx-padding: 0;
+    -fx-alignment: center;
+}
+
+.mobile-button-header:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.28);
 }
 
 .mobile-bottom-nav {
@@ -37,18 +59,61 @@
 
 /* Inputs */
 .mobile-input {
-    -fx-pref-height: 50px;
-    -fx-font-size: 15px;
-    -fx-background-radius: 8px;
-    -fx-border-radius: 8px;
-    -fx-border-color: #ced4da;
-    -fx-background-color: white;
-    -fx-padding: 0 15px;
+    -fx-pref-height: 44px;
+    -fx-font-size: 14px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #e0e0e0;
+    -fx-background-color: #f8f9fa;
+    -fx-padding: 0 14px;
+    -fx-text-fill: #212529;
+    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.05), 6, 0, 1, 2);
 }
 
 .mobile-input:focused {
-    -fx-border-color: #0d6efd;
+    -fx-border-color: #4364f7;
+    -fx-background-color: white;
     -fx-border-width: 1.5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.2), 8, 0, 0, 0);
+}
+
+.customer-card-container {
+    -fx-background-color: white;
+    -fx-background-radius: 16px;
+    -fx-border-radius: 16px;
+    -fx-border-color: #e9ecef;
+    -fx-border-width: 1px;
+    -fx-padding: 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.05), 15, 0, 0, 6);
+}
+
+.mobile-button-search {
+    -fx-background-color: linear-gradient(to bottom, #4364f7, #0052d4);
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-padding: 10px 18px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 82, 212, 0.2), 8, 0, 0, 2);
+}
+
+.mobile-button-search:hover {
+    -fx-background-color: linear-gradient(to bottom, #5d7cf9, #0a5ad6);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 82, 212, 0.4), 10, 0, 0, 3);
+}
+
+.mobile-button-search:armed {
+    -fx-background-color: #0043ad;
+}
+
+.section-title {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 11px;
+    -fx-text-fill: #6c757d;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 0.5px;
 }
 
 /* Buttons */
@@ -157,46 +222,725 @@
 }
 
 .mobile-floating-cart {
-    -fx-background-color: #212529;
-    -fx-background-radius: 20px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 15, 0, 0, 8);
-    -fx-border-color: rgba(255, 255, 255, 0.1);
-    -fx-border-radius: 20px;
+    -fx-background-color: linear-gradient(to right, #0b1528, #16223f);
+    -fx-background-radius: 24px;
+    -fx-border-radius: 24px;
+    -fx-border-color: rgba(67, 100, 247, 0.2);
     -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.45), 24, 0, 0, 12);
+}
+
+.cart-badge-container {
+    -fx-background-color: linear-gradient(to bottom right, #6fb1fc, #4364f7);
+    -fx-background-radius: 50%;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.4), 10, 0, 0, 3);
 }
 
 .mobile-button-checkout {
-    -fx-background-color: #198754;
+    -fx-background-color: linear-gradient(to bottom right, #4364f7, #0052d4);
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-background-radius: 12px;
-    -fx-padding: 10 24;
+    -fx-background-radius: 18px;
+    -fx-border-radius: 18px;
+    -fx-padding: 10px 26px;
     -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 82, 212, 0.35), 10, 0, 0, 3);
+    -fx-transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mobile-button-checkout:hover {
-    -fx-background-color: #157347;
+    -fx-background-color: linear-gradient(to bottom right, #5d7cf9, #0a5ad6);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 82, 212, 0.55), 16, 0, 0, 6);
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
 }
 
 .mobile-nav-item {
     -fx-background-color: transparent;
-    -fx-text-fill: #6c757d;
+    -fx-text-fill: #a0aec0;
     -fx-font-size: 11px;
     -fx-font-weight: bold;
     -fx-content-display: top;
     -fx-graphic-text-gap: 4px;
-    -fx-padding: 8 0;
+    -fx-padding: 8px 0;
     -fx-cursor: hand;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.mobile-nav-item:hover {
+    -fx-text-fill: #4364f7;
 }
 
 .mobile-nav-item.active {
-    -fx-text-fill: #0d6efd;
+    -fx-text-fill: #0052d4;
 }
 
 .mobile-nav-icon {
     -fx-font-size: 22px;
     -fx-text-fill: inherit;
+    -fx-transition: all 0.2s ease-in-out;
 }
+
+
+/* Product List Card Container with 3D elevation */
+.product-list-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 16px;
+    -fx-border-radius: 16px;
+    -fx-border-color: #e9ecef;
+    -fx-border-width: 1px;
+    -fx-alignment: center-left;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.05), 14, 0, 0, 5);
+    -fx-transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-list-card:hover {
+    -fx-border-color: #dee2e6;
+    -fx-translate-y: -4px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.12), 22, 0, 0, 10);
+    -fx-background-color: #ffffff;
+}
+
+/* Category Accent Borders with 3D Left Stripe */
+.card-sweet {
+    -fx-border-color: #e9ecef #e9ecef #e9ecef #fd7e14;
+    -fx-border-width: 1px 1px 1px 5px;
+}
+.card-sweet:hover {
+    -fx-border-color: #dee2e6 #dee2e6 #dee2e6 #fd7e14;
+}
+
+.card-savory {
+    -fx-border-color: #e9ecef #e9ecef #e9ecef #0d6efd;
+    -fx-border-width: 1px 1px 1px 5px;
+}
+.card-savory:hover {
+    -fx-border-color: #dee2e6 #dee2e6 #dee2e6 #0d6efd;
+}
+
+.card-special {
+    -fx-border-color: #e9ecef #e9ecef #e9ecef #ffc107;
+    -fx-border-width: 1px 1px 1px 5px;
+}
+.card-special:hover {
+    -fx-border-color: #dee2e6 #dee2e6 #dee2e6 #ffc107;
+}
+
+/* Product Name Label */
+.product-name {
+    -fx-font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #212529;
+    -fx-wrap-text: true;
+}
+
+/* Product Price Label */
+.product-price {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0d6efd;
+}
+
+/* Badges */
+.badge {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 2px 6px;
+    -fx-background-radius: 4px;
+}
+
+.badge-sweet {
+    -fx-background-color: #fff3cd;
+    -fx-text-fill: #856404;
+}
+
+.badge-savory {
+    -fx-background-color: #cff4fc;
+    -fx-text-fill: #055160;
+}
+
+.badge-special {
+    -fx-background-color: #d1e7dd;
+    -fx-text-fill: #0f5132;
+}
+
+/* Separator Dash */
+.product-separator {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: #adb5bd;
+    -fx-padding: 0 10px;
+}
+
+/* Quantity Control Container with Sunken 3D effect */
+.quantity-control-container {
+    -fx-background-color: #f1f3f5;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #e9ecef;
+    -fx-border-width: 1px;
+    -fx-padding: 3px 4px;
+    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.05), 4, 0, 0, 1);
+}
+
+/* Quantity Action Buttons with 3D Shadow */
+.quantity-btn {
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-min-width: 28px;
+    -fx-min-height: 28px;
+    -fx-max-width: 28px;
+    -fx-max-height: 28px;
+    -fx-padding: 0;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 4, 0, 0, 1.5);
+    -fx-transition: all 0.15s ease-out;
+}
+
+.quantity-btn:hover {
+    -fx-translate-y: -1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.15), 6, 0, 0, 3);
+}
+
+.quantity-btn:armed {
+    -fx-translate-y: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.02), 1, 0, 0, 0.5);
+}
+
+/* Plus Button (Soft Emerald Green) */
+.btn-plus {
+    -fx-background-color: #e6f4ea;
+    -fx-text-fill: #137333;
+}
+
+.btn-plus:hover {
+    -fx-background-color: #ceead6;
+}
+
+.btn-plus:armed {
+    -fx-background-color: #a8dab5;
+}
+
+/* Minus Button (Soft Rose Red) */
+.btn-minus {
+    -fx-background-color: #fce8e6;
+    -fx-text-fill: #c5221f;
+}
+
+.btn-minus:hover {
+    -fx-background-color: #fad2cf;
+}
+
+.btn-minus:armed {
+    -fx-background-color: #f7b6b0;
+}
+
+/* Quantity Number Label */
+.quantity-text {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #212529;
+    -fx-min-width: 26px;
+    -fx-alignment: center;
+}
+
+/* TabPane Stepper Styling */
+.pos-stepper-tabpane {
+    -fx-tab-max-height: 44px;
+    -fx-tab-min-height: 44px;
+}
+
+.pos-stepper-tabpane .tab-header-area {
+    -fx-background-color: #f1f3f5;
+    -fx-padding: 8px 16px 4px 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.03), 8, 0, 0, 2);
+}
+
+.pos-stepper-tabpane .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.pos-stepper-tabpane .tab {
+    -fx-background-color: white;
+    -fx-background-radius: 18px;
+    -fx-border-radius: 18px;
+    -fx-border-color: #dee2e6;
+    -fx-border-width: 1px;
+    -fx-padding: 0 16px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease-in-out;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.02), 4, 0, 0, 1);
+}
+
+.pos-stepper-tabpane .tab:hover {
+    -fx-background-color: #e9ecef;
+    -fx-border-color: #ced4da;
+}
+
+.pos-stepper-tabpane .tab:selected {
+    -fx-background-color: linear-gradient(to right, #4364f7, #0052d4);
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.35), 8, 0, 0, 3);
+}
+
+.pos-stepper-tabpane .tab .tab-label {
+    -fx-text-fill: #495057;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.pos-stepper-tabpane .tab:selected .tab-label {
+    -fx-text-fill: white;
+}
+
+/* Receipt / Invoice Details Card */
+.receipt-card {
+    -fx-background-color: white;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #e9ecef;
+    -fx-border-width: 1px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.05), 16, 0, 0, 6);
+}
+
+.receipt-title {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1a202c;
+    -fx-alignment: center;
+}
+
+.receipt-item-row {
+    -fx-padding: 10px 0;
+    -fx-border-color: transparent transparent #f1f3f5 transparent;
+    -fx-border-width: 1px;
+}
+
+.receipt-item-name {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a5568;
+}
+
+.receipt-item-price {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1a202c;
+}
+
+.receipt-total-label {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2d3748;
+}
+
+.receipt-total-value {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0052d4;
+}
+
+/* Payment Method Selection Card */
+.payment-method-card {
+    -fx-background-color: white;
+    -fx-background-radius: 16px;
+    -fx-border-radius: 16px;
+    -fx-border-color: #e9ecef;
+    -fx-border-width: 1px;
+    -fx-padding: 16px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.04), 12, 0, 0, 4);
+    -fx-transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.payment-method-card:hover {
+    -fx-border-color: #4364f7;
+    -fx-translate-y: -3px;
+    -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.15), 18, 0, 0, 8);
+}
+
+.payment-method-icon {
+    -fx-font-size: 24px;
+}
+
+.payment-method-title {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2d3748;
+}
+
+.payment-method-desc {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 12px;
+    -fx-text-fill: #718096;
+}
+
+/* Custom 3D Dashboard Chart */
+.dashboard-chart-container {
+    -fx-background-color: white;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #e9ecef;
+    -fx-border-width: 1px;
+    -fx-padding: 24px 16px 16px 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.05), 16, 0, 0, 6);
+}
+
+.chart-bar {
+    -fx-background-color: linear-gradient(to top, #4364f7, #6fb1fc);
+    -fx-background-radius: 6px 6px 0 0;
+    -fx-min-width: 16px;
+    -fx-max-width: 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.15), 4, 0, 0, 1.5);
+    -fx-transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.chart-bar:hover {
+    -fx-background-color: linear-gradient(to top, #0052d4, #4364f7);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 82, 212, 0.4), 8, 0, 0, 3);
+    -fx-scale-y: 1.05;
+}
+
+/* 3D Transaction Cards */
+.transaction-row-card {
+    -fx-background-color: white;
+    -fx-background-radius: 16px;
+    -fx-border-radius: 16px;
+    -fx-border-color: #e9ecef;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.04), 10, 0, 0, 4);
+    -fx-transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.transaction-row-card:hover {
+    -fx-border-color: #dee2e6;
+    -fx-translate-y: -2px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 16, 0, 0, 6);
+}
+
+.avatar-container {
+    -fx-min-width: 38px;
+    -fx-min-height: 38px;
+    -fx-max-width: 38px;
+    -fx-max-height: 38px;
+    -fx-background-radius: 50%;
+    -fx-alignment: center;
+}
+
+.avatar-text {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+}
+
+.avatar-blue {
+    -fx-background-color: linear-gradient(to bottom right, #4364f7, #6fb1fc);
+}
+
+.avatar-orange {
+    -fx-background-color: linear-gradient(to bottom right, #fd7e14, #f76707);
+}
+
+.avatar-purple {
+    -fx-background-color: linear-gradient(to bottom right, #6f42c1, #a985e8);
+}
+
+.avatar-green {
+    -fx-background-color: linear-gradient(to bottom right, #198754, #2ec4b6);
+}
+
+.transaction-customer-title {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1a202c;
+}
+
+.transaction-details {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 11px;
+    -fx-text-fill: #718096;
+}
+
+.transaction-amount {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #198754;
+}
+
+/* Logout Button Styling */
+.mobile-logout-btn {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 15px;
+    -fx-padding: 6px 14px;
+    -fx-cursor: hand;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-radius: 15px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 4, 0, 0, 1);
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.mobile-logout-btn:hover {
+    -fx-background-color: rgba(244, 63, 94, 0.25);
+    -fx-border-color: rgba(244, 63, 94, 0.5);
+    -fx-effect: dropshadow(three-pass-box, rgba(244, 63, 94, 0.2), 6, 0, 0, 2);
+}
+
+/* Upgraded Quick Action Cards */
+.dashboard-menu-btn {
+    -fx-background-color: white;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #e9ecef;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.04), 12, 0, 0, 4);
+    -fx-transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dashboard-menu-btn:hover {
+    -fx-background-color: white;
+    -fx-border-color: #4364f7;
+    -fx-translate-y: -5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.12), 20, 0, 0, 8);
+}
+
+.menu-icon-container {
+    -fx-min-width: 44px;
+    -fx-min-height: 44px;
+    -fx-max-width: 44px;
+    -fx-max-height: 44px;
+    -fx-background-radius: 14px;
+    -fx-alignment: center;
+}
+
+.menu-btn-label {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2d3748;
+}
+
+.icon-bg-blue {
+    -fx-background-color: linear-gradient(to bottom right, #4364f7, #6fb1fc);
+    -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.25), 8, 0, 0, 3);
+}
+
+.icon-bg-purple {
+    -fx-background-color: linear-gradient(to bottom right, #6f42c1, #a985e8);
+    -fx-effect: dropshadow(three-pass-box, rgba(111, 66, 193, 0.25), 8, 0, 0, 3);
+}
+
+.icon-bg-green {
+    -fx-background-color: linear-gradient(to bottom right, #198754, #2ec4b6);
+    -fx-effect: dropshadow(three-pass-box, rgba(25, 135, 84, 0.25), 8, 0, 0, 3);
+}
+
+.icon-bg-orange {
+    -fx-background-color: linear-gradient(to bottom right, #fd7e14, #f76707);
+    -fx-effect: dropshadow(three-pass-box, rgba(253, 126, 20, 0.25), 8, 0, 0, 3);
+}
+
+.mobile-nav-item.active .mobile-nav-icon {
+    -fx-scale-x: 1.15;
+    -fx-scale-y: 1.15;
+    -fx-text-fill: #0052d4;
+}
+
+/* Inventory Cards and Badges */
+.inventory-product-card {
+    -fx-background-color: white;
+    -fx-background-radius: 16px;
+    -fx-border-radius: 16px;
+    -fx-border-color: #e9ecef;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.04), 10, 0, 0, 4);
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.inventory-product-card:hover {
+    -fx-border-color: #4364f7;
+    -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.08), 12, 0, 0, 5);
+}
+
+.inventory-product-name {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1a202c;
+}
+
+.inventory-product-price {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0052d4;
+}
+
+.inventory-delete-btn {
+    -fx-background-color: #fff5f5;
+    -fx-text-fill: #e53e3e;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-border-color: #fed7d7;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 6px 12px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.inventory-delete-btn:hover {
+    -fx-background-color: #e53e3e;
+    -fx-text-fill: white;
+    -fx-border-color: #e53e3e;
+}
+
+/* Category Badges */
+.badge {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 3px 8px;
+    -fx-background-radius: 6px;
+}
+
+.badge-sweet {
+    -fx-background-color: #ebf8ff;
+    -fx-text-fill: #2b6cb0;
+}
+
+.badge-savory {
+    -fx-background-color: #f0fff4;
+    -fx-text-fill: #2f855a;
+}
+
+.badge-premium {
+    -fx-background-color: #faf5ff;
+    -fx-text-fill: #6b46c1;
+}
+
+/* Settings Page Aesthetics Overhaul */
+.profile-image-container {
+    -fx-min-width: 90px;
+    -fx-min-height: 90px;
+    -fx-max-width: 90px;
+    -fx-max-height: 90px;
+    -fx-background-color: linear-gradient(to bottom right, #4364f7, #0052d4);
+    -fx-background-radius: 50%;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.35), 15, 0, 0, 5);
+}
+
+.profile-name-label {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1a202c;
+}
+
+.profile-role-tag {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0052d4;
+    -fx-background-color: #f0f4ff;
+    -fx-padding: 3px 10px;
+    -fx-background-radius: 12px;
+}
+
+.settings-card {
+    -fx-background-color: white;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #e9ecef;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.04), 12, 0, 0, 4);
+}
+
+.settings-row {
+    -fx-background-color: transparent;
+}
+
+.settings-row-btn {
+    -fx-background-color: transparent;
+    -fx-padding: 16px 20px;
+    -fx-cursor: hand;
+    -fx-border-width: 0px;
+}
+
+.settings-row-btn:hover {
+    -fx-background-color: #f8f9fa;
+}
+
+.settings-icon-bg {
+    -fx-min-width: 36px;
+    -fx-min-height: 36px;
+    -fx-max-width: 36px;
+    -fx-max-height: 36px;
+    -fx-background-radius: 10px;
+    -fx-alignment: center;
+    -fx-text-fill: white;
+}
+
+.settings-label-title {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 11px;
+    -fx-text-fill: #718096;
+}
+
+.settings-label-value {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2d3748;
+}
+
+.settings-change-link {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4364f7;
+}
+
+.lock-icon-container {
+    -fx-min-width: 80px;
+    -fx-min-height: 80px;
+    -fx-max-width: 80px;
+    -fx-max-height: 80px;
+    -fx-background-color: #f0f4ff;
+    -fx-background-radius: 50%;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.15), 10, 0, 0, 4);
+}
+
+
+
+
+

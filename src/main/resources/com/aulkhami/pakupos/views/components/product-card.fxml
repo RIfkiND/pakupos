@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox xmlns="http://javafx.com/javafx/17" 
+      xmlns:fx="http://javafx.com/fxml/1"
+      alignment="CENTER_LEFT" 
+      spacing="12" 
+      styleClass="product-list-card"
+      stylesheets="@../../css/product-card.css">
+    
+    <padding>
+        <Insets top="14" right="16" bottom="14" left="16"/>
+    </padding>
+    
+    <children>
+        <!-- Product Info (Name, Price & Category Badge) -->
+        <VBox spacing="4" HBox.hgrow="ALWAYS">
+            <children>
+                <Label fx:id="productNameLabel" text="Nama Produk" styleClass="product-name"/>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <children>
+                        <Label fx:id="productPriceLabel" text="Rp 0" styleClass="product-price"/>
+                        <Label fx:id="productBadgeLabel" text="Category" styleClass="badge, badge-sweet"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        
+        <!-- Separator Dash -->
+        <Label fx:id="separatorLabel" text="—" styleClass="product-separator"/>
+        
+        <!-- Quantity control group: [Button "+"] [Label quantity] [Button "-"] -->
+        <HBox alignment="CENTER" spacing="8" styleClass="quantity-control-container">
+            <children>
+                <Button fx:id="btnPlus" text="+" styleClass="quantity-btn, btn-plus" focusTraversable="false"/>
+                <Label fx:id="quantityLabel" text="0" styleClass="quantity-text"/>
+                <Button fx:id="btnMinus" text="-" styleClass="quantity-btn, btn-minus" focusTraversable="false"/>
+            </children>
+        </HBox>
+    </children>
+</HBox>

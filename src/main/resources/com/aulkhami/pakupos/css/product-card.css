@@ -1,0 +1,168 @@
+/* Product List Card Container with 3D elevation */
+.product-list-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 16px;
+    -fx-border-radius: 16px;
+    -fx-border-color: #e9ecef;
+    -fx-border-width: 1px;
+    -fx-alignment: center-left;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.05), 14, 0, 0, 5);
+    -fx-transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-list-card:hover {
+    -fx-border-color: #dee2e6;
+    -fx-translate-y: -4px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.12), 22, 0, 0, 10);
+    -fx-background-color: #ffffff;
+}
+
+/* Category Accent Borders with 3D Left Stripe */
+.card-sweet {
+    -fx-border-color: #e9ecef #e9ecef #e9ecef #fd7e14;
+    -fx-border-width: 1px 1px 1px 5px;
+}
+.card-sweet:hover {
+    -fx-border-color: #dee2e6 #dee2e6 #dee2e6 #fd7e14;
+}
+
+.card-savory {
+    -fx-border-color: #e9ecef #e9ecef #e9ecef #0d6efd;
+    -fx-border-width: 1px 1px 1px 5px;
+}
+.card-savory:hover {
+    -fx-border-color: #dee2e6 #dee2e6 #dee2e6 #0d6efd;
+}
+
+.card-special {
+    -fx-border-color: #e9ecef #e9ecef #e9ecef #ffc107;
+    -fx-border-width: 1px 1px 1px 5px;
+}
+.card-special:hover {
+    -fx-border-color: #dee2e6 #dee2e6 #dee2e6 #ffc107;
+}
+
+/* Product Name Label */
+.product-name {
+    -fx-font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #212529;
+    -fx-wrap-text: true;
+}
+
+/* Product Price Label */
+.product-price {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0d6efd;
+}
+
+/* Badges */
+.badge {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 2px 6px;
+    -fx-background-radius: 4px;
+}
+
+.badge-sweet {
+    -fx-background-color: #fff3cd;
+    -fx-text-fill: #856404;
+}
+
+.badge-savory {
+    -fx-background-color: #cff4fc;
+    -fx-text-fill: #055160;
+}
+
+.badge-special {
+    -fx-background-color: #d1e7dd;
+    -fx-text-fill: #0f5132;
+}
+
+/* Separator Dash */
+.product-separator {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: #adb5bd;
+    -fx-padding: 0 10px;
+}
+
+/* Quantity Control Container with Sunken 3D effect */
+.quantity-control-container {
+    -fx-background-color: #f1f3f5;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #e9ecef;
+    -fx-border-width: 1px;
+    -fx-padding: 3px 4px;
+    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.05), 4, 0, 0, 1);
+}
+
+/* Quantity Action Buttons with 3D Shadow */
+.quantity-btn {
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-min-width: 28px;
+    -fx-min-height: 28px;
+    -fx-max-width: 28px;
+    -fx-max-height: 28px;
+    -fx-padding: 0;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 4, 0, 0, 1.5);
+    -fx-transition: all 0.15s ease-out;
+}
+
+.quantity-btn:hover {
+    -fx-translate-y: -1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.15), 6, 0, 0, 3);
+}
+
+.quantity-btn:armed {
+    -fx-translate-y: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.02), 1, 0, 0, 0.5);
+}
+
+/* Plus Button (Soft Emerald Green) */
+.btn-plus {
+    -fx-background-color: #e6f4ea;
+    -fx-text-fill: #137333;
+}
+
+.btn-plus:hover {
+    -fx-background-color: #ceead6;
+}
+
+.btn-plus:armed {
+    -fx-background-color: #a8dab5;
+}
+
+/* Minus Button (Soft Rose Red) */
+.btn-minus {
+    -fx-background-color: #fce8e6;
+    -fx-text-fill: #c5221f;
+}
+
+.btn-minus:hover {
+    -fx-background-color: #fad2cf;
+}
+
+.btn-minus:armed {
+    -fx-background-color: #f7b6b0;
+}
+
+/* Quantity Number Label */
+.quantity-text {
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #212529;
+    -fx-min-width: 26px;
+    -fx-alignment: center;
+}
