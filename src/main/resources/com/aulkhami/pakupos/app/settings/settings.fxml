@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 
 <VBox spacing="0.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.aulkhami.pakupos.modules.settings.SettingsView"
+      fx:controller="com.aulkhami.pakupos.modules.settings.view.SettingsView"
       styleClass="mobile-root" stylesheets="@../../css/main.css">
 
     <!-- Header -->

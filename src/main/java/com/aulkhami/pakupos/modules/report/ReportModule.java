@@ -1,4 +1,5 @@
 package com.aulkhami.pakupos.modules.report;
+import com.aulkhami.pakupos.modules.report.controllers.ReportController;
 
 public class ReportModule {
     

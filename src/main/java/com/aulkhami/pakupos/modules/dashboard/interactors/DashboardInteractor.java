@@ -1,4 +1,4 @@
-package com.aulkhami.pakupos.modules.dashboard;
+package com.aulkhami.pakupos.modules.dashboard.interactors;
 
 import com.aulkhami.pakupos.app.interactors.Interactor;
 import com.aulkhami.pakupos.modules.auth.services.AuthService;

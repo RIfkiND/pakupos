@@ -1,4 +1,4 @@
-package com.aulkhami.pakupos.modules.report;
+package com.aulkhami.pakupos.modules.report.models;
 
 import com.aulkhami.pakupos.models.Model;
 import com.aulkhami.pakupos.modules.pos.entities.Order;

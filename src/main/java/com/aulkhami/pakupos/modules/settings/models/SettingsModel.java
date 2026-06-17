@@ -1,4 +1,4 @@
-package com.aulkhami.pakupos.modules.settings;
+package com.aulkhami.pakupos.modules.settings.models;
 
 import com.aulkhami.pakupos.models.Model;
 import com.aulkhami.pakupos.modules.user.entities.User;

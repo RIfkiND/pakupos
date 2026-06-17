@@ -1,9 +1,11 @@
-package com.aulkhami.pakupos.modules.dashboard;
+package com.aulkhami.pakupos.modules.dashboard.view;
 
 import com.aulkhami.pakupos.app.App;
 import com.aulkhami.pakupos.app.interactors.Interactor;
 import com.aulkhami.pakupos.app.utils.AlertHelper;
 import com.aulkhami.pakupos.models.Model;
+import com.aulkhami.pakupos.modules.dashboard.models.DashboardModel;
+import com.aulkhami.pakupos.modules.dashboard.interactors.DashboardInteractor;
 import com.aulkhami.pakupos.views.View;
 import java.io.IOException;
 import javafx.fxml.FXML;

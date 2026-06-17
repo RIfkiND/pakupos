@@ -1,4 +1,5 @@
 package com.aulkhami.pakupos.modules.dashboard;
+import com.aulkhami.pakupos.modules.dashboard.controllers.DashboardController;
 
 public class DashboardModule {
     
