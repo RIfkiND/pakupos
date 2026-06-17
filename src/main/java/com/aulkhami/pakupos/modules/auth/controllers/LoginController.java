@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.aulkhami.pakupos.modules.auth.controllers;
+
 import com.aulkhami.pakupos.controllers.Controller;
 import com.aulkhami.pakupos.modules.auth.models.LoginModel;
 import com.aulkhami.pakupos.modules.auth.interactors.LoginInteractor;
@@ -31,6 +32,3 @@ public class LoginController implements Controller {
         return Controller.loadView(new FXMLLoader(getClass().getResource("/com/aulkhami/pakupos/app/login/login.fxml")), model, interactor);
     }
 }
-
-
-
