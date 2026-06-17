@@ -10,7 +10,7 @@
     xmlns:fx="http://javafx.com/fxml/1"
     fx:controller="com.aulkhami.pakupos.modules.pos.view.POSView"
     styleClass="mobile-root"
-    stylesheets="@css/main.css"
+    stylesheets="@../../css/main.css"
 >
 
     <VBox spacing="0.0" style="-fx-background-color: #f8f9fa;">
