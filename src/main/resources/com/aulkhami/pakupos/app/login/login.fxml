@@ -20,16 +20,16 @@
         </font>
     </Label>
 
-    <Label styleClass="mobile-subtitle" text="Mobile Point of Sale" />
+    <Label styleClass="mobile-subtitle" text="Aplikasi Kasir Mobile" />
 
     <VBox fillWidth="true" spacing="10.0">
         <TextField fx:id="usernameField" promptText="Email" styleClass="mobile-input" />
-        <PasswordField fx:id="passwordField" promptText="Password" styleClass="mobile-input" />
+        <PasswordField fx:id="passwordField" promptText="Kata Sandi" styleClass="mobile-input" />
     </VBox>
 
     <VBox fillWidth="true" spacing="12.0">
-        <Button maxWidth="Infinity" onAction="#handleLogin" styleClass="mobile-button-primary" text="LOGIN" />
-        <Button maxWidth="Infinity" onAction="#handleRegister" styleClass="mobile-button-secondary" text="REGISTER" />
+        <Button maxWidth="Infinity" onAction="#handleLogin" styleClass="mobile-button-primary" text="MASUK" />
+        <Button maxWidth="Infinity" onAction="#handleRegister" styleClass="mobile-button-secondary" text="DAFTAR" />
     </VBox>
 
 </VBox>

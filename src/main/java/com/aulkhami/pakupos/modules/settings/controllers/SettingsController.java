@@ -1,6 +1,8 @@
-package com.aulkhami.pakupos.modules.settings;
+package com.aulkhami.pakupos.modules.settings.controllers;
 
 import com.aulkhami.pakupos.controllers.Controller;
+import com.aulkhami.pakupos.modules.settings.models.SettingsModel;
+import com.aulkhami.pakupos.modules.settings.interactors.SettingsInteractor;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Region;

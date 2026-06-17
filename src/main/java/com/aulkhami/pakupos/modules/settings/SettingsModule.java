@@ -1,4 +1,5 @@
 package com.aulkhami.pakupos.modules.settings;
+import com.aulkhami.pakupos.modules.settings.controllers.SettingsController;
 
 public class SettingsModule {
     

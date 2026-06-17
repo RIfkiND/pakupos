@@ -1,9 +1,10 @@
-package com.aulkhami.pakupos.modules.dashboard;
+package com.aulkhami.pakupos.modules.dashboard.interactors;
 
 import com.aulkhami.pakupos.app.interactors.Interactor;
 import com.aulkhami.pakupos.modules.auth.services.AuthService;
 import com.aulkhami.pakupos.modules.dashboard.services.DashboardService;
 import com.aulkhami.pakupos.modules.pos.dtos.OrderResponseDTO;
+import com.aulkhami.pakupos.modules.dashboard.models.DashboardModel;
 import java.util.List;
 
 public class DashboardInteractor implements Interactor {

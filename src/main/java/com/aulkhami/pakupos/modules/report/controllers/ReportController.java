@@ -1,6 +1,8 @@
-package com.aulkhami.pakupos.modules.report;
+package com.aulkhami.pakupos.modules.report.controllers;
 
 import com.aulkhami.pakupos.controllers.Controller;
+import com.aulkhami.pakupos.modules.report.models.ReportModel;
+import com.aulkhami.pakupos.modules.report.interactors.ReportInteractor;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Region;

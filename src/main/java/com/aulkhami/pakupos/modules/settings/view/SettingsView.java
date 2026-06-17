@@ -1,10 +1,12 @@
-package com.aulkhami.pakupos.modules.settings;
+package com.aulkhami.pakupos.modules.settings.view;
 
 import com.aulkhami.pakupos.app.App;
 import com.aulkhami.pakupos.app.enums.UserRole;
 import com.aulkhami.pakupos.app.interactors.Interactor;
 import com.aulkhami.pakupos.app.utils.AlertHelper;
 import com.aulkhami.pakupos.models.Model;
+import com.aulkhami.pakupos.modules.settings.models.SettingsModel;
+import com.aulkhami.pakupos.modules.settings.interactors.SettingsInteractor;
 import com.aulkhami.pakupos.modules.user.entities.User;
 import com.aulkhami.pakupos.views.View;
 import java.io.IOException;

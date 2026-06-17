@@ -1,4 +1,4 @@
-package com.aulkhami.pakupos.modules.dashboard;
+package com.aulkhami.pakupos.modules.dashboard.models;
 
 import com.aulkhami.pakupos.models.Model;
 import com.aulkhami.pakupos.modules.pos.dtos.OrderResponseDTO;
@@ -8,7 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.math.BigDecimal;
 
-class DashboardModel implements Model {
+public class DashboardModel implements Model {
     private final SimpleObjectProperty<BigDecimal> totalSales = new SimpleObjectProperty<>(BigDecimal.ZERO);
     private final SimpleIntegerProperty totalOrders = new SimpleIntegerProperty(0);
     private final ObservableList<OrderResponseDTO> recentTransactions = FXCollections.observableArrayList();

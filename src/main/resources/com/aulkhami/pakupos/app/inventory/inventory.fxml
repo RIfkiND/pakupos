@@ -1,13 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="UTF-8" ?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
 <VBox spacing="0.0" styleClass="mobile-root" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aulkhami.pakupos.modules.inventory.view.InventoryView">
@@ -15,89 +9,230 @@
     <!-- Header -->
     <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="mobile-header">
         <padding>
-            <Insets bottom="15" left="20" right="20" top="15" />
+            <Insets top="15" right="20" bottom="15" left="20" />
         </padding>
-        <Button onAction="#handleBack" style="-fx-font-size: 18px;" styleClass="mobile-button-header" text="←" />
-        <Label text="Inventory Management" textFill="WHITE">
+        <Button
+            text="←"
+            onAction="#handleBack"
+            styleClass="mobile-button-header"
+            style="-fx-font-size: 18px;"
+            focusTraversable="false"
+        />
+        <Label text="Manajemen Inventaris" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="20.0" />
             </font>
         </Label>
     </HBox>
 
-    <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" VBox.vgrow="ALWAYS">
+    <ScrollPane
+        fitToWidth="true"
+        style="-fx-background-color: transparent; -fx-background: transparent;"
+        VBox.vgrow="ALWAYS"
+    >
         <VBox spacing="20.0">
             <padding>
-                <Insets bottom="20" left="20" right="20" top="20" />
+                <Insets top="20" right="20" bottom="20" left="20" />
             </padding>
 
-            <Label styleClass="mobile-subtitle" text="Add New Product" />
+            <Label text="Tambah Produk Baru" styleClass="mobile-subtitle" />
 
             <VBox spacing="15.0">
+                <!-- Product Name -->
                 <VBox spacing="5.0">
-                    <Label style="-fx-font-size: 12px; -fx-text-fill: #6c757d;" text="Product Name *" />
-                    <TextField fx:id="nameField" maxWidth="Infinity" promptText="e.g. Espresso" styleClass="mobile-input" />
+                    <Label
+                        text="Nama Produk *"
+                        style="-fx-font-size: 12px; -fx-text-fill: #6c757d;"
+                    />
+                    <TextField
+                        fx:id="nameField"
+                        promptText="contoh: Martabak Manis Cokelat"
+                        styleClass="mobile-input"
+                        maxWidth="Infinity"
+                    />
                 </VBox>
 
+                <!-- Category -->
                 <VBox spacing="5.0">
-                    <Label style="-fx-font-size: 12px; -fx-text-fill: #6c757d;" text="Category" />
-                    <TextField fx:id="categoryField" maxWidth="Infinity" promptText="e.g. Coffee" styleClass="mobile-input" />
+                    <Label
+                        text="Kategori"
+                        style="-fx-font-size: 12px; -fx-text-fill: #6c757d;"
+                    />
+                    <TextField
+                        fx:id="categoryField"
+                        promptText="contoh: Manis / Asin"
+                        styleClass="mobile-input"
+                        maxWidth="Infinity"
+                    />
                 </VBox>
 
-                <HBox spacing="15.0">
-                    <VBox spacing="5.0" HBox.hgrow="ALWAYS">
-                        <Label style="-fx-font-size: 12px; -fx-text-fill: #6c757d;" text="Price (Rp) *" />
-                        <TextField fx:id="priceField" maxWidth="Infinity" promptText="0" styleClass="mobile-input" />
-                    </VBox>
-                    <VBox spacing="5.0" HBox.hgrow="ALWAYS">
-                        <Label style="-fx-font-size: 12px; -fx-text-fill: #6c757d;" text="Stock *" />
-                        <TextField fx:id="stockField" maxWidth="Infinity" promptText="0" styleClass="mobile-input" />
-                    </VBox>
-                </HBox>
+                <!-- Price & Hidden Stock Field -->
+                <VBox spacing="5.0">
+                    <Label
+                        text="Harga (Rp) *"
+                        style="-fx-font-size: 12px; -fx-text-fill: #6c757d;"
+                    />
+                    <TextField
+                        fx:id="priceField"
+                        promptText="contoh: 25000"
+                        styleClass="mobile-input"
+                        maxWidth="Infinity"
+                    />
+                </VBox>
 
-                <Button maxWidth="Infinity" onAction="#handleSaveProduct" style="-fx-margin: 10 0 0 0;" styleClass="mobile-button-primary" text="SAVE PRODUCT">
+                <!-- Hidden Stock Field to pass Backend Validation without breaking Controller -->
+                <TextField
+                    fx:id="stockField"
+                    text="999"
+                    visible="false"
+                    managed="false"
+                />
+
+                <Button
+                    text="SIMPAN PRODUK"
+                    onAction="#handleSaveProduct"
+                    maxWidth="Infinity"
+                    styleClass="mobile-button-primary"
+                    focusTraversable="false"
+                >
                     <VBox.margin>
-                        <Insets top="20" />
+                        <Insets top="10" />
                     </VBox.margin>
                 </Button>
             </VBox>
 
             <Separator />
 
-            <Label styleClass="mobile-subtitle" text="Current Inventory" />
-            <TextField fx:id="searchField" promptText="Search products..." styleClass="mobile-input" />
-            <VBox fx:id="productListVBox" spacing="0.0" styleClass="mobile-recent-list">
-                <!-- Products will be loaded here dynamically -->
+            <Label text="Inventaris Saat Ini" styleClass="mobile-subtitle" />
+            
+            <!-- Dynamic and Static Custom Cards List -->
+            <VBox spacing="12.0">
+                <!-- VBox for runtime added products -->
+                <VBox fx:id="productListVBox" spacing="12.0" />
+
+                <!-- Mock Product Card 1 -->
+                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="inventory-product-card">
+                    <padding>
+                        <Insets top="14" right="16" bottom="14" left="16"/>
+                    </padding>
+                    <children>
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Martabak Manis" styleClass="inventory-product-name"/>
+                                <HBox spacing="8" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="Manis" styleClass="badge, badge-sweet"/>
+                                        <Label text="Rp 25.000" styleClass="inventory-product-price"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <Button text="🗑️ Hapus" styleClass="inventory-delete-btn" focusTraversable="false"/>
+                    </children>
+                </HBox>
+
+                <!-- Mock Product Card 2 -->
+                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="inventory-product-card">
+                    <padding>
+                        <Insets top="14" right="16" bottom="14" left="16"/>
+                    </padding>
+                    <children>
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Martabak Asin" styleClass="inventory-product-name"/>
+                                <HBox spacing="8" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="Asin" styleClass="badge, badge-savory"/>
+                                        <Label text="Rp 22.000" styleClass="inventory-product-price"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <Button text="🗑️ Hapus" styleClass="inventory-delete-btn" focusTraversable="false"/>
+                    </children>
+                </HBox>
+
+                <!-- Mock Product Card 3 -->
+                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="inventory-product-card">
+                    <padding>
+                        <Insets top="14" right="16" bottom="14" left="16"/>
+                    </padding>
+                    <children>
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Martabak Manis Spesial" styleClass="inventory-product-name"/>
+                                <HBox spacing="8" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="Spesial" styleClass="badge, badge-premium"/>
+                                        <Label text="Rp 35.000" styleClass="inventory-product-price"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <Button text="🗑️ Hapus" styleClass="inventory-delete-btn" focusTraversable="false"/>
+                    </children>
+                </HBox>
             </VBox>
 
             <Separator />
 
-            <Label styleClass="mobile-subtitle" text="Quick Help" />
+            <Label text="Bantuan Cepat" styleClass="mobile-subtitle" />
 
-            <Label style="-fx-text-fill: #6c757d; -fx-font-size: 13px;" text="Fields marked with * are required. Make sure price and stock are numeric values." wrapText="true" />
+            <Label
+                text="Kolom yang ditandai dengan * wajib diisi. Pastikan harga berupa angka."
+                wrapText="true"
+                style="-fx-text-fill: #6c757d; -fx-font-size: 13px;"
+            />
         </VBox>
     </ScrollPane>
 
     <!-- Bottom Nav Placeholder (Keeping consistency) -->
     <HBox alignment="CENTER" spacing="0.0" styleClass="mobile-bottom-nav">
-        <Button maxWidth="Infinity" onAction="#handleBack" styleClass="mobile-nav-item" text="Home" HBox.hgrow="ALWAYS">
+        <Button
+            text="Beranda"
+            onAction="#handleBack"
+            styleClass="mobile-nav-item"
+            HBox.hgrow="ALWAYS"
+            maxWidth="Infinity"
+            focusTraversable="false"
+        >
             <graphic>
-                <Label styleClass="mobile-nav-icon" text="🏠" />
+                <Label text="🏠" styleClass="mobile-nav-icon" />
             </graphic>
         </Button>
-        <Button maxWidth="Infinity" onAction="#handleNewSale" styleClass="mobile-nav-item" text="Sales" HBox.hgrow="ALWAYS">
+        <Button
+            text="Penjualan"
+            onAction="#handleNewSale"
+            styleClass="mobile-nav-item"
+            HBox.hgrow="ALWAYS"
+            maxWidth="Infinity"
+            focusTraversable="false"
+        >
             <graphic>
-                <Label styleClass="mobile-nav-icon" text="🛍️" />
+                <Label text="🛍️" styleClass="mobile-nav-icon" />
             </graphic>
         </Button>
-        <Button maxWidth="Infinity" styleClass="mobile-nav-item, active" text="Inventory" HBox.hgrow="ALWAYS">
+        <Button
+            text="Inventaris"
+            styleClass="mobile-nav-item, active"
+            HBox.hgrow="ALWAYS"
+            maxWidth="Infinity"
+            focusTraversable="false"
+        >
             <graphic>
-                <Label styleClass="mobile-nav-icon" text="📦" />
+                <Label text="📦" styleClass="mobile-nav-icon" />
             </graphic>
         </Button>
-        <Button maxWidth="Infinity" onAction="#handleSettings" styleClass="mobile-nav-item" text="More" HBox.hgrow="ALWAYS">
+        <Button
+            text="Lainnya"
+            onAction="#handleSettings"
+            styleClass="mobile-nav-item"
+            HBox.hgrow="ALWAYS"
+            maxWidth="Infinity"
+            focusTraversable="false"
+        >
             <graphic>
-                <Label styleClass="mobile-nav-icon" text="☰" />
+                <Label text="☰" styleClass="mobile-nav-icon" />
             </graphic>
         </Button>
     </HBox>
