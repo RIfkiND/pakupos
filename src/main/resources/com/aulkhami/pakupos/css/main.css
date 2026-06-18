@@ -156,7 +156,7 @@
         0,
         0,
         5
-    );
+        );
 }
 
 .mobile-stats-card-alt {
@@ -169,7 +169,7 @@
         0,
         0,
         5
-    );
+        );
 }
 
 /* Action Buttons */
@@ -324,11 +324,11 @@
     -fx-border-color: #dee2e6 #dee2e6 #dee2e6 #0d6efd;
 }
 
-.card-special {
+.card-drink {
     -fx-border-color: #e9ecef #e9ecef #e9ecef #ffc107;
     -fx-border-width: 1px 1px 1px 5px;
 }
-.card-special:hover {
+.card-drink:hover {
     -fx-border-color: #dee2e6 #dee2e6 #dee2e6 #ffc107;
 }
 
@@ -368,7 +368,7 @@
     -fx-text-fill: #055160;
 }
 
-.badge-special {
+.badge-drink {
     -fx-background-color: #d1e7dd;
     -fx-text-fill: #0f5132;
 }

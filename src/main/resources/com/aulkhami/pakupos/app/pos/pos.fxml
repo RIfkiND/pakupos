@@ -78,94 +78,7 @@
                                             <Insets bottom="100" left="16" right="16" top="12" />
                                         </padding>
                                         <Label styleClass="section-title" text="PILIH PRODUK" />
-                                        <FlowPane fx:id="productFlowPane" alignment="TOP_LEFT" hgap="10.0" maxWidth="Infinity" vgap="10.0" />
-                                        
-                                        <!-- Mock Product Cards -->
-                                        <VBox spacing="10.0">
-                                            <!-- Product Card 1: Martabak Manis -->
-                                            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="product-list-card, card-sweet">
-                                                <padding>
-                                                    <Insets bottom="14" left="16" right="16" top="14" />
-                                                </padding>
-                                                <children>
-                                                    <VBox spacing="4" HBox.hgrow="ALWAYS">
-                                                        <children>
-                                                            <Label styleClass="product-name" text="Martabak Manis" />
-                                                            <HBox alignment="CENTER_LEFT" spacing="8">
-                                                                <children>
-                                                                    <Label styleClass="product-price" text="Rp 25.000" />
-                                                                    <Label styleClass="badge, badge-sweet" text="Manis" />
-                                                                </children>
-                                                            </HBox>
-                                                        </children>
-                                                    </VBox>
-                                                    <Label styleClass="product-separator" text="—" />
-                                                    <HBox alignment="CENTER" spacing="8" styleClass="quantity-control-container">
-                                                        <children>
-                                                            <Button focusTraversable="false" styleClass="quantity-btn, btn-plus" text="+" />
-                                                            <Label styleClass="quantity-text" text="0" />
-                                                            <Button focusTraversable="false" styleClass="quantity-btn, btn-minus" text="-" />
-                                                        </children>
-                                                    </HBox>
-                                                </children>
-                                            </HBox>
-
-                                            <!-- Product Card 2: Martabak Asin -->
-                                            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="product-list-card, card-savory">
-                                                <padding>
-                                                    <Insets bottom="14" left="16" right="16" top="14" />
-                                                </padding>
-                                                <children>
-                                                    <VBox spacing="4" HBox.hgrow="ALWAYS">
-                                                        <children>
-                                                            <Label styleClass="product-name" text="Martabak Asin" />
-                                                            <HBox alignment="CENTER_LEFT" spacing="8">
-                                                                <children>
-                                                                    <Label styleClass="product-price" text="Rp 22.000" />
-                                                                    <Label styleClass="badge, badge-savory" text="Asin" />
-                                                                </children>
-                                                            </HBox>
-                                                        </children>
-                                                    </VBox>
-                                                    <Label styleClass="product-separator" text="—" />
-                                                    <HBox alignment="CENTER" spacing="8" styleClass="quantity-control-container">
-                                                        <children>
-                                                            <Button focusTraversable="false" styleClass="quantity-btn, btn-plus" text="+" />
-                                                            <Label styleClass="quantity-text" text="0" />
-                                                            <Button focusTraversable="false" styleClass="quantity-btn, btn-minus" text="-" />
-                                                        </children>
-                                                    </HBox>
-                                                </children>
-                                            </HBox>
-
-                                            <!-- Product Card 3: Martabak Manis Spesial -->
-                                            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="product-list-card, card-special">
-                                                <padding>
-                                                    <Insets bottom="14" left="16" right="16" top="14" />
-                                                </padding>
-                                                <children>
-                                                    <VBox spacing="4" HBox.hgrow="ALWAYS">
-                                                        <children>
-                                                            <Label styleClass="product-name" text="Martabak Manis Spesial" />
-                                                            <HBox alignment="CENTER_LEFT" spacing="8">
-                                                                <children>
-                                                                    <Label styleClass="product-price" text="Rp 35.000" />
-                                                                    <Label styleClass="badge, badge-special" text="Spesial" />
-                                                                </children>
-                                                            </HBox>
-                                                        </children>
-                                                    </VBox>
-                                                    <Label styleClass="product-separator" text="—" />
-                                                    <HBox alignment="CENTER" spacing="8" styleClass="quantity-control-container">
-                                                        <children>
-                                                            <Button focusTraversable="false" styleClass="quantity-btn, btn-plus" text="+" />
-                                                            <Label styleClass="quantity-text" text="0" />
-                                                            <Button focusTraversable="false" styleClass="quantity-btn, btn-minus" text="-" />
-                                                        </children>
-                                                    </HBox>
-                                                </children>
-                                            </HBox>
-                                        </VBox>
+                                        <VBox fx:id="productListBox" spacing="10.0" />
                                     </VBox>
                                 </ScrollPane>
                             </VBox>
@@ -191,7 +104,7 @@
                                         <Label fx:id="totalPriceLabel" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Rp 0" />
                                     </VBox>
 
-                                    <Button focusTraversable="false" styleClass="mobile-button-checkout" text="BAYAR" />
+                                    <Button focusTraversable="false" onAction="#goToStep2" styleClass="mobile-button-checkout" text="BAYAR" />
                                 </HBox>
                             </VBox>
                         </StackPane>
@@ -215,25 +128,7 @@
                                         <Label alignment="CENTER" maxWidth="Infinity" styleClass="receipt-title" text="RINGKASAN TAGIHAN" />
                                         <Separator style="-fx-background-color: #dee2e6;" />
                                         
-                                        <VBox spacing="12.0">
-                                            <!-- Row 1 -->
-                                            <HBox alignment="CENTER_LEFT" styleClass="receipt-item-row">
-                                                <Label maxWidth="Infinity" styleClass="receipt-item-name" text="Martabak Manis (Qty: 1)" HBox.hgrow="ALWAYS" />
-                                                <Label styleClass="receipt-item-price" text="Rp 25.000" />
-                                            </HBox>
-                                            
-                                            <!-- Row 2 -->
-                                            <HBox alignment="CENTER_LEFT" styleClass="receipt-item-row">
-                                                <Label maxWidth="Infinity" style="-fx-text-fill: #a0aec0;" styleClass="receipt-item-name" text="Martabak Asin (Qty: 0)" HBox.hgrow="ALWAYS" />
-                                                <Label style="-fx-text-fill: #a0aec0;" styleClass="receipt-item-price" text="Rp 0" />
-                                            </HBox>
-                                            
-                                            <!-- Row 3 -->
-                                            <HBox alignment="CENTER_LEFT" styleClass="receipt-item-row">
-                                                <Label maxWidth="Infinity" styleClass="receipt-item-name" text="Martabak Manis Spesial (Qty: 1)" HBox.hgrow="ALWAYS" />
-                                                <Label styleClass="receipt-item-price" text="Rp 35.000" />
-                                            </HBox>
-                                        </VBox>
+                                        <VBox fx:id="receiptItemsBox" spacing="12.0" />
                                         
                                         <Separator style="-fx-background-color: #dee2e6;" />
                                         
@@ -241,11 +136,11 @@
                                         <VBox spacing="8.0">
                                             <HBox alignment="CENTER_LEFT">
                                                 <Label maxWidth="Infinity" style="-fx-text-fill: #718096; -fx-font-size: 13px;" text="Subtotal" HBox.hgrow="ALWAYS" />
-                                                <Label style="-fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 13px;" text="Rp 60.000" />
+                                                <Label fx:id="subtotalLabel" style="-fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 13px;" text="Rp 0" />
                                             </HBox>
                                             <HBox alignment="CENTER_LEFT">
                                                 <Label maxWidth="Infinity" style="-fx-text-fill: #718096; -fx-font-size: 13px;" text="PPN (11%)" HBox.hgrow="ALWAYS" />
-                                                <Label style="-fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 13px;" text="Rp 6.600" />
+                                                <Label fx:id="taxLabel" style="-fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 13px;" text="Rp 0" />
                                             </HBox>
                                         </VBox>
                                         
@@ -254,14 +149,14 @@
                                         <!-- Grand Total -->
                                         <HBox alignment="CENTER_LEFT">
                                             <Label maxWidth="Infinity" styleClass="receipt-total-label" text="Total Keseluruhan" HBox.hgrow="ALWAYS" />
-                                            <Label styleClass="receipt-total-value" text="Rp 66.600" />
+                                            <Label fx:id="grandTotalLabel" styleClass="receipt-total-value" text="Rp 0" />
                                         </HBox>
                                     </children>
                                 </VBox>
                                 
                                 <!-- Go to Payment Button and helper text -->
                                 <VBox alignment="CENTER" spacing="10.0">
-                                    <Button style="-fx-pref-width: 320;" styleClass="mobile-button-checkout" text="SELANJUTNYA: METODE PEMBAYARAN" />
+                                    <Button onAction="#goToStep3" style="-fx-pref-width: 320;" styleClass="mobile-button-checkout" text="SELANJUTNYA: METODE PEMBAYARAN" />
                                     <Label style="-fx-text-fill: #718096; -fx-font-size: 12px; -fx-font-weight: bold;" text="Silakan klik tab &quot;3. Pembayaran&quot; di atas untuk lanjut" />
                                 </VBox>
                             </VBox>
@@ -294,7 +189,7 @@
                                     </HBox>
                                     
                                     <!-- Option 2: QRIS -->
-                                    <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-border-color: #4364f7; -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.1), 12, 0, 0, 4);" styleClass="payment-method-card">
+                                    <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-border-color: #4364f7; -fx-effect: dropshadow(three-pass-box, rgba(67, 100, 247, 0.1), 12, 0, 0, 4); -fx-cursor: hand;" styleClass="payment-method-card" onMouseClicked="#selectQrisPayment">
                                         <children>
                                             <Label text="📱" styleClass="payment-method-icon" />
                                             <VBox HBox.hgrow="ALWAYS" spacing="4.0">
@@ -410,7 +305,7 @@
                                         
                                         <VBox alignment="CENTER" spacing="4.0">
                                             <children>
-                                                <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #0052d4;" text="Rp 66.600" />
+                                                <Label fx:id="qrisGrandTotalLabel" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #0052d4;" text="Rp 0" />
                                                 <Label style="-fx-font-size: 12px; -fx-text-fill: #718096; -fx-font-weight: bold;" text="PAKU Martabak - POS Terminal" />
                                             </children>
                                         </VBox>
