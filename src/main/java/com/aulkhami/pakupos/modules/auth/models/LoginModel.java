@@ -45,6 +45,20 @@ public class LoginModel implements Model {
     public BooleanProperty successProperty() {
         return success;
     }
+
+    private StringProperty errorText = new SimpleStringProperty("");
+
+    public void setErrorText(String error) {
+        this.errorText.set(error);
+    }
+
+    public String getErrorText() {
+        return errorText.get();
+    }
+
+    public StringProperty errorTextProperty() {
+        return errorText;
+    }
 }
 
 

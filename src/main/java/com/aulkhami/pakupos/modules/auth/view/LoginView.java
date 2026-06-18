@@ -3,7 +3,6 @@ import com.aulkhami.pakupos.modules.auth.models.LoginModel;
 import com.aulkhami.pakupos.modules.auth.interactors.LoginInteractor;
 
 import com.aulkhami.pakupos.app.interactors.Interactor;
-import com.aulkhami.pakupos.app.utils.AlertHelper;
 import com.aulkhami.pakupos.models.Model;
 import com.aulkhami.pakupos.views.View;
 import javafx.fxml.FXML;
@@ -21,11 +20,18 @@ public class LoginView implements View {
     @FXML
     private PasswordField passwordField;
 
+    @FXML
+    private javafx.scene.control.Label errorLabel;
+
     @Override
     public void setModel(Model model) {
         this.model = (LoginModel) model;
         usernameField.textProperty().bindBidirectional(this.model.emailProperty());
         passwordField.textProperty().bindBidirectional(this.model.passwordProperty());
+        
+        errorLabel.textProperty().bind(this.model.errorTextProperty());
+        errorLabel.visibleProperty().bind(this.model.errorTextProperty().isNotEmpty());
+        errorLabel.managedProperty().bind(this.model.errorTextProperty().isNotEmpty());
     }
 
     @Override
@@ -37,15 +43,4 @@ public class LoginView implements View {
     private void handleLogin() {
         interactor.submitForm();
     }
-
-    @FXML
-    private void handleRegister() {
-        // Switch to registration screen (to be implemented)
-        AlertHelper.showSuccess(
-                "Info",
-                "Registration is not available in this version."
-        );
-    }
 }
-
-

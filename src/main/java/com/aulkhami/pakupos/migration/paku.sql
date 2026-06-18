@@ -116,22 +116,22 @@ CREATE TABLE `payments` (
 -- ============================================================
 
 INSERT INTO `users` (`name`, `email`, `password`, `phone`, `role`) VALUES
-('Budi Owner', 'owner@pakupos.com', 'hashed_pwd_123', '08111222333', 'owner'),
-('Siti Karyawan', 'karyawan1@pakupos.com', 'hashed_pwd_123', '08222333444', 'karyawan'),
-('Agus Karyawan', 'karyawan2@pakupos.com', 'hashed_pwd_123', '08333444555', 'karyawan');
+('Budi Owner', 'owner@pakupos.com', '75K3eLr+dx6JJFuJ7LwIpEpOFmwGZZkRiB84PURz6U8=', '08111222333', 'owner'),
+('Siti Karyawan', 'karyawan1@pakupos.com', '75K3eLr+dx6JJFuJ7LwIpEpOFmwGZZkRiB84PURz6U8=', '08222333444', 'karyawan'),
+('Agus Karyawan', 'karyawan2@pakupos.com', '75K3eLr+dx6JJFuJ7LwIpEpOFmwGZZkRiB84PURz6U8=', '08333444555', 'karyawan');
 
 INSERT INTO `category` (`name`) VALUES
-('Makanan Utama'),
-('Minuman'),
-('Martabak');
+('Martabak Manis'),
+('Martabak Telur'),
+('Minuman');
 
 INSERT INTO `products` (`name`, `category_id`, `price`) VALUES
-('Nasi Goreng Spesial', 1, 25000.00),
-('Ayam Bakar Madu', 1, 30000.00),
-('Es Kopi Susu Gula Aren', 2, 18000.00),
-('Es Teh Manis', 2, 5000.00),
-('Martabak Manis Keju Susu', 3, 40000.00),
-('Martabak Telur Spesial', 3, 45000.00);
+('Martabak Manis Coklat Kacang', 1, 25000.00),
+('Martabak Manis Keju Susu', 1, 30000.00),
+('Martabak Manis Spesial', 1, 40000.00),
+('Martabak Telur Bebek 2', 2, 25000.00),
+('Martabak Telur Ayam Spesial', 2, 45000.00),
+('Es Teh Manis', 3, 5000.00);
 
 INSERT INTO `customers` (`name`, `total_orders`, `total_spent`) VALUES
 ('Andi Pelanggan', 1, 65000.00),
@@ -143,8 +143,8 @@ INSERT INTO `orders` (`customer_id`, `customer_name`, `total_amount`, `payment_m
 
 INSERT INTO `order_items` (`order_id`, `product_id`, `quantity`, `price`, `subtotal`) VALUES
 (1, 1, 1, 25000.00, 25000.00),
-(1, 5, 1, 40000.00, 40000.00),
-(2, 6, 1, 45000.00, 45000.00);
+(1, 3, 1, 40000.00, 40000.00),
+(2, 5, 1, 45000.00, 45000.00);
 
 INSERT INTO `payments` (`order_id`, `payment_number`, `payment_method`, `amount`, `payment_status`, `paid_at`) VALUES
 (1, 'PAY-20260616-001', 'qris', 65000.00, 'paid', CURRENT_TIMESTAMP),

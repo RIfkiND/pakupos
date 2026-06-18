@@ -27,7 +27,7 @@ public class LoginInteractor extends FormInteractor {
         String password = model.getPassword();
 
         if (email == null || email.trim().isEmpty() || password == null || password.isEmpty()) {
-            AlertHelper.showError("Login Failed", "Please enter both email and password.");
+            model.setErrorText("Tolong masukkan email dan kata sandi.");
             return;
         }
 
@@ -35,6 +35,7 @@ public class LoginInteractor extends FormInteractor {
         Optional<UserResponseDTO> responseOpt = authService.login(request);
 
         if (responseOpt.isPresent()) {
+            model.setErrorText(""); // clear error
             try {
                 App.navigate("dashboard");
             } catch (IOException e) {
@@ -42,7 +43,7 @@ public class LoginInteractor extends FormInteractor {
                 e.printStackTrace();
             }
         } else {
-            AlertHelper.showError("Login Failed", "Invalid username or password.");
+            model.setErrorText("Email atau kata sandi salah.");
         }
     }
 
@@ -56,6 +57,3 @@ public class LoginInteractor extends FormInteractor {
         }
     }
 }
-
-
-

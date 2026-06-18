@@ -63,6 +63,23 @@ public class POSInteractor implements Interactor {
         }
     }
 
+    public void decreaseQuantity(ProductResponseDTO product) {
+        Optional<CartItemDTO> existingItem = model.getCart().stream()
+                .filter(item -> item.getProduct().getId().equals(product.getId()))
+                .findFirst();
+
+        if (existingItem.isPresent()) {
+            CartItemDTO item = existingItem.get();
+            if (item.getQuantity() > 1) {
+                item.setQuantity(item.getQuantity() - 1);
+                int index = model.getCart().indexOf(item);
+                model.getCart().set(index, item);
+            } else {
+                model.getCart().remove(item);
+            }
+        }
+    }
+
     public void checkout() {
         String customerName = model.getCustomerName();
         if (customerName == null || customerName.trim().isEmpty()) {

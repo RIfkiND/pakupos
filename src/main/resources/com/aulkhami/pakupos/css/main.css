@@ -459,14 +459,13 @@
 
 /* TabPane Stepper Styling */
 .pos-stepper-tabpane {
-    -fx-tab-max-height: 44px;
-    -fx-tab-min-height: 44px;
+    -fx-tab-max-height: 0;
+    -fx-tab-min-height: 0;
 }
 
 .pos-stepper-tabpane .tab-header-area {
-    -fx-background-color: #f1f3f5;
-    -fx-padding: 8px 16px 4px 16px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.03), 8, 0, 0, 2);
+    visibility: hidden;
+    -fx-padding: 0;
 }
 
 .pos-stepper-tabpane .tab-header-background {

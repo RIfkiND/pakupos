@@ -36,6 +36,10 @@ public class Router {
                 InventoryModule inventory = new InventoryModule();
                 scene.setRoot(inventory.getController().getView());
                 break;
+            case "category":
+                com.aulkhami.pakupos.modules.category.CategoryModule category = new com.aulkhami.pakupos.modules.category.CategoryModule();
+                scene.setRoot(category.getController().getView());
+                break;
             case "pos":
                 POSModule pos = new POSModule();
                 scene.setRoot(pos.getController().getView());

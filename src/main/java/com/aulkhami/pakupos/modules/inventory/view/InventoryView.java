@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -27,32 +28,25 @@ public class InventoryView implements View {
     private InventoryModel model;
     private InventoryInteractor interactor;
 
-    @FXML
-    private TextField nameField;
+    @FXML private TextField nameField;
+    @FXML private javafx.scene.control.ComboBox<String> categoryComboBox;
+    @FXML private TextField priceField;
+    @FXML private TextField stockField;
+    @FXML private TextField searchField;
+    @FXML private VBox productListVBox;
+    
+    @FXML private Label formTitleLabel;
+    @FXML private Button saveButton;
+    @FXML private Button cancelButton;
 
-    @FXML
-    private TextField categoryField;
-
-    @FXML
-    private TextField priceField;
-
-    @FXML
-    private TextField stockField;
-
-    @FXML
-    private TextField searchField;
-
-    @FXML
-    private VBox productListVBox;
+    private Long editingProductId = null;
 
     @Override
     public void setModel(Model model) {
         this.model = (InventoryModel) model;
-
         this.model.getProducts().addListener((ListChangeListener<ProductResponseDTO>) change -> {
             renderProducts();
         });
-
         renderProducts();
     }
 
@@ -60,12 +54,38 @@ public class InventoryView implements View {
     public void setInteractor(Interactor interactor) {
         this.interactor = (InventoryInteractor) interactor;
         this.interactor.loadProducts();
+        populateCategories();
 
         if (searchField != null) {
             searchField.textProperty().addListener((observable, oldValue, newValue) -> {
                 this.interactor.searchProducts(newValue);
             });
         }
+    }
+
+    private void populateCategories() {
+        if (categoryComboBox != null) {
+            categoryComboBox.getItems().setAll(interactor.loadCategories());
+        }
+    }
+
+    @FXML
+    private void handleAddCategory() {
+        javafx.scene.control.TextInputDialog dialog = new javafx.scene.control.TextInputDialog();
+        dialog.setTitle("Tambah Kategori");
+        dialog.setHeaderText("Masukkan nama kategori baru:");
+        dialog.setContentText("Kategori:");
+
+        java.util.Optional<String> result = dialog.showAndWait();
+        result.ifPresent(name -> {
+            if (!name.trim().isEmpty()) {
+                // Add to combobox and select it
+                if (!categoryComboBox.getItems().contains(name)) {
+                    categoryComboBox.getItems().add(name);
+                }
+                categoryComboBox.getSelectionModel().select(name);
+            }
+        });
     }
 
     private void renderProducts() {
@@ -77,36 +97,80 @@ public class InventoryView implements View {
     }
 
     private Node createProductItem(ProductResponseDTO product) {
-        HBox hbox = new HBox();
-        hbox.getStyleClass().add("mobile-recent-item");
+        HBox hbox = new HBox(12);
+        hbox.getStyleClass().add("inventory-product-card");
         hbox.setAlignment(Pos.CENTER_LEFT);
-        hbox.setSpacing(10);
-        hbox.setPadding(new Insets(10, 15, 10, 15));
+        hbox.setPadding(new Insets(14, 16, 14, 16));
 
-        VBox info = new VBox();
+        VBox info = new VBox(4);
         HBox.setHgrow(info, Priority.ALWAYS);
 
         Label nameLabel = new Label(product.getName());
-        nameLabel.setStyle("-fx-font-weight: bold;");
+        nameLabel.getStyleClass().add("inventory-product-name");
 
-        Label catLabel = new Label(
-                product.getCategory() + " • Stock: " + product.getStock()
-        );
-        catLabel.setStyle("-fx-font-size: 11px; -fx-text-fill: gray;");
+        HBox detailsBox = new HBox(8);
+        detailsBox.setAlignment(Pos.CENTER_LEFT);
+        
+        Label catLabel = new Label(product.getCategory() == null || product.getCategory().isEmpty() ? "Umum" : product.getCategory());
+        catLabel.getStyleClass().addAll("badge", "badge-sweet");
+        
+        Label priceLabel = new Label(com.aulkhami.pakupos.app.utils.CurrencyHelper.formatRupiah(product.getPrice()));
+        priceLabel.getStyleClass().add("inventory-product-price");
 
-        info.getChildren().addAll(nameLabel, catLabel);
+        detailsBox.getChildren().addAll(catLabel, priceLabel);
+        info.getChildren().addAll(nameLabel, detailsBox);
 
-        Label priceLabel = new Label("Rp " + product.getPrice());
-        priceLabel.setStyle("-fx-text-fill: #0d6efd; -fx-font-weight: bold;");
+        Button updateBtn = new Button("✏️ Edit");
+        updateBtn.setStyle("-fx-background-color: #e2e8f0; -fx-text-fill: #3182ce; -fx-font-weight: bold; -fx-background-radius: 8px; -fx-padding: 6px 12px; -fx-cursor: hand;");
+        updateBtn.setFocusTraversable(false);
+        updateBtn.setOnAction(e -> startEdit(product));
 
-        hbox.getChildren().addAll(info, priceLabel);
+        Button deleteBtn = new Button("🗑️ Hapus");
+        deleteBtn.getStyleClass().add("inventory-delete-btn");
+        deleteBtn.setFocusTraversable(false);
+        deleteBtn.setOnAction(e -> {
+            boolean confirm = AlertHelper.showConfirmation("Konfirmasi Hapus", "Apakah Anda yakin ingin menghapus produk '" + product.getName() + "'?");
+            if (confirm) {
+                interactor.deleteProduct(product.getId());
+            }
+        });
+
+        hbox.getChildren().addAll(info, updateBtn, deleteBtn);
         return hbox;
+    }
+    
+    private void startEdit(ProductResponseDTO product) {
+        editingProductId = product.getId();
+        nameField.setText(product.getName());
+        categoryComboBox.getSelectionModel().select(product.getCategory());
+        priceField.setText(product.getPrice().toPlainString());
+        stockField.setText(String.valueOf(product.getStock()));
+        
+        if (formTitleLabel != null) formTitleLabel.setText("Update Produk");
+        if (saveButton != null) saveButton.setText("UPDATE PRODUK");
+        if (cancelButton != null) {
+            cancelButton.setVisible(true);
+            cancelButton.setManaged(true);
+        }
+    }
+    
+    @FXML
+    private void handleCancelEdit() {
+        editingProductId = null;
+        clearFields();
+        if (formTitleLabel != null) formTitleLabel.setText("Tambah Produk Baru");
+        if (saveButton != null) saveButton.setText("SIMPAN PRODUK");
+        if (cancelButton != null) {
+            cancelButton.setVisible(false);
+            cancelButton.setManaged(false);
+        }
     }
 
     @FXML
     private void handleSaveProduct() {
         String name = nameField.getText();
-        String category = categoryField.getText();
+        String category = categoryComboBox.getValue();
+        if (category == null) category = "";
         String priceStr = priceField.getText();
         String stockStr = stockField.getText();
 
@@ -122,10 +186,17 @@ public class InventoryView implements View {
             BigDecimal price = new BigDecimal(priceStr);
             Integer stock = Integer.parseInt(stockStr);
 
-            ProductRequestDTO requestDTO = new ProductRequestDTO(name, category, price, stock);
-            interactor.saveProduct(requestDTO);
-
-            clearFields();
+            ProductRequestDTO requestDTO = new ProductRequestDTO(editingProductId, name, category, price, stock);
+            
+            if (editingProductId == null) {
+                interactor.saveProduct(requestDTO);
+                clearFields();
+                populateCategories(); // refresh categories list
+            } else {
+                interactor.updateProduct(requestDTO);
+                handleCancelEdit();
+                populateCategories(); // refresh categories list
+            }
         } catch (NumberFormatException e) {
             AlertHelper.showError(
                     "Input Error",
@@ -163,7 +234,7 @@ public class InventoryView implements View {
 
     private void clearFields() {
         nameField.clear();
-        categoryField.clear();
+        categoryComboBox.getSelectionModel().clearSelection();
         priceField.clear();
         stockField.clear();
     }

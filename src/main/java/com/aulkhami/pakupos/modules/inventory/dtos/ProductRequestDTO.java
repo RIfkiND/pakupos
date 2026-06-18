@@ -3,6 +3,7 @@ package com.aulkhami.pakupos.modules.inventory.dtos;
 import java.math.BigDecimal;
 
 public class ProductRequestDTO {
+    private Long id;
     private String name;
     private String category;
     private BigDecimal price;
@@ -17,6 +18,23 @@ public class ProductRequestDTO {
         this.price = price;
         this.stock = stock;
     }
+
+    public ProductRequestDTO(Long id, String name, String category, BigDecimal price, Integer stock) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.price = price;
+        this.stock = stock;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
     public String getName() {
         return name;

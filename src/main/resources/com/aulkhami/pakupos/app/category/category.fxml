@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="0.0" styleClass="mobile-root" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aulkhami.pakupos.modules.category.view.CategoryView">
+
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="mobile-header">
+        <padding>
+            <Insets top="15" right="20" bottom="15" left="20" />
+        </padding>
+        <Button
+            text="←"
+            onAction="#handleBack"
+            styleClass="mobile-button-header"
+            style="-fx-font-size: 18px;"
+            focusTraversable="false"
+        />
+        <Label text="Manajemen Kategori" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+    </HBox>
+
+    <ScrollPane
+        fitToWidth="true"
+        style="-fx-background-color: transparent; -fx-background: transparent;"
+        VBox.vgrow="ALWAYS"
+    >
+        <VBox spacing="20.0">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20" />
+            </padding>
+
+            <Label fx:id="formTitleLabel" text="Tambah Kategori Baru" styleClass="mobile-subtitle" />
+
+            <VBox spacing="15.0">
+                <!-- Category Name -->
+                <VBox spacing="5.0">
+                    <Label
+                        text="Nama Kategori *"
+                        style="-fx-font-size: 12px; -fx-text-fill: #6c757d;"
+                    />
+                    <TextField
+                        fx:id="nameField"
+                        promptText="contoh: Makanan Ringan"
+                        styleClass="mobile-input"
+                        maxWidth="Infinity"
+                    />
+                </VBox>
+
+                <VBox spacing="10">
+                    <Button
+                        fx:id="saveButton"
+                        text="SIMPAN KATEGORI"
+                        onAction="#handleSave"
+                        maxWidth="Infinity"
+                        styleClass="mobile-button-primary"
+                        style="-fx-background-color: linear-gradient(to bottom right, #e83e8c, #c2255c);"
+                        focusTraversable="false"
+                    />
+                    <Button
+                        fx:id="cancelButton"
+                        text="BATAL EDIT"
+                        onAction="#handleCancelEdit"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10px; -fx-background-radius: 8px;"
+                        focusTraversable="false"
+                        visible="false"
+                        managed="false"
+                    />
+                </VBox>
+            </VBox>
+
+            <Separator />
+
+            <Label text="Kategori Saat Ini" styleClass="mobile-subtitle" />
+            
+            <VBox spacing="12.0">
+                <!-- VBox for runtime added categories -->
+                <VBox fx:id="listVBox" spacing="12.0" />
+            </VBox>
+
+        </VBox>
+    </ScrollPane>
+</VBox>

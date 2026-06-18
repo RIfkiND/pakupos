@@ -70,7 +70,7 @@ public class OrderRepository {
     }
 
     public BigDecimal getTotalSalesToday() {
-        String sql = "SELECT SUM(total_amount) FROM orders WHERE DATE(created_at) = CURDATE() AND status = 'completed'";
+        String sql = "SELECT SUM(total_amount) FROM orders WHERE status = 'completed'";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
@@ -85,7 +85,7 @@ public class OrderRepository {
     }
 
     public int getOrderCountToday() {
-        String sql = "SELECT COUNT(*) FROM orders WHERE DATE(created_at) = CURDATE()";
+        String sql = "SELECT COUNT(*) FROM orders";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {

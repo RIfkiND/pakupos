@@ -54,7 +54,8 @@
                         style="-fx-text-fill: white; -fx-font-size: 12px;"
                     />
                     <Label
-                        text="Rp 2.4M"
+                        fx:id="totalSalesLabel"
+                        text="Rp 0"
                         style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;"
                     />
                 </VBox>
@@ -72,7 +73,8 @@
                         style="-fx-text-fill: white; -fx-font-size: 12px;"
                     />
                     <Label
-                        text="42"
+                        fx:id="totalOrdersLabel"
+                        text="0"
                         style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;"
                     />
                 </VBox>
@@ -80,170 +82,130 @@
 
             <Label text="Tindakan Cepat" styleClass="mobile-subtitle" />
 
-            <!-- POS Actions Grid with Premium Colored Icons -->
-            <GridPane hgap="15.0" vgap="15.0">
-                <columnConstraints>
-                    <ColumnConstraints
-                        hgrow="ALWAYS"
-                        minWidth="10.0"
-                        percentWidth="50.0"
-                    />
-                    <ColumnConstraints
-                        hgrow="ALWAYS"
-                        minWidth="10.0"
-                        percentWidth="50.0"
-                    />
-                </columnConstraints>
+            <!-- POS Actions Slider with Premium Colored Icons -->
+            <ScrollPane fx:id="quickActionsScrollPane" pannable="true" hbarPolicy="NEVER" vbarPolicy="NEVER" fitToHeight="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-padding: 0;">
+                <HBox fx:id="quickActionsHBox" spacing="15.0" alignment="CENTER_LEFT" style="-fx-padding: 5 5 15 5;">
+                    <!-- New Sale -->
+                    <Button
+                        onAction="#handleNewSale"
+                        minWidth="100"
+                        minHeight="100"
+                        styleClass="dashboard-menu-btn"
+                        style="-fx-background-radius: 20px;"
+                        focusTraversable="false"
+                    >
+                        <graphic>
+                            <VBox alignment="CENTER" spacing="8">
+                                <children>
+                                    <StackPane styleClass="menu-icon-container, icon-bg-blue">
+                                        <children>
+                                            <Label text="🛒" style="-fx-font-size: 20px; -fx-text-fill: white;" />
+                                        </children>
+                                    </StackPane>
+                                    <Label text="Penjualan" styleClass="menu-btn-label" style="-fx-font-size: 11px;" />
+                                </children>
+                            </VBox>
+                        </graphic>
+                    </Button>
 
-                <!-- New Sale -->
-                <Button
-                    onAction="#handleNewSale"
-                    GridPane.columnIndex="0"
-                    GridPane.rowIndex="0"
-                    maxWidth="Infinity"
-                    minHeight="120"
-                    styleClass="dashboard-menu-btn"
-                    focusTraversable="false"
-                >
-                    <graphic>
-                        <VBox alignment="CENTER" spacing="10">
-                            <children>
-                                <StackPane styleClass="menu-icon-container, icon-bg-blue">
-                                    <children>
-                                        <Label text="🛒" style="-fx-font-size: 22px; -fx-text-fill: white;" />
-                                    </children>
-                                </StackPane>
-                                <Label text="Penjualan Baru" styleClass="menu-btn-label" />
-                            </children>
-                        </VBox>
-                    </graphic>
-                </Button>
+                    <!-- Inventory -->
+                    <Button
+                        onAction="#handleInventory"
+                        minWidth="100"
+                        minHeight="100"
+                        styleClass="dashboard-menu-btn"
+                        style="-fx-background-radius: 20px;"
+                        focusTraversable="false"
+                    >
+                        <graphic>
+                            <VBox alignment="CENTER" spacing="8">
+                                <children>
+                                    <StackPane styleClass="menu-icon-container, icon-bg-purple">
+                                        <children>
+                                            <Label text="📦" style="-fx-font-size: 20px; -fx-text-fill: white;" />
+                                        </children>
+                                    </StackPane>
+                                    <Label text="Inventaris" styleClass="menu-btn-label" style="-fx-font-size: 11px;" />
+                                </children>
+                            </VBox>
+                        </graphic>
+                    </Button>
 
-                <!-- Inventory -->
-                <Button
-                    onAction="#handleInventory"
-                    GridPane.columnIndex="1"
-                    GridPane.rowIndex="0"
-                    maxWidth="Infinity"
-                    minHeight="120"
-                    styleClass="dashboard-menu-btn"
-                    focusTraversable="false"
-                >
-                    <graphic>
-                        <VBox alignment="CENTER" spacing="10">
-                            <children>
-                                <StackPane styleClass="menu-icon-container, icon-bg-purple">
-                                    <children>
-                                        <Label text="📦" style="-fx-font-size: 22px; -fx-text-fill: white;" />
-                                    </children>
-                                </StackPane>
-                                <Label text="Inventaris" styleClass="menu-btn-label" />
-                            </children>
-                        </VBox>
-                    </graphic>
-                </Button>
+                    <!-- Reports -->
+                    <Button
+                        onAction="#handleReports"
+                        minWidth="100"
+                        minHeight="100"
+                        styleClass="dashboard-menu-btn"
+                        style="-fx-background-radius: 20px;"
+                        focusTraversable="false"
+                    >
+                        <graphic>
+                            <VBox alignment="CENTER" spacing="8">
+                                <children>
+                                    <StackPane styleClass="menu-icon-container, icon-bg-green">
+                                        <children>
+                                            <Label text="📊" style="-fx-font-size: 20px; -fx-text-fill: white;" />
+                                        </children>
+                                    </StackPane>
+                                    <Label text="Laporan" styleClass="menu-btn-label" style="-fx-font-size: 11px;" />
+                                </children>
+                            </VBox>
+                        </graphic>
+                    </Button>
 
-                <!-- Reports -->
-                <Button
-                    onAction="#handleReports"
-                    GridPane.columnIndex="0"
-                    GridPane.rowIndex="1"
-                    maxWidth="Infinity"
-                    minHeight="120"
-                    styleClass="dashboard-menu-btn"
-                    focusTraversable="false"
-                >
-                    <graphic>
-                        <VBox alignment="CENTER" spacing="10">
-                            <children>
-                                <StackPane styleClass="menu-icon-container, icon-bg-green">
-                                    <children>
-                                        <Label text="📊" style="-fx-font-size: 22px; -fx-text-fill: white;" />
-                                    </children>
-                                </StackPane>
-                                <Label text="Laporan" styleClass="menu-btn-label" />
-                            </children>
-                        </VBox>
-                    </graphic>
-                </Button>
-
-                <!-- Settings -->
-                <Button
-                    onAction="#handleSettings"
-                    GridPane.columnIndex="1"
-                    GridPane.rowIndex="1"
-                    maxWidth="Infinity"
-                    minHeight="120"
-                    styleClass="dashboard-menu-btn"
-                    focusTraversable="false"
-                >
-                    <graphic>
-                        <VBox alignment="CENTER" spacing="10">
-                            <children>
-                                <StackPane styleClass="menu-icon-container, icon-bg-orange">
-                                    <children>
-                                        <Label text="⚙️" style="-fx-font-size: 22px; -fx-text-fill: white;" />
-                                    </children>
-                                </StackPane>
-                                <Label text="Pengaturan" styleClass="menu-btn-label" />
-                            </children>
-                        </VBox>
-                    </graphic>
-                </Button>
-            </GridPane>
+                    <!-- Settings -->
+                    <Button
+                        onAction="#handleSettings"
+                        minWidth="100"
+                        minHeight="100"
+                        styleClass="dashboard-menu-btn"
+                        style="-fx-background-radius: 20px;"
+                        focusTraversable="false"
+                    >
+                        <graphic>
+                            <VBox alignment="CENTER" spacing="8">
+                                <children>
+                                    <StackPane styleClass="menu-icon-container, icon-bg-orange">
+                                        <children>
+                                            <Label text="⚙️" style="-fx-font-size: 20px; -fx-text-fill: white;" />
+                                        </children>
+                                    </StackPane>
+                                    <Label text="Pengaturan" styleClass="menu-btn-label" style="-fx-font-size: 11px;" />
+                                </children>
+                            </VBox>
+                        </graphic>
+                    </Button>
+                    
+                    <!-- Tambah Kategori -->
+                    <Button
+                        onAction="#handleAddCategory"
+                        minWidth="100"
+                        minHeight="100"
+                        styleClass="dashboard-menu-btn"
+                        style="-fx-background-radius: 20px;"
+                        focusTraversable="false"
+                    >
+                        <graphic>
+                            <VBox alignment="CENTER" spacing="8">
+                                <children>
+                                    <StackPane styleClass="menu-icon-container" style="-fx-background-color: linear-gradient(to bottom right, #e83e8c, #c2255c); -fx-effect: dropshadow(three-pass-box, rgba(232, 62, 140, 0.25), 8, 0, 0, 3);">
+                                        <children>
+                                            <Label text="🏷️" style="-fx-font-size: 20px; -fx-text-fill: white;" />
+                                        </children>
+                                    </StackPane>
+                                    <Label text="Kategori" styleClass="menu-btn-label" style="-fx-font-size: 11px;" />
+                                </children>
+                            </VBox>
+                        </graphic>
+                    </Button>
+                </HBox>
+            </ScrollPane>
 
             <!-- Recent Transactions styled identical to Reports list -->
             <Label text="Transaksi Terakhir" styleClass="mobile-subtitle" />
 
-            <VBox spacing="10.0">
-                <!-- Transaction Item 1 -->
-                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="transaction-row-card">
-                    <padding>
-                        <Insets top="14" right="18" bottom="14" left="18"/>
-                    </padding>
-                    <children>
-                        <VBox HBox.hgrow="ALWAYS" spacing="4">
-                            <children>
-                                <Label text="Andi - Martabak Manis" styleClass="transaction-customer-title" />
-                                <Label text="Kuantitas: 2 pcs • Tunai" styleClass="transaction-details" />
-                            </children>
-                        </VBox>
-                        <Label text="Rp 50.000" styleClass="transaction-amount" />
-                    </children>
-                </HBox>
-
-                <!-- Transaction Item 2 -->
-                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="transaction-row-card">
-                    <padding>
-                        <Insets top="14" right="18" bottom="14" left="18"/>
-                    </padding>
-                    <children>
-                        <VBox HBox.hgrow="ALWAYS" spacing="4">
-                            <children>
-                                <Label text="Budi - Martabak Asin" styleClass="transaction-customer-title" />
-                                <Label text="Kuantitas: 1 pcs • QRIS" styleClass="transaction-details" />
-                            </children>
-                        </VBox>
-                        <Label text="Rp 22.000" styleClass="transaction-amount" />
-                    </children>
-                </HBox>
-                
-                <!-- Transaction Item 3 -->
-                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="transaction-row-card">
-                    <padding>
-                        <Insets top="14" right="18" bottom="14" left="18"/>
-                    </padding>
-                    <children>
-                        <VBox HBox.hgrow="ALWAYS" spacing="4">
-                            <children>
-                                <Label text="Citra - Martabak Manis Spesial" styleClass="transaction-customer-title" />
-                                <Label text="Kuantitas: 1 pcs • QRIS" styleClass="transaction-details" />
-                            </children>
-                        </VBox>
-                        <Label text="Rp 35.000" styleClass="transaction-amount" />
-                    </children>
-                </HBox>
-            </VBox>
+            <VBox fx:id="recentTransactionsVBox" spacing="10.0" />
         </VBox>
     </ScrollPane>
 

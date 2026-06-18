@@ -28,6 +28,15 @@ public class InventoryInteractor implements Interactor {
         }
     }
 
+    public List<String> loadCategories() {
+        try {
+            return inventoryService.getAllCategories();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return java.util.Collections.emptyList();
+        }
+    }
+
     public void searchProducts(String keyword) {
         try {
             List<ProductResponseDTO> products;
@@ -51,6 +60,32 @@ public class InventoryInteractor implements Interactor {
             AlertHelper.showError("Validation Error", e.getMessage());
         } catch (Exception e) {
             AlertHelper.showError("Error", "Could not save product: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void updateProduct(ProductRequestDTO requestDTO) {
+        try {
+            inventoryService.updateProduct(requestDTO);
+            AlertHelper.showSuccess("Success", "Product updated successfully!");
+            loadProducts();
+        } catch (IllegalArgumentException e) {
+            AlertHelper.showError("Validation Error", e.getMessage());
+        } catch (Exception e) {
+            AlertHelper.showError("Error", "Could not update product: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteProduct(Long id) {
+        try {
+            inventoryService.deleteProduct(id);
+            AlertHelper.showSuccess("Success", "Product deleted successfully!");
+            loadProducts();
+        } catch (IllegalArgumentException e) {
+            AlertHelper.showError("Validation Error", e.getMessage());
+        } catch (Exception e) {
+            AlertHelper.showError("Error", "Could not delete product: " + e.getMessage());
             e.printStackTrace();
         }
     }
