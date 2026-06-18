@@ -13,4 +13,6 @@ public interface IDAO<T, ID> {
     void update(T entity);
 
     void delete(ID id);
+
+    // List<T> search(String keyword);
 }

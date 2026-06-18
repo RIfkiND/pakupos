@@ -52,7 +52,7 @@ public class ReportView implements View {
 
         // Bind/listen to changes
         this.model.totalSalesProperty().addListener((obs, oldVal, newVal) -> {
-            totalSalesLabel.setText(currencyFormat.format(newVal).replace("Rp", "Rp "));
+            totalSalesLabel.setText(com.aulkhami.pakupos.app.utils.CurrencyHelper.formatRupiah(newVal));
         });
         this.model.totalOrdersProperty().addListener((obs, oldVal, newVal) -> {
             totalOrdersLabel.setText(String.valueOf(newVal));
@@ -62,7 +62,7 @@ public class ReportView implements View {
         });
 
         // Set initial values
-        totalSalesLabel.setText(currencyFormat.format(this.model.getTotalSales()).replace("Rp", "Rp "));
+        totalSalesLabel.setText(com.aulkhami.pakupos.app.utils.CurrencyHelper.formatRupiah(this.model.getTotalSales()));
         totalOrdersLabel.setText(String.valueOf(this.model.getTotalOrders()));
 
         // Filter period labels

@@ -52,48 +52,19 @@ public class DatabaseConfig {
             Constants.DEFAULT_MYSQL_DRIVER
         );
     }
-
-    public static String getSupabaseUrl() {
-        return getDbProperty(
-            Constants.SUPABASE_URL_KEY,
-            Constants.DEFAULT_SUPABASE_URL
-        );
-    }
-
-    public static String getSupabaseUsername() {
-        return getDbProperty(
-            Constants.SUPABASE_USERNAME_KEY,
-            Constants.DEFAULT_SUPABASE_USERNAME
-        );
-    }
-
-    public static String getSupabasePassword() {
-        return getDbProperty(
-            Constants.SUPABASE_PASSWORD_KEY,
-            Constants.DEFAULT_SUPABASE_PASSWORD
-        );
-    }
-
-    public static String getSupabaseDriver() {
-        return getDbProperty(
-            Constants.SUPABASE_DRIVER_KEY,
-            Constants.DEFAULT_SUPABASE_DRIVER
-        );
-    }
-
     public static String getActiveUrl() {
-        return isMySqlActive() ? getMySqlUrl() : getSupabaseUrl();
+        return isMySqlActive() ? getMySqlUrl() : null;
     }
 
     public static String getActiveUsername() {
-        return isMySqlActive() ? getMySqlUsername() : getSupabaseUsername();
+        return isMySqlActive() ? getMySqlUsername() : null;
     }
 
     public static String getActivePassword() {
-        return isMySqlActive() ? getMySqlPassword() : getSupabasePassword();
+        return isMySqlActive() ? getMySqlPassword() : null;
     }
 
     public static String getActiveDriver() {
-        return isMySqlActive() ? getMySqlDriver() : getSupabaseDriver();
+        return isMySqlActive() ? getMySqlDriver() : null;
     }
 }

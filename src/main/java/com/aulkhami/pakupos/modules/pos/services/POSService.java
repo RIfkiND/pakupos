@@ -31,6 +31,10 @@ public class POSService {
         return inventoryService.getAllProducts();
     }
 
+    public List<ProductResponseDTO> searchCatalog(String keyword) {
+        return inventoryService.searchProducts(keyword);
+    }
+
     public OrderResponseDTO processCheckout(OrderRequestDTO request) {
         User currentUser = SessionManager.getCurrentUser();
         if (currentUser == null) {

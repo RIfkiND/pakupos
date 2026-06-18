@@ -25,11 +25,11 @@
     <VBox fillWidth="true" spacing="10.0">
         <TextField fx:id="usernameField" promptText="Email" styleClass="mobile-input" />
         <PasswordField fx:id="passwordField" promptText="Kata Sandi" styleClass="mobile-input" />
+        <Label fx:id="errorLabel" style="-fx-text-fill: red; -fx-font-size: 13px;" visible="false" managed="false"/>
     </VBox>
 
     <VBox fillWidth="true" spacing="12.0">
         <Button maxWidth="Infinity" onAction="#handleLogin" styleClass="mobile-button-primary" text="MASUK" />
-        <Button maxWidth="Infinity" onAction="#handleRegister" styleClass="mobile-button-secondary" text="DAFTAR" />
     </VBox>
 
 </VBox>

@@ -22,18 +22,7 @@ public class AuthService {
         String email = requestDTO.getEmail();
         String plainPassword = requestDTO.getPassword();
 
-        if ("admin@pakupos.com".equals(email) && "admin123".equals(plainPassword)) {
-            User admin = new User(
-                    "Admin Pakupos",
-                    email,
-                    PasswordUtil.hashPassword(plainPassword),
-                    "08123456789",
-                    UserRole.OWNER
-            );
-            admin.setId(0L);
-            SessionManager.setCurrentUser(admin);
-            return Optional.of(new UserResponseDTO(admin));
-        }
+
 
         Optional<User> opt = userRepository.findByEmail(email);
         if (opt.isPresent()) {

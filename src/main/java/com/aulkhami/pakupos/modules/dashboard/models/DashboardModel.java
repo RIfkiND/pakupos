@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.aulkhami.pakupos.modules.dashboard.models;
 
 import com.aulkhami.pakupos.models.Model;
@@ -16,11 +12,10 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-/**
- *
- * @author Rakha
- */
 public class DashboardModel implements Model {
+    private final SimpleObjectProperty<BigDecimal> totalSales = new SimpleObjectProperty<>(BigDecimal.ZERO);
+    private final SimpleIntegerProperty totalOrders = new SimpleIntegerProperty(0);
+    private final ObservableList<OrderResponseDTO> recentTransactions = FXCollections.observableArrayList();
 
     private LongProperty salesAmount;
     private StringProperty salesAmountStr;

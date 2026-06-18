@@ -32,6 +32,20 @@ public class POSInteractor implements Interactor {
         }
     }
 
+    public void searchCatalog(String keyword) {
+        try {
+            List<ProductResponseDTO> products;
+            if (keyword == null || keyword.trim().isEmpty()) {
+                products = posService.getCatalog();
+            } else {
+                products = posService.searchCatalog(keyword.trim());
+            }
+            model.getCatalog().setAll(products);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void addToCart(ProductResponseDTO product) {
         // Check if item already exists in cart
         Optional<CartItemDTO> existingItem = model.getCart().stream()
@@ -46,6 +60,23 @@ public class POSInteractor implements Interactor {
             model.getCart().set(index, item);
         } else {
             model.getCart().add(new CartItemDTO(product, 1));
+        }
+    }
+
+    public void decreaseQuantity(ProductResponseDTO product) {
+        Optional<CartItemDTO> existingItem = model.getCart().stream()
+                .filter(item -> item.getProduct().getId().equals(product.getId()))
+                .findFirst();
+
+        if (existingItem.isPresent()) {
+            CartItemDTO item = existingItem.get();
+            if (item.getQuantity() > 1) {
+                item.setQuantity(item.getQuantity() - 1);
+                int index = model.getCart().indexOf(item);
+                model.getCart().set(index, item);
+            } else {
+                model.getCart().remove(item);
+            }
         }
     }
 

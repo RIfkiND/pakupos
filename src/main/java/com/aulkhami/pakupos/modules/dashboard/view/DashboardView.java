@@ -48,8 +48,80 @@ public class DashboardView implements View {
     }
 
     @FXML
+    private javafx.scene.control.ScrollPane quickActionsScrollPane;
+
+    private double scrollStartX;
+    private double hValueStart;
+    private boolean dragged;
+
+    @FXML
     public void initialize() {
-        // Initialize dashboard state if needed
+        if (quickActionsScrollPane != null) {
+            quickActionsScrollPane.addEventFilter(javafx.scene.input.MouseEvent.MOUSE_PRESSED, event -> {
+                scrollStartX = event.getSceneX();
+                hValueStart = quickActionsScrollPane.getHvalue();
+                dragged = false;
+            });
+
+            quickActionsScrollPane.addEventFilter(javafx.scene.input.MouseEvent.MOUSE_DRAGGED, event -> {
+                double deltaX = event.getSceneX() - scrollStartX;
+                if (Math.abs(deltaX) > 5) {
+                    dragged = true;
+                    double contentWidth = quickActionsScrollPane.getContent().getBoundsInLocal().getWidth();
+                    double viewportWidth = quickActionsScrollPane.getViewportBounds().getWidth();
+                    double hbarWidth = contentWidth - viewportWidth;
+                    if (hbarWidth > 0) {
+                        double deltaH = -deltaX / hbarWidth;
+                        quickActionsScrollPane.setHvalue(Math.max(0, Math.min(1, hValueStart + deltaH)));
+                    }
+                    event.consume();
+                }
+            });
+
+            quickActionsScrollPane.addEventFilter(javafx.scene.input.MouseEvent.MOUSE_RELEASED, event -> {
+                if (dragged) {
+                    event.consume();
+                }
+            });
+
+            quickActionsScrollPane.addEventFilter(javafx.scene.input.MouseEvent.MOUSE_CLICKED, event -> {
+                if (dragged) {
+                    event.consume();
+                }
+            });
+        }
+    }
+
+    private void renderRecentTransactions() {
+        if (recentTransactionsVBox == null) return;
+        recentTransactionsVBox.getChildren().clear();
+
+        for (com.aulkhami.pakupos.modules.pos.dtos.OrderResponseDTO order : model.getRecentTransactions()) {
+            javafx.scene.layout.HBox item = new javafx.scene.layout.HBox();
+            item.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
+            item.setSpacing(12.0);
+            item.getStyleClass().add("transaction-row-card");
+            item.setPadding(new javafx.geometry.Insets(14, 18, 14, 18));
+
+            javafx.scene.layout.VBox info = new javafx.scene.layout.VBox();
+            info.setSpacing(4.0);
+            javafx.scene.layout.HBox.setHgrow(info, javafx.scene.layout.Priority.ALWAYS);
+
+            String cName = (order.getCustomerName() != null && !order.getCustomerName().isEmpty()) ? order.getCustomerName() : "Tamu Umum";
+            javafx.scene.control.Label titleLabel = new javafx.scene.control.Label(cName + " - Pesanan #" + order.getId());
+            titleLabel.getStyleClass().add("transaction-customer-title");
+
+            javafx.scene.control.Label detailsLabel = new javafx.scene.control.Label("Status: " + order.getStatus());
+            detailsLabel.getStyleClass().add("transaction-details");
+
+            info.getChildren().addAll(titleLabel, detailsLabel);
+
+            javafx.scene.control.Label priceLabel = new javafx.scene.control.Label(com.aulkhami.pakupos.app.utils.CurrencyHelper.formatRupiah(order.getTotalAmount()));
+            priceLabel.getStyleClass().add("transaction-amount");
+
+            item.getChildren().addAll(info, priceLabel);
+            recentTransactionsVBox.getChildren().add(item);
+        }
     }
 
     @FXML

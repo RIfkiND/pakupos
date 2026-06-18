@@ -35,7 +35,7 @@
                 <Insets top="20" right="20" bottom="20" left="20" />
             </padding>
 
-            <Label text="Tambah Produk Baru" styleClass="mobile-subtitle" />
+            <Label fx:id="formTitleLabel" text="Tambah Produk Baru" styleClass="mobile-subtitle" />
 
             <VBox spacing="15.0">
                 <!-- Product Name -->
@@ -58,12 +58,16 @@
                         text="Kategori"
                         style="-fx-font-size: 12px; -fx-text-fill: #6c757d;"
                     />
-                    <TextField
-                        fx:id="categoryField"
-                        promptText="contoh: Manis / Asin"
-                        styleClass="mobile-input"
-                        maxWidth="Infinity"
-                    />
+                    <HBox spacing="10">
+                        <ComboBox
+                            fx:id="categoryComboBox"
+                            promptText="Pilih Kategori"
+                            styleClass="mobile-input"
+                            maxWidth="Infinity"
+                            HBox.hgrow="ALWAYS"
+                        />
+                        <Button text="+" onAction="#handleAddCategory" styleClass="mobile-button-primary" style="-fx-font-size: 14px; -fx-padding: 8px 12px;"/>
+                    </HBox>
                 </VBox>
 
                 <!-- Price & Hidden Stock Field -->
@@ -88,90 +92,35 @@
                     managed="false"
                 />
 
-                <Button
-                    text="SIMPAN PRODUK"
-                    onAction="#handleSaveProduct"
-                    maxWidth="Infinity"
-                    styleClass="mobile-button-primary"
-                    focusTraversable="false"
-                >
-                    <VBox.margin>
-                        <Insets top="10" />
-                    </VBox.margin>
-                </Button>
+                <VBox spacing="10">
+                    <Button
+                        fx:id="saveButton"
+                        text="SIMPAN PRODUK"
+                        onAction="#handleSaveProduct"
+                        maxWidth="Infinity"
+                        styleClass="mobile-button-primary"
+                        focusTraversable="false"
+                    />
+                    <Button
+                        fx:id="cancelButton"
+                        text="BATAL EDIT"
+                        onAction="#handleCancelEdit"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10px; -fx-background-radius: 8px;"
+                        focusTraversable="false"
+                        visible="false"
+                        managed="false"
+                    />
+                </VBox>
             </VBox>
 
             <Separator />
 
             <Label text="Inventaris Saat Ini" styleClass="mobile-subtitle" />
             
-            <!-- Dynamic and Static Custom Cards List -->
             <VBox spacing="12.0">
                 <!-- VBox for runtime added products -->
                 <VBox fx:id="productListVBox" spacing="12.0" />
-
-                <!-- Mock Product Card 1 -->
-                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="inventory-product-card">
-                    <padding>
-                        <Insets top="14" right="16" bottom="14" left="16"/>
-                    </padding>
-                    <children>
-                        <VBox spacing="4" HBox.hgrow="ALWAYS">
-                            <children>
-                                <Label text="Martabak Manis" styleClass="inventory-product-name"/>
-                                <HBox spacing="8" alignment="CENTER_LEFT">
-                                    <children>
-                                        <Label text="Manis" styleClass="badge, badge-sweet"/>
-                                        <Label text="Rp 25.000" styleClass="inventory-product-price"/>
-                                    </children>
-                                </HBox>
-                            </children>
-                        </VBox>
-                        <Button text="🗑️ Hapus" styleClass="inventory-delete-btn" focusTraversable="false"/>
-                    </children>
-                </HBox>
-
-                <!-- Mock Product Card 2 -->
-                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="inventory-product-card">
-                    <padding>
-                        <Insets top="14" right="16" bottom="14" left="16"/>
-                    </padding>
-                    <children>
-                        <VBox spacing="4" HBox.hgrow="ALWAYS">
-                            <children>
-                                <Label text="Martabak Asin" styleClass="inventory-product-name"/>
-                                <HBox spacing="8" alignment="CENTER_LEFT">
-                                    <children>
-                                        <Label text="Asin" styleClass="badge, badge-savory"/>
-                                        <Label text="Rp 22.000" styleClass="inventory-product-price"/>
-                                    </children>
-                                </HBox>
-                            </children>
-                        </VBox>
-                        <Button text="🗑️ Hapus" styleClass="inventory-delete-btn" focusTraversable="false"/>
-                    </children>
-                </HBox>
-
-                <!-- Mock Product Card 3 -->
-                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="inventory-product-card">
-                    <padding>
-                        <Insets top="14" right="16" bottom="14" left="16"/>
-                    </padding>
-                    <children>
-                        <VBox spacing="4" HBox.hgrow="ALWAYS">
-                            <children>
-                                <Label text="Martabak Manis Spesial" styleClass="inventory-product-name"/>
-                                <HBox spacing="8" alignment="CENTER_LEFT">
-                                    <children>
-                                        <Label text="Spesial" styleClass="badge, badge-premium"/>
-                                        <Label text="Rp 35.000" styleClass="inventory-product-price"/>
-                                    </children>
-                                </HBox>
-                            </children>
-                        </VBox>
-                        <Button text="🗑️ Hapus" styleClass="inventory-delete-btn" focusTraversable="false"/>
-                    </children>
-                </HBox>
             </VBox>
 
             <Separator />
